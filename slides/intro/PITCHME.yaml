@@ -1,0 +1,71 @@
+#
+# GitPitch Slideshow Custom Settings
+#
+# For details, visit Wiki:
+# https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings
+#
+
+stealth : daithi
+published : true
+
+#
+# Theme Setting
+# Doc: https://gitpitch.com/docs/settings/theme
+#
+
+#~ theme : template
+
+#~ theme-background : [ "#FFF" ]
+#~ theme-headline   : [ "Fira Sans", "#111111", "none" ]
+#~ theme-byline     : [ "Fira Sans", "#111111", "none" ]
+#~ theme-text       : [ "Roboto", "#1C1C1C", "none" ]
+#~ theme-links      : [ "#5289F7", "#5254F7" ]
+#~ theme-code       : [ "Source Code Pro" ]
+#~ theme-controls   : [ "#484848" ]
+#~ theme-margins    : [ "0", "15px" ]
+
+#
+# Theme-Override Setting
+# Doc: https://gitpitch.com/docs/settings/custom-theme
+#
+
+theme-override : assets/css/template_modified.css
+
+#
+# Logo Setting
+# https://gitpitch.com/docs/settings/logo
+#
+
+logo : assets/img/grassgis_logo_colorlogo_text_alphabg.png
+logo-position: top-left
+
+#
+# Footnote Setting
+# Doc: https://gitpitch.com/docs/settings/footnote
+#
+
+footnote : "TGRASS workshop - FOSS4G 2019, Bucharest"
+
+#
+# Highlight (Code) Setting
+# Doc: https://gitpitch.com/docs/settings/highlight
+#
+
+highlight : atom-one-dark
+
+#
+# Layout Setting
+# Doc: https://gitpitch.com/docs/settings/layout
+#
+
+layout : center
+
+#
+# Transition Setting
+# This template uses GitPitch Snap-Layouts extensively. For this
+# reason THIS VALUE SHOULD NOT BE MODIFIED. See:
+# https://gitpitch.com/docs/layout-features/snap-layout-slide-transitions
+#
+
+transition : none
+slide-number : true 
