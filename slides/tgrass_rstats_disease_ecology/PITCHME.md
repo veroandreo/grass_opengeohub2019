@@ -1,15 +1,17 @@
----?image=template/img/grass.png&position=bottom&size=100% 30%
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 @title[Front page]
 
 @snap[north span-100]
+<br>
 <h2>Analyzing space-time satellite data for disease ecology applications with @color[green](GRASS GIS) and R stats</h2>
 @snapend
 
 @snap[south message-box-white span-100]
 Verónica Andreo
-
+<br><br>
 @size[30px](OpenGeoHub Summer School 2019, M&uuml;nster)
 @snapend
+
 
 ---
 @title[About the trainer]
@@ -28,12 +30,13 @@ Verónica Andreo
 @css[bio-byline](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
 
----?image=template/img/grass.png&position=bottom&size=100% 30%
+
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
 ### Interface GRASS - R: Bridging GIS and statistics
 
----
 
+---
 GRASS GIS and R can be used together in two ways:
 <br><br>
 - Using [R within a GRASS GIS session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#R_within_GRASS),
@@ -42,38 +45,38 @@ GRASS GIS and R can be used together in two ways:
 
 @size[22px](Details and examples at the <a href="https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7">GRASS and R wiki</a>)
 
-+++
 
++++
 ![Calling R from within GRASS](assets/img/RwithinGRASS_and_Rstudio_from_grass.png)
 
-+++
 
++++
 - Using @color[#8EA33B](**R within GRASS GIS session**), i.e. starting R (or RStudio) from the GRASS GIS command line.
   - we do not need to initialize GRASS with `initGRASS()`
   - we work with data already in GRASS GIS database using GRASS GIS but from R by means of `execGRASS()`
   - we use `readVECT()`, `readRAST()` to read data from GRASS DB to do analysis or plot
   - we write data back to GRASS with `writeVECT()` and `writeRAST()`
 
-+++
 
++++
 - Using @color[#8EA33B](**GRASS GIS within a R session**), i.e. we connect to GRASS GIS database from within R (or RStudio).
   - we need to initialize GRASS GIS with `initGRASS()`
   - we use GRASS GIS funtionalities with `execGRASS()`
   - we use `readVECT()`, `readRAST()` to read data from GRASS DB to do analysis or plot
   - we write data back to GRASS with `writeVECT()` and `writeRAST()`
 
-+++
 
++++
 The link between GRASS GIS and R is provided by the [**rgrass7**](https://cran.r-project.org/web/packages/rgrass7/index.html) package
 <br><br><br>
 (kudos to Roger Bivand @fa[smile-o fa-spin])
 
----
 
+---
 Download the file with [code](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/code/06_grass_R_code.r?inline=false) to follow this session
  
----
 
+---
 We will first @color[#8EA33B](run R within a GRASS GIS session)
 
 <br>
@@ -87,14 +90,15 @@ t.rast.series input=LST_Day_monthly_celsius@modis_lst output=lst method=average
 t.rast.series input=ndvi_monthly@modis_ndvi output=ndvi method=average
 ```
 
-+++
 
++++
 Now, launch R or RStudio from inside GRASS GIS
 
 ```r
 GRASS> rstudio &
 GRASS> rstudio /path/to/project/folder/ &
 ```
+
 
 +++?code=code/06_grass_R_code.r&lang=r&title=Relationship between LST and elevation and NDVI
 
@@ -107,9 +111,10 @@ GRASS> rstudio /path/to/project/folder/ &
 @[39-42](Sample rasters with random points)
 @[44-48](Explore the dataset)
 
-+++
 
++++
 ![corr plot](assets/img/corr_plot.png)
+
 
 +++?code=code/06_grass_R_code.r&lang=r&title=Relationship between LST and elevation and NDVI
 
@@ -117,21 +122,22 @@ GRASS> rstudio /path/to/project/folder/ &
 @[54-57](Predict LST using the model)
 @[59-62](Set color palette, read raster and plot)
 
-+++
 
++++
 ![lst pred](assets/img/lst_pred.png)
+
 
 +++?code=code/06_grass_R_code.r&lang=r&title=Relationship between LST and elevation and NDVI
 
 @[64-66](Compare model to real data)
 @[68-70](Read raster and plot)
 
-+++
 
++++
 ![lst diff](assets/img/lst_diff.png)
 
----
 
+---
 We'll now learn how to @color[#8EA33B](start GRASS from within R or Rstudio)
 
 <br>
@@ -139,6 +145,7 @@ We'll now learn how to @color[#8EA33B](start GRASS from within R or Rstudio)
 > *Attention Windows users!* Start the the OSGeo4W Shell, change to a directory
 > with writing permission and **start R or RStudio**. To start RStudio run:
 > "C:/Program Files/RStudio/bin/rstudio.exe"
+
 
 +++?code=code/06_grass_R_code.r&lang=r
 
@@ -155,18 +162,21 @@ We'll now learn how to @color[#8EA33B](start GRASS from within R or Rstudio)
 @[144-146](Verify the object)
 @[148-149](Plot)
 
+
 +++?code=code/06_grass_R_code.r&lang=r
 
 @[151-153](Boxplot and histogram)
 
-+++
 
++++
 ![boxplot](assets/img/boxplot.png)
+
 
 +++?code=code/06_grass_R_code.r&lang=r
 
 @[155-159](Query a raster map)
 @[161-164](Parse the output)
+
 
 +++?code=code/06_grass_R_code.r&lang=r
 
@@ -174,16 +184,16 @@ We'll now learn how to @color[#8EA33B](start GRASS from within R or Rstudio)
 @[169-170](Write it into GRASS)
 @[172-173](Check metadata of exported map)
 
----
 
+---
 Learn more: 
 
 [Example of GRASS - R for raster time series](https://grasswiki.osgeo.org/wiki/Temporal_data_processing/GRASS_R_raster_time_series_processing)
 
 ![DINEOF for gap-filling](https://grasswiki.osgeo.org/w/images/Time_series.png)
 
----
 
+---
 There is another R package that provides link to GRASS and other GIS:
 <br>
 
@@ -193,12 +203,12 @@ There is another R package that provides link to GRASS and other GIS:
 See the [vignette on how to set GRASS database with link2GI](https://github.com/gisma/link2gi2018/tree/master/R/vignette) for further details
 
 
----?image=template/img/grass.png&position=bottom&size=100% 30%
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
 ## GRASS and R: Predicting species distribution
 
----
 
+---
 @snap[north-west span-60]
 <h3>Overview</h3>
 @snapend
@@ -215,8 +225,8 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @olend
 @snapend
 
----
 
+---
 @snap[north span-100]
 <h3>Data</h3>
 @snapend
@@ -236,6 +246,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 Download the [GRASS code](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/code/06_grass_R_sp_distribution_code.sh?inline=false) and [R code](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/code/06_grass_R_sp_distribution_code.r?inline=false) to follow this exercise
 @snapend
 
+
 ---?code=code/06_grass_R_sp_distribution_code.sh&lang=bash&title=Importing species records
 
 @[16-17](Install v.in.pygbif)
@@ -243,20 +254,22 @@ Download the [GRASS code](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/ra
 @[23-25](Import data from GBIF)
 @[27-29](Clip to NC state)
 
-+++
 
++++
 > **Task**: Explore univariate statistics of downloaded data. Check the 
 > [d.vect.colhist](https://grass.osgeo.org/grass74/manuals/addons/d.vect.colhist.html) and
 > [d.vect.colbp](https://github.com/ecodiv/d.vect.colbp) addons.
+
 
 ---?code=code/06_grass_R_sp_distribution_code.sh&lang=bash&title=Creating random background points
 
 @[37-39](Create buffer around Aedes albopictus records)
 @[41-43](Generate random points)
 
-+++
 
++++
 > **Task**: Display with different colors the GBIF records, the buffer areas and the random points.
+
 
 ---?code=code/06_grass_R_sp_distribution_code.sh&lang=bash&title=Creating environmental layers
 
@@ -268,50 +281,56 @@ Download the [GRASS code](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/ra
 @[72-74](Average NDVI)
 @[76-78](Average NDWI)
 
-+++
 
++++
 > **Task**: Which other variable could we generate/use?
 
----
 
+---
 Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
+
 
 +++?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Install and load packages
 
 @[16-20](Install packages)
 @[22-26](Load packages)
 
+
 +++?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Initialize GRASS GIS
 
 @[34-41](Set parameters to start GRASS)
 @[43-50](Initialize GRASS GIS)
+
 
 ---?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Read vector and raster data
 
 @[58-60](Read vector data)
 @[62-71](Read raster data)
 
-+++
 
++++
 > **Task**: display maps and points in RStudio using sp or sf and mapview. Explore the manual of each function.
 
-+++
 
++++
 ![Mapview: LST + Aa presence points](assets/img/mapview_LST_pres.png)
+
 
 ---?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Data formatting
 
 @[83-94](Response variable)
 @[96-104](Explanatory variables)
 
+
 ---?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Run Random Forest model
 
 @[112-113](Default options)
 @[115-128](Run model)
 
-+++
 
++++
 > **Task**: Explore the model output
+
 
 ---?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Model evaluation
 
@@ -320,43 +339,35 @@ Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
 @[144-145](ROC: Receiver-operator curve)
 @[147-148](Variable importance)
 
+
 ---?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Model predictions
 
 @[156-162](Model projection settings)
 @[164-165](Obtain predictions from model)
 @[167-168](Plot predicted potential distribution)
 
-+++
 
++++
 ![Predicted distribution with RF](assets/img/pred_distrib.png)
 
----
 
+---
 > **Task**: Explore algorithms available in `BIOMOD_Modeling()` and try with a different one. Compare the results. 
 
 
-
 ---
-
 ## QUESTIONS?
 
 <img src="assets/img/gummy-question.png" width="45%">
 
----
 
+---
 **Thanks for your attention!!**
 
 ![GRASS GIS logo](assets/img/grass_logo_alphab.png)
 
+
 ---
-
-@snap[north span-90]
-<br><br><br>
-Move on to: 
-<br>
-[GRASS and R: Predicting species distribution](https://gitpitch.com/veroandreo/curso-grass-gis-rioiv/master?p=exercises/06_predicting_species_distribution&grs=gitlab#/)
-@snapend
-
 @snap[south span-50]
 @size[18px](Presentation powered by)
 <br>

@@ -2,12 +2,13 @@
 @title[Front page]
 
 @snap[north span-100]
+<br>
 <h2>Analyzing space-time satellite data with @color[green](GRASS GIS) for environmental monitoring</h2>
 @snapend
 
 @snap[south message-box-white span-100]
 Verónica Andreo
-
+<br><br>
 @size[30px](OpenGeoHub Summer School 2019, M&uuml;nster)
 @snapend
 
