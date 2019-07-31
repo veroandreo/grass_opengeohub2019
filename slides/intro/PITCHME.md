@@ -611,17 +611,30 @@ We should add some exercises, no??
 - set the region
 - set a mask
 
+
 ---
+@title[Sample Dataset]
 
-<!---
-@snap[north span-90]
-<br><br><br>
-Let's move on to: 
-<br>
-[TGRASS presentation](https://gitpitch.com/veroandreo/tgrass-foss4g2019/master?p=slides/tgrass)
+@snap[north span-100]
+### Sample location: North Carolina
 @snapend
---->
 
+@snap[west span-60]
+<br>
+@ul[](false)
+- Download the [**North Carolina full dataset**](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip)
+- Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
+- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`, the path should then look like `$HOME/grassdata/nc_spm_08_grass7`
+@ulend
+@snapend
+
+@snap[east span-40]
+<br><br>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-92.32910156250001%2C31.297327991404266%2C-73.98193359375001%2C38.89103282648846&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/35.183/-83.156">View Larger Map</a></small>
+@snapend
+
+
+---
 @snap[south span-50]
 @size[18px](Presentation powered by)
 <br>

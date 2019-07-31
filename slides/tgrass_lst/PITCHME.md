@@ -8,7 +8,7 @@
 
 @snap[south message-box-white span-100]
 Verónica Andreo
-<br><br>
+<br><br><br><br>
 @size[30px](OpenGeoHub Summer School 2019, M&uuml;nster)
 @snapend
 
@@ -129,37 +129,58 @@ STDS in each mapset.
 
 
 ---
-@title[Sample Dataset]
+@title[Sample location]
 
 @snap[north span-100]
-<h3>Sample dataset: North Carolina</h3>
+### Sample location: North Carolina
 @snapend
 
 @snap[west span-60]
 <br>
-@ul[list-content-verbose](false)
+@ul[](false)
 - Download the [**North Carolina full dataset**](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip)
 - Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
-- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`
+- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`, the path should then look like `$HOME/grassdata/nc_spm_08_grass7`
 @ulend
 @snapend
 
 @snap[east span-40]
 <br><br>
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-127.70507812500001%2C20.797201434307%2C-69.69726562500001%2C50.261253827584724&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=5/36.932/-98.701">View Larger Map</a></small>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-92.32910156250001%2C31.297327991404266%2C-73.98193359375001%2C38.89103282648846&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/35.183/-83.156">View Larger Map</a></small>
 @snapend
 
 
----
-@title[Get data and code]
++++
+@title[Sample mapset and code]
 
-### @fa[download text-green] get the data and the code @fa[download text-green]
+### @fa[download text-green] get also the sample mapset and the code @fa[download text-green]
 <br>
 - [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
 - [GRASS code](https://github.com/veroandreo/tgrass-foss4g2019/blob/master/code/lst_time_series_code.sh)
 
-<br>
-... and start GRASS GIS @fa[grin-hearts text-pink fa-spin]
+
++++
+@snap[north span-100]
+### Something about MODIS LST</h3>
+@snapend
+
+@snap[west span-50]
+@ul[](false)
+- LST Day from <a href="https://lpdaac.usgs.gov/products/mod11b3v006/">MOD11B3 Collection 6</a>
+- Tiled monthly composites (h11v05)
+- Spatial resolution: 5600m
+- Selected time period: 2015 - 2017 
+@ulend
+@snapend
+
+@snap[east span-50]
+![LST tile](assets/img/modis_lst_tile.png)
+@snapend
+
+
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
+
+## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink fa-spin]
 
 
 ---?code=code/lst_time_series_code.sh&lang=bash&title=Set computational region and apply MASK
