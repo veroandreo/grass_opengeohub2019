@@ -140,7 +140,7 @@ STDS in each mapset.
 @ul[](false)
 - Download the [**North Carolina full dataset**](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip)
 - Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
-- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`, the path should then look like `$HOME/grassdata/nc_spm_08_grass7`
+- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`
 @ulend
 @snapend
 
@@ -153,7 +153,7 @@ STDS in each mapset.
 +++
 @title[Sample mapset and code]
 
-### @fa[download text-green] get also the sample mapset and the code @fa[download text-green]
+#### @fa[download text-green] get also the sample mapset and code to follow the session @fa[download text-green]
 <br>
 - [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
 - [GRASS code](https://github.com/veroandreo/tgrass-foss4g2019/blob/master/code/lst_time_series_code.sh)
