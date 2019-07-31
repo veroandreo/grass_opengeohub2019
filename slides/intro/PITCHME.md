@@ -3,7 +3,7 @@
 
 @snap[north span-100]
 <br>
-<h1>Introduction to @color[green](GRASS GIS)</h1>
+<h1>Brief introduction to @color[green](GRASS GIS)</h1>
 @snapend
 
 @snap[south message-box-white span-100]
@@ -20,25 +20,22 @@
 @snapend
 
 @snap[west span-50 text-center]
+<br>
 @img[about-team-pic span-50](assets/img/markus_round.png)
 <br>
-@css[bio-by-line](Markus Neteler<br>Founder of <a href="https://www.mundialis.de/en/">mundialis</a>, Germany)
+@css[bio-about](Markus Neteler<br>Founder of <a href="https://www.mundialis.de/en/">mundialis</a>, Germany)
 <br>
-@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a> @fa[twitter pad-fa] @MarkusNeteler<br>@fa[envelope pad-fa] neteler@mundialis.de)
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a> @fa[twitter pad-fa] @MarkusNeteler<br>@fa[envelope pad-fa] neteler@mundialis.de)
 @snapend
 
 @snap[east span-50 text-center]
+<br>
 @img[about-team-pic span-50](assets/img/vero_round_small.png)
 <br>
-@css[bio-by-line](Veronica Andreo<br>Researcher for <a href="https://www.conicet.gov.ar/?lan=en">CONICET</a>, Argentina)
+@css[bio-about](Verónica Andreo<br>Researcher for <a href="https://www.conicet.gov.ar/?lan=en">CONICET</a>, Argentina)
 <br>
-@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a>  @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a>  @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
-
-
----?image=assets/img/grass_template.png&position=bottom&size=100% 30%
-
-# Brief intro to GRASS GIS
 
 
 ---
@@ -451,7 +448,7 @@ GRASS GIS and R can be used together in two ways:
 Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_getting_started.html#/15 ?
 
 
----
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 ## Some useful commands and cool stuff
 
 
@@ -562,7 +559,7 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
 ``` 
 
 
----
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 # HELP!!!
 
 
@@ -608,6 +605,11 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
 ---
 
 We should add some exercises, no??
+
+- open grass
+- display raster and vector maps
+- set the region
+- set a mask
 
 ---
 

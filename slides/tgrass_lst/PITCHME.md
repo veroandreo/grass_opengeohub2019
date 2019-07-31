@@ -26,7 +26,7 @@ Verónica Andreo
 <br><br>
 ![myphoto](assets/img/vero_round_small.png)
 <br><br>
-@css[bio-byline](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@css[bio-contact](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
 
 
@@ -291,13 +291,14 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[160-168](Maps between two given dates)
 @[170-177](Maps from January)
 
-
----?code=code/lst_time_series_code.sh&lang=bash&title=Descriptive statistics of LST time series
+<!---
+?code=code/lst_time_series_code.sh&lang=bash&title=Descriptive statistics of LST time series
 @title[Descriptive statistics]
 
 @[182-190](Print univariate stats for maps within STRDS)
 @[192-193](Get extended statistics)
 @[195-197](Write the univariate stats output to a csv file)
+--->
 
 
 ---
@@ -460,7 +461,7 @@ t.rast.series input=month_max_LST_per_year \
 @title[Aggregation vs Climatology]
 
 @snap[north span-100]
-<h3>Aggregation vs Climatology</h3>
+###Aggregation vs Climatology
 @snapend
 
 @snap[west span-45 fragment]
@@ -483,15 +484,12 @@ Climatology-type aggregation
 @[356-361](Climatology for all months - windows)
 
 
-+++
-> @fa[tasks] **Task**: Compare monthly means with "climatological" means
-
-
 ---
 @title[Anomalies]
 
-### Annual anomalies
+### Annual standardized anomalies
 <br>
+
 
 `\[
 StdAnomaly_i = \frac{Average_i - Average}{SD}
@@ -501,7 +499,7 @@ StdAnomaly_i = \frac{Average_i - Average}{SD}
 We need:
 
 - overall average and standard deviation
-- yearly averages
+- annual averages
 
 
 +++?code=code/lst_time_series_code.sh&lang=bash&title=Annual anomalies
@@ -580,7 +578,7 @@ We need:
 We will use **R** and **RStudio** to create a nice and easy plot with the resulting vector maps
 
 <br>
-@fa[download text-green] Download the [R code](https://github.com/veroandreo/tgrass-foss4g2019/blob/master/code/suhi_plot.r) for this part @fa[download text-green]
+@fa[download text-green] Download the [R code](https://github.com/veroandreo/tgrass-foss4g2019/blob/master/code/suhi_plot_R_code.r) for this part @fa[download text-green]
 
 <br><br>
 In the GRASS GIS terminal type:
@@ -609,7 +607,7 @@ In the GRASS GIS terminal type:
 
 
 +++
-![ggplot2 map](assets/img/sf_plot.png)
+![sf map](assets/img/sf_plot.png)
 
 
 +++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
@@ -626,7 +624,17 @@ In the GRASS GIS terminal type:
 
 +++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
 
-@[64-66](Quick visualization of maps and basemaps with mapview)
+@[64-65](Using tmap library)
+@[67-70](Plot)
+
+
++++
+![tmap map](assets/img/tmap.png)
+
+
++++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
+
+@[73-75](Quick visualization of maps and basemaps with mapview)
 
 
 +++

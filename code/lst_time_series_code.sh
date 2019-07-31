@@ -177,10 +177,10 @@ t.rast.list input=LST_Day_monthly_celsius columns=name,start_time \
 #~ LST_Day_monthly_celsius_2017_01|2017-01-01 00:00:00
 
 
-## Descriptive statistics for STRDS
+#~ ## Descriptive statistics for STRDS
 
-# Print univariate stats for maps within STRDS
-t.rast.univar input=LST_Day_monthly_celsius
+#~ # Print univariate stats for maps within STRDS
+#~ t.rast.univar input=LST_Day_monthly_celsius
 
 #~ id|start|end|mean|min|max|mean_of_abs|stddev|variance|coeff_var|sum|null_cells|cells
 #~ LST_Day_monthly_celsius_2015_01@modis_lst|2015-01-01 00:00:00|2015-02-01 00:00:00|7.76419671326958|-0.25|11.89|7.76431935246506|1.77839501064634|3.1626888138918|22.905074102604|31654.6300000001|4043|8120
@@ -189,12 +189,12 @@ t.rast.univar input=LST_Day_monthly_celsius
 #~ LST_Day_monthly_celsius_2015_04@modis_lst|2015-04-01 00:00:00|2015-05-01 00:00:00|22.2349889624724|10.05|28.21|22.2349889624724|2.14784334478279|4.6132310337277|9.65974549574931|90652.05|4043|8120
 #~ LST_Day_monthly_celsius_2015_05@modis_lst|2015-05-01 00:00:00|2015-06-01 00:00:00|26.7973632572971|16.89|34.53|26.7973632572971|2.43267997291578|5.91793185062553|9.07805723107235|109252.85|4043|8120
 
-# Get extended statistics
-t.rast.univar -e input=LST_Day_monthly_celsius
+#~ # Get extended statistics
+#~ t.rast.univar -e input=LST_Day_monthly_celsius
 
-# Write the univariate stats output to a csv file
-t.rast.univar input=LST_Day_monthly_celsius separator=comma \
-  output=stats_LST_Day_monthly_celsius.csv
+#~ # Write the univariate stats output to a csv file
+#~ t.rast.univar input=LST_Day_monthly_celsius separator=comma \
+  #~ output=stats_LST_Day_monthly_celsius.csv
 
 
 ## Temporal aggregations (full series)

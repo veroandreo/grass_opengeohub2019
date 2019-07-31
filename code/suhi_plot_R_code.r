@@ -61,6 +61,15 @@ ggplot() +
   scale_y_continuous()
 
 
+# or we use tmap
+library(tmap)
+
+# Plot
+tm_shape(raleigh2) +
+  tm_polygons(col = "LST_summer") +
+  tm_facets(by = "YEAR", nrow = 1, free.coords = FALSE)
+
+
 # For quick visualizations with basemaps: mapview 
 library(mapview)
 mapview(raleigh)

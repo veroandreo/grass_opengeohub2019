@@ -409,7 +409,6 @@ div.slide-number a {
 }
 
 .bio-byline {
-  color: #8EA33B;
   font-size: 0.5em !important;
 }
 
@@ -420,7 +419,7 @@ div.slide-number a {
 }
 
 .bio-contact {
-  color: white;
+  color: #8EA33B;
   font-size: 0.7em !important;
 }
 
