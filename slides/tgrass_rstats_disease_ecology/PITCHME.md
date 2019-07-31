@@ -8,7 +8,7 @@
 @snap[south message-box-white span-100]
 Verónica Andreo
 
-@size[30px](OpenGeoHub Summer School 2019, M&ucirc;nster)
+@size[30px](OpenGeoHub Summer School 2019, M&uuml;nster)
 @snapend
 
 ---

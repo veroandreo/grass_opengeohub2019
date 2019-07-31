@@ -6,7 +6,7 @@
 @snapend
 
 @snap[south message-box-white]
-<br>Verónica Andreo<br><br>OpenGeoHub Summer School 2019, M&ucirc;nster<br>
+<br>Verónica Andreo<br><br>OpenGeoHub Summer School 2019, M&uuml;nster<br>
 @snapend
 
 ---
