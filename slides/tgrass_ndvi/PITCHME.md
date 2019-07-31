@@ -1,34 +1,17 @@
----?image=assets/template/img/grass.png&position=bottom&size=100% 30%
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 @title[Front page]
 
 @snap[north span-100]
-<h1>Analyzing space-time satellite data with @color[green](GRASS GIS) for environmental monitoring</h1>
+<h2>Analyzing space-time satellite data with @color[green](GRASS GIS) for environmental monitoring</h2>
 @snapend
 
 @snap[south message-box-white]
 <br>Verónica Andreo<br><br>OpenGeoHub Summer School 2019, M&uuml;nster<br>
 @snapend
 
----
-@title[About the trainer]
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-@snap[west]
-@css[bio-about](PhD in Biology<br>MSc in Remote Sensing and GIS<br>Researcher @ Tropical Medicine Institute<br>Applications of RS & GIS for disease ecology<br><br><i>Keywords:</i> RS, GIS, Time series, SDM,<br>Disease Ecology, Rodents, Hantavirus)
-<br><br><br>
-@css[bio-about](<a href="https://grass.osgeo.org/">GRASS GIS</a> Dev Team<br><a href="https://www.osgeo.org/">OSGeo</a> Charter member<br>FOSS4G enthusiast and advocate)
-@snapend
-
-@snap[east]
-@css[bio-headline](About me)
-<br><br>
-![myphoto](assets/img/vero_round_small.png)
-<br><br>
-@css[bio-byline](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
-@snapend
-
----?image=assets/template/img/grass.png&position=bottom&size=100% 30%
-
-## Hands-on to NDVI time series @fa[layer-group text-gray]
+## Hands-on to NDVI time series for environmental monitoring @fa[layer-group text-gray]
 
 ---
 
@@ -46,7 +29,6 @@
 - Gap-filling: HANTS
 - Aggregation
 - Phenology indices
-- NDWI and flooding frequency
 - Regression between NDVI and NDWI
 @olend
 @snapend

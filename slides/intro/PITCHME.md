@@ -2,12 +2,15 @@
 @title[Front page]
 
 @snap[north span-100]
+<br>
 <h1>Introduction to @color[green](GRASS GIS)</h1>
 @snapend
 
 @snap[south message-box-white span-100]
 @size[30px](OpenGeoHub Summer School 2019, M&uuml;nster)
+<br>
 @snapend
+
 
 ---
 @title[About the trainers]
@@ -19,22 +22,24 @@
 @snap[west span-50 text-center]
 @img[about-team-pic span-50](assets/img/markus_round.png)
 <br>
-@css[bio-by/line](Markus Neteler<br>Founder of <a href="https://www.mundialis.de/en/">mundialis</a>, Germany)
+@css[bio-by-line](Markus Neteler<br>Founder of <a href="https://www.mundialis.de/en/">mundialis</a>, Germany)
 <br>
-@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a>)
+@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a> @fa[twitter pad-fa] @MarkusNeteler<br>@fa[envelope pad-fa] neteler@mundialis.de)
 @snapend
 
 @snap[east span-50 text-center]
 @img[about-team-pic span-50](assets/img/vero_round_small.png)
 <br>
-@css[bio-by/line](Veronica Andreo<br>Researcher for <a href="https://www.conicet.gov.ar/?lan=en">CONICET</a>, Argentina)
+@css[bio-by-line](Veronica Andreo<br>Researcher for <a href="https://www.conicet.gov.ar/?lan=en">CONICET</a>, Argentina)
 <br>
-@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a>)
+@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a>  @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
+
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
 # Brief intro to GRASS GIS
+
 
 ---
 @title[GRASS GIS history 1]
@@ -53,6 +58,7 @@
 <br>
 @snapend
 
+
 +++?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 @title[GRASS GIS history 2]
 
@@ -62,6 +68,7 @@ A bit of (geek) GRASS GIS history...
 @snapend
 
 <iframe width="560" height="315" scrolling="no" src="//av.tib.eu/player/12963" frameborder="0" allowfullscreen></iframe>
+
 
 +++?color=linear-gradient(90deg, #8EA33B 50%, white 50%)
 @title[Advantages and Disadvantages]
@@ -92,6 +99,7 @@ A bit of (geek) GRASS GIS history...
 @ulend
 @snapend
 
+
 +++?color=linear-gradient(90deg, #8EA33B 50%, white 50%)
 @title[When to use and not to use GRASS]
 
@@ -120,20 +128,20 @@ A bit of (geek) GRASS GIS history...
 @ulend
 @snapend
 
----
 
+---
 @size[56px](Working with GRASS GIS is not much different than any other GIS...)
 
----
 
+---
 @snap[midpoint span-100]
 Well, except for this...
 <br>
 @img[span-55](assets/img/start_screen1.png)
 @snapend
 
----
 
+---
 ## Basic notions
 
 @ul
@@ -141,6 +149,7 @@ Well, except for this...
 - A @color[#8EA33B](**LOCATION**) is defined by its coordinate system, map projection and geographical boundaries.
 - @color[#8EA33B](**MAPSET**) is a subdirectory within Locations. In a **MAPSET** you can organize GIS maps thematically, geographically, by project or however you prefer.
 @ulend
+
 
 +++
 @title[GRASS DB, Location and Mapsets]
@@ -154,20 +163,21 @@ When GRASS GIS is started, it connects to the Database, Location and Mapset spec
 @size[24px](<a href="https://grass.osgeo.org/grass76/manuals/grass_database.html">GRASS database</a>)
 <br>
 
-+++
 
++++
 - **Why this structure?**
 
  - GRASS GIS has a @color[#8EA33B](*native format*) for raster and vector data, therefore
    they must be *imported* or *linked* into a GRASS Location/Mapset (see [r.external](https://grass.osgeo.org/grass76/manuals/r.external.html) for example).
 
-+++
 
++++
 - **What are the advantages?**
 
  - GRASS DATABASE, LOCATIONs and MAPSETs are folders that @color[#8EA33B](*can be easily shared with other users*).
  - The GRASS DATABASE can be @color[#8EA33B](*local or remote*), and @color[#8EA33B](*special permissions*) can be set to specific mapsets in a LOCATION.
  - All data in a LOCATION have necessarily the @color[#8EA33B](same CRS).
+
 
 ---?color=linear-gradient(90deg, #8EA33B 50%, white 50%)
 @title[Data types in GRASS GIS]
@@ -185,8 +195,8 @@ When GRASS GIS is started, it connects to the Database, Location and Mapset spec
 @ulend
 @snapend
 
----
 
+---
 ## @fa[tools text-green] Modules
 
 More than [500 modules](https://grass.osgeo.org/grass76/manuals/full_index.html) but well structured:
@@ -203,14 +213,14 @@ More than [500 modules](https://grass.osgeo.org/grass76/manuals/full_index.html)
 | [ps.\*](https://grass.osgeo.org/grass76/manuals/full_index.html#ps)  | postscript       | PostScript map creation             | [ps.map](https://grass.osgeo.org/grass76/manuals/ps.map.html): PostScript map creation
 | [t.\*](https://grass.osgeo.org/grass76/manuals/full_index.html#t)    | temporal         | space-time datasets                 | [t.rast.aggregate](https://grass.osgeo.org/grass76/manuals/t.rast.aggregate.html): raster time series aggregation
 
-+++
 
++++
 <img src="assets/img/module_tree_and_search.png" width="75%">
 <br>
 Module tree and module search engine
 
----
 
+---
 ## @fa[tools text-green] Add-ons
 
 Plugins or **Add-ons** can be installed from
@@ -227,14 +237,14 @@ or from github (or similar repositories) using
    url=https://github.com/petrasovaa/r3.slice
 ``` 
 
----
 
+---
 ## Computational region
 
 ![Show computational region](assets/img/region.png)
 
-+++
 
++++
 @snap[west]
 The @color[#8EA33B](**computational region**) is the *actual setting of the region 
 boundaries and the actual raster resolution*.
@@ -248,8 +258,8 @@ those of the current computational region, while vector maps are
 always considered in their original extent.
 @snapend
 
-+++
 
++++
 ## Computational region
 
 - **Which are the advantages?**
@@ -263,16 +273,16 @@ always considered in their original extent.
 <br><br>
 @size[18px](More details at the [Computational region wiki](https://grasswiki.osgeo.org/wiki/Computational_region))
 
----
 
+---
 ## MASK
 
 - A raster map named MASK can be created to mask out areas
 - All cells that are *NULL* in the MASK map will be ignored (also all areas outside the computational region).
 - Masks are set with [r.mask](https://grass.osgeo.org/grass76/manuals/r.mask.html) or creating a raster map called **MASK**. 
 
-+++
 
++++
 Vector maps can be also used as masks
 
 <br>
@@ -281,8 +291,8 @@ Vector maps can be also used as masks
 <br>
 @size[22px](a- Elevation raster and lakes vector maps. b- Only the raster data inside the masked area are used for further analysis. c- Inverse mask.)
 
-+++
 
++++
 ### MASK examples
 
 
@@ -306,8 +316,8 @@ r.mask -r
 <br><br>
 @size[22px](**Note**: A mask is only actually applied when reading a GRASS raster map, i.e., when used as input in a module.)
 
----
 
+---
 ## Interfaces
 
 GRASS GIS offers different interfaces for the interaction between user and software. 
@@ -318,22 +328,22 @@ GRASS GIS offers different interfaces for the interaction between user and softw
 <br>
 @fa[angle-double-down text-green fa-3x]
 
-+++
 
++++
 ### Graphical User Interface (GUI)
 
 ![GRASS GIS GUI](assets/img/GUI_description.png)
 
-+++
 
++++
 ### @fa[terminal] Command line 
 
 The most powerful way to use GRASS GIS!!
 
 <img src="assets/img/grass_command_line.png" width="70%">
 
-+++
 
++++
 ### Advantages of the command line
 
 @ul
@@ -344,22 +354,22 @@ The most powerful way to use GRASS GIS!!
 - Call module's GUI and "Copy" the command for further replication
 @ulend
 
-+++
 
++++
 The GUI's simplified command line offers a *Log file* button to save the history to a file
 
 <img src="assets/img/command_prompt_gui.png" width="43%">
 
-+++
 
++++
 ### Python 
 
 The simplest way to execute a Python script is through the @color[#8EA33B](Simple Python editor)
 
 <img src="assets/img/simple_python_editor.png" width="80%">
 
-+++
 
++++
 ... or write your Python script in your favorite editor and run it:
 
 ```python
@@ -380,6 +390,7 @@ The simplest way to execute a Python script is through the @color[#8EA33B](Simpl
  r.colors(map=output, color="elevation")
 ``` 
 
+
 +++?code=code/intro_grass_session_vector_import.py&lang=python&title=... or use the **grass-session** Python library
 
 @[17-28](Import libraries)
@@ -390,8 +401,8 @@ The simplest way to execute a Python script is through the @color[#8EA33B](Simpl
 <br><br>
 @size[18px](Credits: Pietro Zambelli. See <a href="https://github.com/zarch/grass-session">grass-session GitHub</a> for further details.)
 
-+++
 
++++
 ### QGIS
 
 There are two ways to use GRASS GIS functionalities within QGIS:
@@ -399,20 +410,20 @@ There are two ways to use GRASS GIS functionalities within QGIS:
 - [GRASS GIS plugin](https://docs.qgis.org/3.4/en/docs/user_manual/grass_integration/grass_integration.html)
 - [Processing toolbox](https://docs.qgis.org/3.4/en/docs/user_manual/processing/toolbox.html)
 
-+++
 
++++
 ![GRASS GIS modules through GRASS Plugin](assets/img/qgis_grass_plugin.png)
 <br>
 @size[18px](Using GRASS GIS modules through the GRASS Plugin in QGIS)
 
-+++
 
++++
 ![GRASS modules through Processing Toolbox](assets/img/qgis_processing.png)
 <br>
 @size[18px](Using GRASS GIS modules through the Processing Toolbox)
 
-+++
 
++++
 ### R + rgrass7
 
 GRASS GIS and R can be used together in two ways:
@@ -423,12 +434,12 @@ GRASS GIS and R can be used together in two ways:
 
 @size[22px](Details and examples at the <a href="https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7">GRASS and R wiki</a>)
 
-+++
 
++++
 ![Calling R from within GRASS](assets/img/RwithinGRASS_and_Rstudio_from_grass.png)
 
-+++
 
++++
 ### WPS - OGC Web Processing Service
 
 - [Web Processing Service](https://en.wikipedia.org/wiki/Web_Processing_Service) is an [OGC](https://en.wikipedia.org/wiki/Open_Geospatial_Consortium) standard. 
@@ -439,12 +450,12 @@ GRASS GIS and R can be used together in two ways:
 
 Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_getting_started.html#/15 ?
 
----
 
+---
 ## Some useful commands and cool stuff
 
-+++
 
++++
 - [r.import](https://grass.osgeo.org/grass76/manuals/r.import.html) and
   [v.import](https://grass.osgeo.org/grass76/manuals/v.import.html):
   import of raster and vector maps with reprojection, subsetting and
@@ -468,8 +479,8 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
  v.import input=research_area.shp output=research_area extent=region
 ``` 
 
-+++
 
++++
 - [g.list](https://grass.osgeo.org/grass76/manuals/g.list.html): Lists
   available GRASS data base files of the user-specified data type
   (i.e., raster, vector, 3D raster, region, label) optionally using
@@ -481,8 +492,8 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
  g.list type=raster pattern="{soil,landuse}*"
 ``` 
 
-+++
 
++++
 - [g.remove](https://grass.osgeo.org/grass76/manuals/g.remove.html),
   [g.rename](https://grass.osgeo.org/grass76/manuals/g.rename.html)
   and [g.copy](https://grass.osgeo.org/grass76/manuals/g.copy.html):
@@ -493,8 +504,8 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
 <br>
 @css[message-box](Always perform these tasks from within GRASS)
 
-+++
 
++++
 - [g.region](https://grass.osgeo.org/grass76/manuals/g.region.html):
   Manages the boundary definitions and resolution for the computational region.
 
@@ -513,8 +524,8 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
  d.rast new_elev
 ``` 
 
-+++
 
++++
 - [r.info](https://grass.osgeo.org/grass76/manuals/r.info.html) and
   [v.info](https://grass.osgeo.org/grass76/manuals/v.info.html):
   useful to get basic info about maps as well as their history.
@@ -528,8 +539,8 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
  v.info nc_state -h
 ```
 
-+++
 
++++
 - [--exec in the grass76 startup command](https://grass.osgeo.org/grass76/manuals/grass7.html): 
   This flag allows to run modules or complete workflows written in Bash
   shell or Python without starting GRASS GIS.
@@ -550,12 +561,12 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
  r.info elevation
 ``` 
 
----
 
+---
 # HELP!!!
 
-+++
 
++++
 ### KEEP CALM and GRASS GIS
 
 - [g.manual](https://grass.osgeo.org/grass76/manuals/g.manual.html):
@@ -570,8 +581,8 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
 - grass-user mailing list: Just [subscribe](https://lists.osgeo.org/mailman/listinfo/grass-user) and
   post or check the [archives](https://lists.osgeo.org/pipermail/grass-user/).
 
-+++
 
++++
 ## Other (very) useful links
 
 - [GRASS intro workshop held at NCSU](https://ncsu-osgeorel.github.io/grass-intro-workshop/)
@@ -580,18 +591,19 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
 - [GRASS GIS course IRSAE 2018](http://training.gismentors.eu/grass-gis-irsae-winter-course-2018/index.html)
 - [GRASS GIS course in Argentina 2018](https://gitlab.com/veroandreo/curso-grass-gis-rioiv)
 
----
 
+---
 ## References
 
 - Neteler, M., Mitasova, H. (2008): *Open Source GIS: A GRASS GIS Approach*. Third edition. ed. Springer, New York. [Book site](https://grassbook.org/)
 - Neteler, M., Bowman, M.H., Landa, M. and Metz, M. (2012): *GRASS GIS: a multi-purpose Open Source GIS*. Environmental Modelling & Software, 31: 124-130 [DOI](http://dx.doi.org/10.1016/j.envsoft.2011.11.014)
 
----
 
+---
 ## QUESTIONS?
 
 <img src="assets/img/gummy-question.png" width="45%">
+
 
 ---
 

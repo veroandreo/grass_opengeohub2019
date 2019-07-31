@@ -78,3 +78,55 @@ t.rast.series input=ndwi_monthly@modis_ndvi method=average \
  output=ndwi_average --o
 
 
+
+
+
+### Some extra examples ###
+
+
+## Example of t.rast.accumulate and t.rast.accdetect application
+
+# Accumulation
+t.rast.accumulate input=LST_Day_monthly output=lst_acc limits=15,32 \
+start="2015-03-01" cycle="7 months" offset="5 months" basename=lst_acc \
+suffix=gran scale=0.02 shift=-273.15 method=mean granularity="1 month"
+
+# First cycle at 100°C - 190°C GDD
+t.rast.accdetect input=lst_acc occ=insect_occ_c1 start="2015-03-01" \
+cycle="7 months" range=100,200 basename=insect_c1 indicator=insect_ind_c1
+
+
+## Example to count consecutive maps meeting a certain condition
+
+# Create 100 maps with random values for temperatures - *nix
+for map in `seq 1 100` ; do
+ r.mapcalc -s expression="daily_temp_${map} = rand(-20,30)"
+ echo daily_temp_${map} >> map_list.txt
+done
+
+# Create 100 maps with random values for temperatures - windows
+FOR /L %s IN (1,1,100) DO (
+ r.mapcalc -s expression="daily_temp_%s = rand(-20,30)";
+ ECHO daily_temp_%s >> map_list.txt
+)
+
+# Create time series and register maps
+t.create type=strds temporaltype=absolute \
+  output=temperature_daily title="Daily Temperature" \
+  description="Test dataset with daily temperature"
+
+t.register -i type=raster input=temperature_daily \
+  file=map_list.txt start="2014-03-07" \
+  increment="1 days"
+
+# Check general information of the daily strds
+t.info type=strds input=temperature_daily
+
+# Create weekly mask
+t.rast.aggregate input=temperature_daily output=weekly_mask \
+  basename=mask_week granularity="1 weeks" method=count
+
+# Calculate consecutive days with negative temperatures
+t.rast.algebra base=neg_temp_days \
+  expression="consecutive_days = weekly_mask {+,contains,l} if(temperature_daily < -2 && temperature_daily[-1] < -2 || temperature_daily[1] < -2 && temperature_daily < -2, 1, 0)"
+

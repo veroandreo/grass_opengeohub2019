@@ -2,7 +2,7 @@
 @title[Front page]
 
 @snap[north span-100]
-<h1>Analyzing space-time satellite data for disease ecology applications with @color[green](GRASS GIS) and R stats</h1>
+<h2>Analyzing space-time satellite data for disease ecology applications with @color[green](GRASS GIS) and R stats</h2>
 @snapend
 
 @snap[south message-box-white span-100]

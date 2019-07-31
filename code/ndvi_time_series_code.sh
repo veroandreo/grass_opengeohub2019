@@ -344,19 +344,6 @@ t.rast.algebra basename=ndwi_monthly \
 
 
 #
-# Frequency of inundation
-#
-
-
-# reclassify
-t.rast.mapcalc -n input=ndwi_monthly output=flood \
- basename=flood expression="if(ndwi_monthly > 0.8, 1, null())"
-
-# flooding frequency
-t.rast.series input=flood output=flood_freq method=sum
-
-
-#
 # Regression between NDWI and NDVI
 #
 

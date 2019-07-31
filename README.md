@@ -1,10 +1,10 @@
-# GRASS GIS presentations at the OpenGeoHub Summer School 2019, Muenster
+# GRASS GIS presentations at the OpenGeoHub Summer School 2019, M&uuml;nster
 
 ## Presentations
 
 - [Brief intro to GRASS GIS](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/intro)
-- [TGRASS for environmental monitoring 1](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_ndvi)
-- [TGRASS for environmental monitoring 2](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_lst)
+- [TGRASS for environmental monitoring 1](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_lst)
+- [TGRASS for environmental monitoring 2](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_ndvi)
 - [GRASS and R for disease ecology applications](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_rstats_disease_ecology)
 
 
