@@ -2,12 +2,28 @@
 @title[Front page]
 
 @snap[north span-100]
-<br>
-<h2>Procesamiento y análisis de series temporales en @color[green](GRASS GIS)</h2>
+<h1>Analyzing space-time satellite data with @color[green](GRASS GIS) for environmental monitoring</h1>
 @snapend
 
 @snap[south message-box-white]
-<br>Dra. Verónica Andreo<br>CONICET - INMeT<br><br>Instituto Gulich. Córdoba, 2019<br>
+<br>Verónica Andreo<br><br>OpenGeoHub Summer School 2019, M&ucirc;nster<br>
+@snapend
+
+---
+@title[About the trainer]
+
+@snap[west]
+@css[bio-about](PhD in Biology<br>MSc in Remote Sensing and GIS<br>Researcher @ Tropical Medicine Institute<br>Applications of RS & GIS for disease ecology<br><br><i>Keywords:</i> RS, GIS, Time series, SDM,<br>Disease Ecology, Rodents, Hantavirus)
+<br><br><br>
+@css[bio-about](<a href="https://grass.osgeo.org/">GRASS GIS</a> Dev Team<br><a href="https://www.osgeo.org/">OSGeo</a> Charter member<br>FOSS4G enthusiast and advocate)
+@snapend
+
+@snap[east]
+@css[bio-headline](About me)
+<br><br>
+![myphoto](assets/img/vero_round_small.png)
+<br><br>
+@css[bio-byline](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
 
 ---?image=assets/template/img/grass.png&position=bottom&size=100% 30%

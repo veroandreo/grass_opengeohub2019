@@ -2,13 +2,13 @@
 @title[Front page]
 
 @snap[north span-100]
-<h1>Spatio-temporal data processing & visualization in @color[green](GRASS GIS)</h1>
+<h1>Analyzing space-time satellite data with @color[green](GRASS GIS) for environmental monitoring</h1>
 @snapend
 
 @snap[south message-box-white span-100]
-Veronica Andreo
+Verónica Andreo
 
-@size[30px](OpenGeoHub Summer School 2019, Muenster)
+@size[30px](OpenGeoHub Summer School 2019, M&ucirc;nster)
 @snapend
 
 ---
@@ -36,10 +36,6 @@ capabilities to **manage, analyze, process and visualize spatio-temporal
 data**, as well as the temporal relationships among time series.
 <br><br>
 @fa[layer-group fa-3x text-green]
-
-Note:
-- bla, bla
-- bla, bla
 
 +++
 @title[The TGRASS framework]

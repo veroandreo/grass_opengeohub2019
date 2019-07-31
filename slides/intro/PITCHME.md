@@ -6,7 +6,7 @@
 @snapend
 
 @snap[south message-box-white span-100]
-@size[30px](OpenGeoHub Summer School 2019, Muenster)
+@size[30px](OpenGeoHub Summer School 2019, M&ucirc;nster)
 @snapend
 
 ---
@@ -17,18 +17,19 @@
 @snapend
 
 @snap[west span-50 text-center]
-@img[about-team-pic span-50](assets/img/vero_round_small.png)
-<br>
-@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a>)
-<br><br><br>
-@snapend
-
-
-@snap[east span-50 text-center]
 @img[about-team-pic span-50](assets/img/markus_round.png)
 <br>
-@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a>)
+@css[bio-by/line](Markus Neteler<br>Founder of <a href="https://www.mundialis.de/en/">mundialis</a>, Germany)
 <br>
+@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a>)
+@snapend
+
+@snap[east span-50 text-center]
+@img[about-team-pic span-50](assets/img/vero_round_small.png)
+<br>
+@css[bio-by/line](Veronica Andreo<br>Researcher for <a href="https://www.conicet.gov.ar/?lan=en">CONICET</a>, Argentina)
+<br>
+@css[bio-byline](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a>)
 @snapend
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
@@ -594,7 +595,7 @@ Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.i
 
 ---
 
-Add exercises ??
+We should add some exercises, no??
 
 ---
 
