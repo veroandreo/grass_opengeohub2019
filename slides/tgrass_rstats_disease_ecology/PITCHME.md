@@ -8,7 +8,7 @@
 
 @snap[south message-box-white span-100]
 Verónica Andreo
-<br><br>
+<br><br><br>
 @size[30px](OpenGeoHub Summer School 2019, M&uuml;nster)
 @snapend
 
@@ -27,7 +27,7 @@ Verónica Andreo
 <br><br>
 ![myphoto](assets/img/vero_round_small.png)
 <br><br>
-@css[bio-byline](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@css[bio-contact](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
 
 
