@@ -132,7 +132,7 @@ NDVI=($NDVI)
 # iterate over the 2 arrays
 for ((i=0;i<${#PR[@]};i++)) ; do
  echo ${PR[$i]} ${NDVI[$i]};
- r.mapcalc --o \
+ r.mapcalc \
   expression="${NDVI[$i]}_filt = if(${PR[$i]} != 0, null(), ${NDVI[$i]})"
 done
 

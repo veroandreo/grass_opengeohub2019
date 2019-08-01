@@ -16,10 +16,9 @@ Verónica Andreo
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
 ## Hands-on to NDVI time series for environmental monitoring @fa[layer-group text-13 text-gray]
-
+<br>
 
 ---
-
 @snap[north-west span-60]
 <h3>Overview</h3>
 @snapend
@@ -27,9 +26,9 @@ Verónica Andreo
 @snap[west span-100]
 <br><br>
 @ol[list-content-verbose]
-- Data for the exercise
+- Data for the session
 - Get familiar with the data
-- Use reliability band
+- Use of reliability band
 - Create NDVI time series
 - Gap-filling: HANTS
 - Aggregation
@@ -39,7 +38,6 @@ Verónica Andreo
 @snapend
 
 ---
-
 @snap[north span-100]
 <h3>Data for the session</h3>
 @snapend
@@ -57,14 +55,13 @@ Verónica Andreo
 @snapend
 
 +++
-
 @snap[north span-100]
 <h3>Data for the session</h3>
 @snapend
 
 @snap[midpoint span-100]
 @ol[](false)
-- @fa[download] Download [*modis_ndvi*](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false) mapset
+- @fa[download] Download [modis_ndvi](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false) mapset
 - Unzip it within North Carolina location: `$HOME/grassdata/nc_spm_08_grass7/modis_ndvi`
 - @fa[download] Download the [code](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow this session
 @olend
@@ -303,7 +300,7 @@ Hint: Check for [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.u
 ---
 **Thanks for your attention!!**
 
-@img[span-40](assets/img/grass_logo_alphab.png)
+@img[span-20](assets/img/grass_logo_alphab.png)
 
 @snap[south span-70]
 Veronica Andreo
