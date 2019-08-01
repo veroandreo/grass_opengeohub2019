@@ -132,7 +132,7 @@ A bit of (geek) GRASS GIS history...
 
 ---
 @snap[midpoint span-100]
-Well, except for this...
+Well, except for this... @fa[flushed text-green fa-2x fragment]
 <br><br>
 @img[span-55](assets/img/start_screen1.png)
 @snapend
@@ -648,19 +648,19 @@ We should add some exercises, no??
 ---
 @snap[north span-100]
 <br>
-**Thanks for your attention!!**
+### Thanks for your attention!!
 @snapend
 
-@snap[west span-40]
-@img[about-team-pic span-30](assets/img/markus_round.png)
+@snap[west span-40 text-center]
+@img[about-team-pic span-35](assets/img/markus_round.png)
 <br>
 Markus Neteler
 <br>
 @css[bio-contact](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/MarkusNeteler">@MarkusNeteler</a>) 
 @snapend
 
-@snap[east span-40]
-@img[about-team-pic span-30](assets/img/vero_round_small.png)
+@snap[east span-40 text-center]
+@img[about-team-pic span-35](assets/img/vero_round_small.png)
 <br>
 Verónica Andreo
 <br>
