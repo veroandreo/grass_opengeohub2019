@@ -75,13 +75,15 @@ Install with `g.extension extension=name_of_addon`
 
 Your `grassdata` folder should look like this:
 
- grassdata/
- ├── nc_spm_08_grass7
-    ├── landsat
-    ├── modis_lst
-    ├── modis_ndvi
-    ├── PERMANENT
-    └── user1
+```
+  grassdata/
+   ├── nc_spm_08_grass7
+     ├── landsat
+     ├── modis_lst
+     ├── modis_ndvi
+     ├── PERMANENT
+     └── user1
+```
 
 ## The trainer
 
