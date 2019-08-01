@@ -591,9 +591,19 @@ GRASS GIS and R can be used together in two ways:
 
 
 +++
-Link to source code and history in each module manual page
- 
-![t.rast.algebra manual](assets/img/source_code_link.png)
+If you are more curious...
+- Link to source code and history in each module manual page, eg., 
+[t.rast.algebra](https://grass.osgeo.org/grass76/manuals/t.rast.algebra.html)
+
+<br> 
+@img[span-85](assets/img/source_code_link.png)
+
+
+---
+## References
+
+- Neteler, M., Mitasova, H. (2008): *Open Source GIS: A GRASS GIS Approach*. Third edition. ed. Springer, New York. [Book site](https://grassbook.org/)
+- Neteler, M., Bowman, M.H., Landa, M. and Metz, M. (2012): *GRASS GIS: a multi-purpose Open Source GIS*. Environmental Modelling & Software, 31: 124-130 [DOI](http://dx.doi.org/10.1016/j.envsoft.2011.11.014)
 
 
 +++
@@ -604,13 +614,6 @@ Link to source code and history in each module manual page
 - [GRASS GIS course in Jena 2018](http://training.gismentors.eu/grass-gis-workshop-jena-2018/index.html)
 - [GRASS GIS course IRSAE 2018](http://training.gismentors.eu/grass-gis-irsae-winter-course-2018/index.html)
 - [GRASS GIS course in Argentina 2018](https://gitlab.com/veroandreo/curso-grass-gis-rioiv)
-
-
----
-## References
-
-- Neteler, M., Mitasova, H. (2008): *Open Source GIS: A GRASS GIS Approach*. Third edition. ed. Springer, New York. [Book site](https://grassbook.org/)
-- Neteler, M., Bowman, M.H., Landa, M. and Metz, M. (2012): *GRASS GIS: a multi-purpose Open Source GIS*. Environmental Modelling & Software, 31: 124-130 [DOI](http://dx.doi.org/10.1016/j.envsoft.2011.11.014)
 
 
 ---
