@@ -153,7 +153,7 @@ STDS in each mapset.
 +++
 @title[Sample mapset and code]
 
-#### @fa[download text-green] get also the sample mapset and code to follow the session @fa[download text-green]
+#### @fa[download text-green] get sample mapset and code to follow the session @fa[download text-green]
 <br>
 - [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
 - [GRASS code](https://github.com/veroandreo/tgrass-foss4g2019/blob/master/code/lst_time_series_code.sh)
@@ -246,9 +246,10 @@ STDS in each mapset.
 +++
 @size[20px](Monthly LST for the period 2015-2017)
 
+<br>
 <img src="assets/img/g_gui_timeline_monthly.png" width="70%">
 
-<br><br>
+<br>
 @size[20px](See <a href="https://grass.osgeo.org/grass76/manuals/g.gui.timeline.html">g.gui.timeline</a> manual page)
 
 
@@ -410,19 +411,6 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[281-296](Check map list)
 
 
-+++
-> @fa[tasks] **Task**: Compare the monthly and seasonal timelines with [g.gui.timeline](https://grass.osgeo.org/grass76/manuals/g.gui.timeline.html)
-
-
-+++
-```bash
-g.gui.timeline inputs=LST_Day_monthly_celsius,LST_Day_mean_3month
-```
-
-<br>
-@img[span-75](assets/img/g_gui_timeline_monthly_seasonal.png)
-
-
 +++?code=code/lst_time_series_code.sh&lang=bash&title=Display seasonal LST using frames in wx monitor
 
 @[299-302](Set STRDS color table to celsius degrees)
@@ -483,7 +471,7 @@ t.rast.series input=month_max_LST_per_year \
 @title[Aggregation vs Climatology]
 
 @snap[north span-100]
-###Aggregation vs Climatology
+### Aggregation vs Climatology
 @snapend
 
 @snap[west span-45 fragment]
