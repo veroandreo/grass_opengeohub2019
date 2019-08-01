@@ -303,8 +303,8 @@ Hint: Check for [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.u
 **Thanks for your attention!!**
 @snapend
 
-@snap[south span-70]
-@img[about-team-pic span-50](assets/img/vero_round_small.png)
+@snap[south span-60]
+@img[about-team-pic span-30](assets/img/vero_round_small.png)
 <br>
 Verónica Andreo
 <br>
