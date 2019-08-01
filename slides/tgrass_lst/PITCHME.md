@@ -64,20 +64,17 @@ STDS in each mapset.
 +++
 @title[STDS]
 
-## Space-time datasets
+## @fa[layer-group text-green] Space-time datasets
 
 - Space time raster datasets (**ST@color[#8EA33B](R)DS**)
 - Space time 3D raster datasets (**ST@color[#8EA33B](R3)DS**)
 - Space time vector datasets (**ST@color[#8EA33B](V)DS**)
 
-<br>
+<br><br>
 @fa[bullhorn text-green] Suppot for **image collections** is on the way! 
 Have a look at this [PR in OSGeo/grass](https://github.com/OSGeo/grass/pull/63) 
 by [Martin Landa](https://github.com/landam) for 
-[openEO](https://openeo.org/) project
-
-<br><br>
-@fa[layer-group fa-3x text-green]
+[openEO](https://openeo.org/)
 
 
 +++
