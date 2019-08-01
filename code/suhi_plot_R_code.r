@@ -6,6 +6,7 @@
 
 # Load rgrass library
 library(rgrass7)
+library(sf)
 
 # List available vectors
 execGRASS("g.list", parameters = list(type="vector", mapset="."))
@@ -14,13 +15,7 @@ execGRASS("g.list", parameters = list(type="vector", mapset="."))
 raleigh_summer_lst <- readVECT("raleigh_summer_lst")
 raleigh_surr_summer_lst <- readVECT("raleigh_surr_summer_lst")
 
-# Quick and dirty plots
-spplot(raleigh_summer_lst[,c(7:9)])
-spplot(raleigh_surr_summer_lst[,c(4:6)])
-
-
 # Convert to sf (https://github.com/r-spatial/sf)
-library(sf)
 raleigh_summer_lst <- st_as_sf(raleigh_summer_lst)
 raleigh_surr_summer_lst <- st_as_sf(raleigh_surr_summer_lst)
 
@@ -61,7 +56,7 @@ ggplot() +
   scale_y_continuous()
 
 
-# or we use tmap
+# Let's try also with tmap
 library(tmap)
 
 # Plot
@@ -70,6 +65,6 @@ tm_shape(raleigh2) +
   tm_facets(by = "YEAR", nrow = 1, free.coords = FALSE)
 
 
-# For quick visualizations with basemaps: mapview 
+# mapview for quick visualizations with basemaps is really cool!
 library(mapview)
 mapview(raleigh)

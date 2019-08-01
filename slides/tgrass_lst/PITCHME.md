@@ -417,21 +417,17 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[281-296](Check map list)
 
 
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Display seasonal LST using frames in wx monitor
+---
+### Animations
 
-@[299-302](Set STRDS color table to celsius degrees)
-@[304-306](Start a new cairo monitor)
-@[308-312](Create first frame)
-@[314-318](Create second frame)
-@[320-324](Create third frame)
-@[326-330](Create fourth frame)
-@[332-333](Release monitor)
+![Animation 3month LST](assets/img/3month_lst_anim_small.gif)
 
 
-+++
-![Sesonal LST by frames](assets/img/frames.png)
++++?code=code/lst_time_series_code.sh&lang=bash&title=Animation of seasonal LST time series
 
-@size[24px](3-month average LST in 2015)
+@[336-339](Animation of seasonal LST)
+
+@size[20px](See <a href="https://grass.osgeo.org/grass76/manuals/g.gui.animation.html">g.gui.animation</a> manual for further options and tweaks)
 
 
 ---
@@ -458,19 +454,6 @@ t.rast.series input=month_max_LST_per_year \
 
 +++
 @img[spann-70](assets/img/slope_max_lst_occurrence.png)
-
-
----
-### Animations
-
-![Animation 3month LST](assets/img/3month_lst_anim_small.gif)
-
-
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Animation of seasonal LST time series
-
-@[336-339](Animation of seasonal LST)
-
-@size[20px](See <a href="https://grass.osgeo.org/grass76/manuals/g.gui.animation.html">g.gui.animation</a> manual for further options and tweaks)
 
 
 ---
@@ -604,22 +587,16 @@ In the GRASS GIS terminal type:
 
 +++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
 
-@[7-11](Load rgrass library and list vectors)
-@[13-15](Import GRASS GIS vector maps)
-@[17-19](Quick plots with spplot)
-
-
-+++
-@img[span-60](assets/img/spplot1.png)
-@img[span-60](assets/img/spplot2.png)
+@[7-12](Load rgrass and sf libraries and list vectors)
+@[14-16](Import GRASS GIS vector maps)
 
 
 +++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
 
-@[22-25](Convert to sf)
-@[27-29](Remove extra columns)
-@[31-32](Paste the 2 vectors together, columns are the same)
-@[34-35](Quick sf plot)
+@[18-20](Convert to sf)
+@[22-24](Remove extra columns)
+@[26-27](Paste the 2 vectors together, columns are the same)
+@[29-30](Quick sf plot)
 
 
 +++
@@ -628,10 +605,10 @@ In the GRASS GIS terminal type:
 
 +++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
 
-@[38-41](Using ggplot library)
-@[43-50](Arrange data from wide to long format)
-@[52-53](Replace values in YEAR column)
-@[55-61](Plot)
+@[33-36](Using ggplot library)
+@[38-45](Arrange data from wide to long format)
+@[47-48](Replace values in YEAR column)
+@[50-56](Plot)
 
 
 +++
@@ -640,8 +617,8 @@ In the GRASS GIS terminal type:
 
 +++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
 
-@[64-65](Using tmap library)
-@[67-70](Plot)
+@[59-60](Using tmap library)
+@[62-65](Plot)
 
 
 +++
@@ -650,7 +627,7 @@ In the GRASS GIS terminal type:
 
 +++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
 
-@[73-75](Quick visualization of maps and basemaps with mapview)
+@[68-70](Quick visualization of maps and basemaps with mapview)
 
 
 +++

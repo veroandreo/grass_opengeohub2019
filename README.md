@@ -25,7 +25,7 @@ There are two different options:
 1. Standalone installer: [32-bit version](https://grass.osgeo.org/grass76/binary/mswindows/native/x86/WinGRASS-7.6.1-1-Setup-x86.exe) | [64-bit version](https://grass.osgeo.org/grass76/binary/mswindows/native/x86_64/WinGRASS-7.6.1-1-Setup-x86_64.exe) 
 2. OSGeo4W package (network installer): [32-bit version](http://download.osgeo.org/osgeo4w/osgeo4w-setup-x86.exe) | [64-bit version](http://download.osgeo.org/osgeo4w/osgeo4w-setup-x86_64.exe) 
 
-For Windows users, **we strongly recommend installing GRASS GIS through the OSGeo4W package**, 
+For Windows users, **we strongly recommend installing GRASS GIS through the OSGeo4W package** (second option), 
 since it allows to install all OSGeo software. If you choose this option, 
 *make sure you select GRASS GIS and msys*. The latter one will allow 
 the use of loops, back ticks, autocomplete, history and other nice bash shell
@@ -44,13 +44,6 @@ sudo apt-get install grass
 ##### Fedora, openSuSe Linux
 
 For other Linux distributions including **Fedora** and **openSuSe**, simply install GRASS GIS with the respective package manager. See also [here](https://grass.osgeo.org/download/software/)
-
-##### Extra dependencies
-
-The following are some Python libraries that are needed by GRASS GIS add-ons that will be used in the course:
-- [pyModis](http://www.pymodis.org) 
-
-See the [Installation guide](https://gitpitch.com/veroandreo/grass-gis-conae/master?p=slides/00_installation&grs=gitlab) presentation for details.
 
 ### OSGeo-live: 
 

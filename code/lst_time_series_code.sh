@@ -296,41 +296,41 @@ t.rast.list input=LST_Day_mean_3month
 #~ LST_Day_mean_3month_2017_10|modis_lst|2017-10-01 00:00:00|2018-01-01 00:00:00
 
 
-## Display seasonal LST using frames
+#~ ## Display seasonal LST using frames
 
-# Set STRDS color table to celsius degrees
-t.rast.colors input=LST_Day_mean_3month color=celsius
+#~ # Set STRDS color table to celsius degrees
+#~ t.rast.colors input=LST_Day_mean_3month color=celsius
 
-# Start a new graphics monitor, the data will be rendered to
-# /tmp/map.png image output file of size 640x360px
-d.mon cairo out=frames.png width=640 height=360 resolution=4
+#~ # Start a new graphics monitor, the data will be rendered to
+#~ # /tmp/map.png image output file of size 640x360px
+#~ d.mon cairo out=frames.png width=640 height=360 resolution=4
 
-# create a first frame
-d.frame -c frame=first at=0,50,0,50
-d.rast map=LST_Day_mean_3month_2015_07
-d.vect map=nc_state type=boundary color=#4D4D4D width=2
-d.text text='Jul-Sep 2015' color=black font=sans size=10
+#~ # create a first frame
+#~ d.frame -c frame=first at=0,50,0,50
+#~ d.rast map=LST_Day_mean_3month_2015_07
+#~ d.vect map=nc_state type=boundary color=#4D4D4D width=2
+#~ d.text text='Jul-Sep 2015' color=black font=sans size=10
 
-# create a second frame
-d.frame -c frame=second at=0,50,50,100
-d.rast map=LST_Day_mean_3month_2015_10
-d.vect map=nc_state type=boundary color=#4D4D4D width=2
-d.text text='Oct-Dec 2015' color=black font=sans size=10
+#~ # create a second frame
+#~ d.frame -c frame=second at=0,50,50,100
+#~ d.rast map=LST_Day_mean_3month_2015_10
+#~ d.vect map=nc_state type=boundary color=#4D4D4D width=2
+#~ d.text text='Oct-Dec 2015' color=black font=sans size=10
 
-# create a third frame
-d.frame -c frame=third at=50,100,0,50
-d.rast map=LST_Day_mean_3month_2015_01
-d.vect map=nc_state type=boundary color=#4D4D4D width=2
-d.text text='Jan-Mar 2015' color=black font=sans size=10
+#~ # create a third frame
+#~ d.frame -c frame=third at=50,100,0,50
+#~ d.rast map=LST_Day_mean_3month_2015_01
+#~ d.vect map=nc_state type=boundary color=#4D4D4D width=2
+#~ d.text text='Jan-Mar 2015' color=black font=sans size=10
 
-# create a fourth frame
-d.frame -c frame=fourth at=50,100,50,100
-d.rast map=LST_Day_mean_3month_2015_04
-d.vect map=nc_state type=boundary color=#4D4D4D width=2 
-d.text text='Apr-Jun 2015' color=black font=sans size=10
+#~ # create a fourth frame
+#~ d.frame -c frame=fourth at=50,100,50,100
+#~ d.rast map=LST_Day_mean_3month_2015_04
+#~ d.vect map=nc_state type=boundary color=#4D4D4D width=2 
+#~ d.text text='Apr-Jun 2015' color=black font=sans size=10
 
-# release monitor
-d.mon -r
+#~ # release monitor
+#~ d.mon -r
 
 
 ## Time series animation
@@ -377,7 +377,7 @@ t.rast.aggregate input=LST_Day_monthly_celsius \
  output=LST_yearly_average basename=LST_yearly_average
 
 # Estimate annual anomalies
-t.rast.algebra basename=LST_year_anomaly \
+t.rast.algebra basename=LST_year_anomaly suffix=gran \
  expression="LST_year_anomaly = (LST_yearly_average - map(LST_average)) / map(LST_sd)"
 
 # Set difference color table
