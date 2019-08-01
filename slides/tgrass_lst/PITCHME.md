@@ -27,7 +27,7 @@ Verónica Andreo
 <br><br>
 ![myphoto](assets/img/vero_round_small.png)
 <br><br>
-@css[bio-contact](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a> @fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
 
 
@@ -69,6 +69,12 @@ STDS in each mapset.
 - Space time raster datasets (**ST@color[#8EA33B](R)DS**)
 - Space time 3D raster datasets (**ST@color[#8EA33B](R3)DS**)
 - Space time vector datasets (**ST@color[#8EA33B](V)DS**)
+
+<br>
+@fa[bullhorn text-green] Suppot for **image collections** is on the way! 
+Have a look at this [PR in OSGeo/grass](https://github.com/OSGeo/grass/pull/63) 
+by [Martin Landa](https://github.com/landam) for 
+[openEO](https://openeo.org/) project
 
 <br><br>
 @fa[layer-group fa-3x text-green]

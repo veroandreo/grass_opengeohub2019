@@ -34,26 +34,26 @@ g.region -bg
 #~ ll_clon=-79.67586637
 #~ ll_clat=35.03895501
 
-# download MOD13C2 (https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mod13c2_v006)
+# download MOD13C2
 i.modis.download settings=$HOME/gisdata/SETTING \
- product=ndvi_terra_monthly_5600 \
- startday="2015-01-01" \
- endday="2017-12-31" \
- folder=$HOME/gisdata/mod13
+  product=ndvi_terra_monthly_5600 \
+  startday="2015-01-01" \
+  endday="2017-12-31" \
+  folder=$HOME/gisdata/mod13
 
 # move to latlong location
 
 # import into latlong location: NDVI, EVI, QA, NIR, SWIR, Pixel reliability
 i.modis.import files=$HOME/gisdata/mod13/listfileMOD13C2.006.txt \
- spectral="( 1 1 1 0 1 0 1 0 0 0 0 0 1 )"
+  spectral="( 1 1 1 0 1 0 1 0 0 0 0 0 1 )"
 
 # set region to bb
 g.region -p n=40.59247652 s=29.48543350 w=-91.37851025 e=-67.97322249 \
- align=MOD13C2.A2017335.006.single_CMG_0.05_Deg_Monthly_NDVI
+  align=MOD13C2.A2017335.006.single_CMG_0.05_Deg_Monthly_NDVI
 
 # subset to region and remove global maps
 for map in `g.list type=raster pattern="MOD13C2*"` ; do
- r.mapcalc expression="$map = $map" --o
+  r.mapcalc expression="$map = $map" --o
 done
 
 # get list of maps to reproject
@@ -63,10 +63,10 @@ g.list type=raster pattern="MOD13C2*" output=list_proj.txt
 
 # reproject
 for map in `cat list_proj.txt` ; do
- r.proj input=$map \
-  location=latlong_wgs84 \
-  mapset=testing \
-  resolution=5600
+  r.proj input=$map \
+    location=latlong_wgs84 \
+    mapset=testing \
+    resolution=5600
 done
 
 # check projected data
@@ -105,14 +105,14 @@ r.univar map=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI
 
 # set computational region
 g.region -p vector=nc_state \
- align=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI
+  align=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI
 
 # keep only NDVI most reliable pixels (one map) - *nix
 PR=MOD13C2.A2015274.006.single_CMG_0.05_Deg_Monthly_pixel_reliability
 NDVI=MOD13C2.A2015274.006.single_CMG_0.05_Deg_Monthly_NDVI
 
 r.mapcalc \
- expression="${NDVI}_filt = if(${PR} != 0, null(), ${NDVI})"
+  expression="${NDVI}_filt = if(${PR} != 0, null(), ${NDVI})"
 
 # keep only NDVI most reliable pixels (one map) - windows
 SET PR=MOD13C2.A2015274.006.single_CMG_0.05_Deg_Monthly_pixel_reliability
@@ -131,9 +131,9 @@ NDVI=($NDVI)
 
 # iterate over the 2 arrays
 for ((i=0;i<${#PR[@]};i++)) ; do
- echo ${PR[$i]} ${NDVI[$i]};
- r.mapcalc \
-  expression="${NDVI[$i]}_filt = if(${PR[$i]} != 0, null(), ${NDVI[$i]})"
+  echo ${PR[$i]} ${NDVI[$i]};
+  r.mapcalc \
+    expression="${NDVI[$i]}_filt = if(${PR[$i]} != 0, null(), ${NDVI[$i]})"
 done
 
 
@@ -144,9 +144,9 @@ done
 
 # create STRDS
 t.create output=ndvi_monthly \
- type=strds temporaltype=absolute \
- title="Filtered monthly NDVI" \
- description="Filtered monthly NDVI - MOD13C2 - 2015-2017"
+  type=strds temporaltype=absolute \
+  title="Filtered monthly NDVI" \
+  description="Filtered monthly NDVI - MOD13C2 - 2015-2017"
 
 # check if it was created
 t.list type=strds
@@ -156,8 +156,8 @@ g.list type=raster pattern="*filt" output=ndvi_list.txt
 
 # register maps
 t.register -i input=ndvi_monthly \
- type=raster file=ndvi_list.txt \
- start="2015-01-01" increment="1 months"
+  type=raster file=ndvi_list.txt \
+  start="2015-01-01" increment="1 months"
 
 # print time series info
 t.info input=ndvi_monthly
@@ -179,11 +179,11 @@ t.rast.univar input=ndvi_monthly
 
 # count valid data
 t.rast.series input=ndvi_monthly \
- method=count output=ndvi_count_valid
+  method=count output=ndvi_count_valid
 
 # estimate percentage of missing data
 r.mapcalc \
- expression="ndvi_missing = ((36 - ndvi_count_valid) * 100.0)/36"
+  expression="ndvi_missing = ((36 - ndvi_count_valid) * 100.0)/36"
 
 
 #
@@ -212,14 +212,14 @@ NDVI_ORIG=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt
 NDVI_HANTS=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt_hants
 
 r.patch input=${NDVI_ORIG},${NDVI_HANTS} \
- output=${NDVI_HANTS}_patch
+  output=${NDVI_HANTS}_patch
 
 # patch original with filled (one map - windows)
 SET NDVI_ORIG=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt
 SET NDVI_HANTS=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt_hants
 
 r.patch input=%NDVI_ORIG%,%NDVI_HANTS% \
- output=%NDVI_HANTS%_patch
+  output=%NDVI_HANTS%_patch
 
 # patch original with filled (all maps, Windows users run bash.exe, once done type exit)
 # list of maps
@@ -231,23 +231,23 @@ FILL=($FILL)
 
 # iterate over the 2 arrays
 for ((i=0;i<${#ORIG[@]};i++)) ; do
- echo ${ORIG[$i]} ${FILL[$i]};
- r.patch input=${ORIG[$i]},${FILL[$i]} output=${FILL[$i]}_patch --o
+  echo ${ORIG[$i]} ${FILL[$i]};
+  r.patch input=${ORIG[$i]},${FILL[$i]} output=${FILL[$i]}_patch --o
 done
 
 # create new time series 
 t.create output=ndvi_monthly_patch \
- type=strds temporaltype=absolute \
- title="Patched monthly NDVI" \
- description="Filtered, gap-filled and patched monthly NDVI - MOD13C2 - 2015-2017"
+  type=strds temporaltype=absolute \
+  title="Patched monthly NDVI" \
+  description="Filtered, gap-filled and patched monthly NDVI - MOD13C2 - 2015-2017"
 
 # list NDVI patched files
 g.list type=raster pattern="*patch" output=list_ndvi_patched.txt
 
 # register maps
 t.register -i input=ndvi_monthly_patch \
- type=raster file=list_ndvi_patched.txt \
- start="2015-01-01" increment="1 months"
+  type=raster file=list_ndvi_patched.txt \
+  start="2015-01-01" increment="1 months"
 
 # print time series info
 t.info input=ndvi_monthly_patch
@@ -280,21 +280,21 @@ t.remove -rf inputs=month_max_ndvi,month_min_ndvi
 
 # time series of slopes
 t.rast.algebra \
- expression="slope_ndvi = (ndvi_monthly_patch[1] - ndvi_monthly_patch[0]) / td(ndvi_monthly_patch)" \
- basename=slope_ndvi
+  expression="slope_ndvi = (ndvi_monthly_patch[1] - ndvi_monthly_patch[0]) / td(ndvi_monthly_patch)" \
+  basename=slope_ndvi suffix=gran
  
 # get max slope per year
 t.rast.aggregate input=slope_ndvi output=ndvi_slope_yearly \
- basename=NDVI_max_slope_year suffix=gran \
- method=maximum granularity="1 years"
+  basename=NDVI_max_slope_year suffix=gran \
+  method=maximum granularity="1 years"
 
 # install extension
 g.extension extension=r.seasons
 
 # start, end and length of growing season - *nix
 r.seasons input=`t.rast.list -u input=ndvi_monthly_patch method=comma` \
- prefix=ndvi_season n=3 \
- nout=ndvi_season threshold_value=3000 min_length=5
+  prefix=ndvi_season n=3 \
+  nout=ndvi_season threshold_value=3000 min_length=5
 
 # start, end and length of growing season - Windows
 FOR /F %c IN ('t.rast.list "-u" "input=ndvi_monthly_patch" "separator=," "method=comma"') DO SET ndvi_list=%c
@@ -312,14 +312,14 @@ r.mapcalc expression="threshold_ndvi = ndvi_min*1.1"
 
 # create time series of NIR and MIR
 t.create output=NIR \
- type=strds temporaltype=absolute \
- title="NIR monthly" \
- description="NIR monthly - MOD13C2 - 2015-2017"
+  type=strds temporaltype=absolute \
+  title="NIR monthly" \
+  description="NIR monthly - MOD13C2 - 2015-2017"
 
 t.create output=MIR \
- type=strds temporaltype=absolute \
- title="MIR monthly" \
- description="MIR monthly - MOD13C2 - 2015-2017"
+  type=strds temporaltype=absolute \
+  title="MIR monthly" \
+  description="MIR monthly - MOD13C2 - 2015-2017"
  
 # list NIR and MIR files
 g.list type=raster pattern="*NIR*" output=list_nir.txt
@@ -327,12 +327,12 @@ g.list type=raster pattern="*MIR*" output=list_mir.txt
 
 # register maps
 t.register -i input=NIR \
- type=raster file=list_nir.txt \
- start="2015-01-01" increment="1 months"
+  type=raster file=list_nir.txt \
+  start="2015-01-01" increment="1 months"
 
 t.register -i input=MIR \
- type=raster file=list_mir.txt \
- start="2015-01-01" increment="1 months"
+  type=raster file=list_mir.txt \
+  start="2015-01-01" increment="1 months"
  
 # print time series info
 t.info input=NIR
@@ -340,7 +340,20 @@ t.info input=MIR
 
 # estimate NDWI time series
 t.rast.algebra basename=ndwi_monthly \
- expression="ndwi_monthly = if(NIR > 0 && MIR > 0, (float(NIR - MIR) / float(NIR + MIR)), null())"
+  expression="ndwi_monthly = if(NIR > 0 && MIR > 0, (float(NIR - MIR) / float(NIR + MIR)), null())"
+
+
+#
+# Frequency of inundation
+#
+
+
+# reclassify
+t.rast.mapcalc -n input=ndwi_monthly output=flood \
+  basename=flood expression="if(ndwi_monthly > 0.8, 1, null())"
+
+# flooding frequency
+t.rast.series input=flood output=flood_freq method=sum
 
 
 #
@@ -356,12 +369,12 @@ xseries=`t.rast.list input=ndvi_monthly_patch method=comma`
 yseries=`t.rast.list input=ndwi_monthly method=comma`
 
 r.regression.series xseries=$xseries yseries=$yseries \
- output=ndvi_ndwi_rsq method=rsq
+  output=ndvi_ndwi_rsq method=rsq
 
 # use in Windows
 FOR /F %c IN ('t.rast.list "-u" "input=ndvi_monthly_patch" "method=comma"') DO SET xseries=%c
 FOR /F %c IN ('t.rast.list "-u" "input=ndwi_monthly" "method=comma"') DO SET yseries=%c
 
 r.regression.series xseries=%xseries% yseries=%yseries% \
- output=ndvi_ndwi_rsq method=rsq
+  output=ndvi_ndwi_rsq method=rsq
 

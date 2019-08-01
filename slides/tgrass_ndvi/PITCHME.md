@@ -31,7 +31,6 @@ Verónica Andreo
 - Use of reliability band
 - Create NDVI time series
 - Gap-filling: HANTS
-- Aggregation
 - Phenology indices
 - Regression between NDVI and NDWI
 @olend
@@ -66,21 +65,6 @@ Verónica Andreo
 - @fa[download] Download the [code](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow this session
 @olend
 @snapend
-
-
-+++?code=code/ndvi_time_series_code.sh&lang=bash&title=Preparation of the dataset
-
-@[17-18](Start GRASS GIS in NC location and create a new mapset)
-@[20-22](Add modis_lst mapset to path)
-@[24-26](Set region to an LST map)
-@[28-35](Get bounding box in ll)
-@[37-42](Download MOD13C2)
-@[46-48](Move into latlong_wgs84 location and import)
-@[50-52](Set region to bb obtained from NC)
-@[54-57](Subset to region)
-@[59-60](List of maps that will be reprojected)
-@[64-70](Reprojection - in target location)
-@[72-73](Check projected data)
 
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Get familiar with NDVI data
@@ -148,11 +132,12 @@ Verónica Andreo
 
 
 ---
-### Temporal gap-filling: HANTS
+### Temporal gap-filling
 
-- Harmonic Analysis of Time Series (HANTS)
+- Harmonic Analysis of Time Series (HANTS). [Roerink et al. 2000](https://www.tandfonline.com/doi/abs/10.1080/014311600209814)
 - Implemented in [r.hants](https://grass.osgeo.org/grass7/manuals/addons/r.hants.html) add-on
 
+<br>
 <img src="assets/img/evi_evi_hants.png" width="60%">
 
 
@@ -161,10 +146,6 @@ Verónica Andreo
 @[194-195](Install r.hants extension)
 @[197-202](List maps and gap-fill with r.hants - *nix)
 @[204-208](List maps and gap-fill with r.hants - windows)
-
-
-+++
-> @fa[tasks] **Task**: Test different parameter settings in [r.hants](https://grass.osgeo.org/grass7/manuals/addons/r.hants.html) and compare results
 
 
 +++?code=code/ndvi_time_series_code.sh&lang=bash&title=Temporal gap-filling: HANTS
@@ -183,16 +164,6 @@ Verónica Andreo
 > - Obtain univariate statistics for the new time series
 
 
----
-### Aggregation with granularity
-
-<br>
-
-> @fa[tasks] **Task**: 
-> - Obtain average NDVI every two months
-> - Visualize the resulting time series with [g.gui.animation](https://grass.osgeo.org/grass76/manuals/g.gui.animation.html)
-
-
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenology indices
 
 @[261-263](Month of maximum and month of minimum)
@@ -206,7 +177,7 @@ Verónica Andreo
 
 
 +++
-> @fa[tasks] **Task**: Associate max LST with max NDVI, max LST date with max NDVI date
+> @fa[tasks] **Task**: Associate max LST with max NDVI, max LST date with max NDVI date. 
 
 <br>
 @snap[south-east span-40]
@@ -224,6 +195,12 @@ Hint: Check for [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
 +++
 > @fa[tasks] **Task**: Obtain a map with the highest growing rate per pixel in the period 2015-2017 and display it
 
+<br>
+@snap[south-east span-40]
+@fa[lightbulb]
+Hint: Check for [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html)
+@snapend
+
 
 +++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenology indices
 
@@ -238,7 +215,7 @@ Hint: Check for [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
 <br>
 @snap[south-east span-40]
 @fa[lightbulb]
-Check for [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html)
+Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) manual page
 @snapend
 
 
@@ -266,7 +243,7 @@ Check for [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.ht
 <br>
 @snap[south-east span-40]
 @fa[lightbulb]
-Hint: Check for [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.univar.html)
+Hint: Check for [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.univar.html) and [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html)
 @snapend
 
 
@@ -308,12 +285,12 @@ Hint: Check for [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.u
 <br>
 Verónica Andreo
 <br>
-@css[bio-contact](@fa[github pad-fa] veroandreo<br>@fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
 <br><br>
 @snapend
 
 ---
-## THE END! 
+## The end! 
 
 <br>
 @fa[grin-beam-sweat fa-3x fa-spin text-green]

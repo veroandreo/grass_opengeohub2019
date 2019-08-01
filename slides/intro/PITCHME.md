@@ -25,7 +25,7 @@
 <br>
 @css[bio-about](Markus Neteler<br>Founder of <a href="https://www.mundialis.de/en/">mundialis</a>, Germany)
 <br>
-@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a> @fa[twitter pad-fa] @MarkusNeteler<br>@fa[envelope pad-fa] neteler@mundialis.de)
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a> @fa[twitter pad-fa] <a href="https://twitter.com/MarkusNeteler">@MarkusNeteler</a><br>@fa[envelope pad-fa] neteler@mundialis.de)
 @snapend
 
 @snap[east span-50 text-center]
@@ -34,7 +34,7 @@
 <br>
 @css[bio-about](Verónica Andreo<br>Researcher for <a href="https://www.conicet.gov.ar/?lan=en">CONICET</a>, Argentina)
 <br>
-@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a>  @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a> @fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
 
 
@@ -75,7 +75,7 @@ A bit of (geek) GRASS GIS history...
 @snapend
 
 @snap[west text-white span-50]
-@ul(false)
+@ul[](false)
 - open source, you can use, modify, improve, share
 - strong user community, commercial support
 - large amount of tools
@@ -89,7 +89,7 @@ A bit of (geek) GRASS GIS history...
 @snapend
 
 @snap[east text-green span-50]
-@ul(false)
+@ul[](false)
 - complicated startup for newcomers
 - native format (requires importing data, possibility of linking external formats)
 - vector topology (confusing for beginners, sometimes tricky to import broken GIS data)
@@ -105,7 +105,7 @@ A bit of (geek) GRASS GIS history...
 @snapend
 
 @snap[south-west text-white span-50]
-@ul(false)
+@ul[](false)
 - doing (heavy) geospatial data analysis
 - working with topological vector data
 - analysing space-time datasets
@@ -119,7 +119,7 @@ A bit of (geek) GRASS GIS history...
 @snapend
 
 @snap[east text-green span-50]
-@ul(false)
+@ul[](false)
 - want to vizualize geodata in easy and quick way (use QGIS instead)
 - scared of location and mapsets @fa[smile-wink]
 @ulend
@@ -133,7 +133,7 @@ A bit of (geek) GRASS GIS history...
 ---
 @snap[midpoint span-100]
 Well, except for this...
-<br>
+<br><br>
 @img[span-55](assets/img/start_screen1.png)
 @snapend
 
@@ -184,7 +184,7 @@ When GRASS GIS is started, it connects to the Database, Location and Mapset spec
 @snapend
 
 @snap[east text-green span-45 text-left]
-@ul[split-screen-list](false)
+@ul[](false)
 - [Raster](https://grass.osgeo.org/grass76/manuals/rasterintro.html) (including [satellite imagery](https://grass.osgeo.org/grass76/manuals/imageryintro.html))
 - [3D raster or voxel](https://grass.osgeo.org/grass76/manuals/raster3dintro.html)
 - [Vector](https://grass.osgeo.org/grass76/manuals/vectorintro.html): point, line, boundary, area, face
@@ -361,6 +361,12 @@ The GUI's simplified command line offers a *Log file* button to save the history
 +++
 ### Python 
 
+- 2 libraries delivered with GRASS GIS: **grass** and **pygrass**, that provide access to modules and internal C functions
+- 1 external library: [**grass-session**](https://github.com/zarch/grass-session) that can be installed with `pip`
+- They can be combined and they integrate well with [Jupyter](https://jupyter.org/) notebooks
+
+
++++
 The simplest way to execute a Python script is through the @color[#8EA33B](Simple Python editor)
 
 <img src="assets/img/simple_python_editor.png" width="80%">
@@ -444,8 +450,13 @@ GRASS GIS and R can be used together in two ways:
 
 
 +++
+### Actinia: The GRASS GIS REST API 
 
-Shall we add Actinia here as in Vashek presentation: https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_getting_started.html#/15 ?
+@markus: add more details, pls
+
+@snap[south-east span-30]
+@img[span-50](https://wenzeslaus.github.io/grass-gis-talks/img/actinia_logo.svg)
+@snapend
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
@@ -635,6 +646,27 @@ We should add some exercises, no??
 
 
 ---
+@snap[north span-100]
+<br>
+**Thanks for your attention!!**
+@snapend
+
+@snap[west span-40]
+@img[about-team-pic span-30](assets/img/markus_round.png)
+<br>
+Markus Neteler
+<br>
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/MarkusNeteler">@MarkusNeteler</a>) 
+@snapend
+
+@snap[east span-40]
+@img[about-team-pic span-30](assets/img/vero_round_small.png)
+<br>
+Verónica Andreo
+<br>
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a>)
+@snapend
+
 @snap[south span-50]
 @size[18px](Presentation powered by)
 <br>

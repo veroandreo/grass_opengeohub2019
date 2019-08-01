@@ -27,7 +27,7 @@ Verónica Andreo
 <br><br>
 ![myphoto](assets/img/vero_round_small.png)
 <br><br>
-@css[bio-contact](@fa[github pad-fa] veroandreo @fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a> @fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
 
 
@@ -41,8 +41,8 @@ GRASS GIS and R can be used together in two ways:
 <br><br>
 - Using [R within a GRASS GIS session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#R_within_GRASS),
 - Using [GRASS GIS within an R session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#GRASS_within_R),
-<br><br>
 
+<br><br>
 @size[22px](Details and examples at the <a href="https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7">GRASS and R wiki</a>)
 
 
@@ -80,7 +80,6 @@ Download the file with [code](https://gitlab.com/veroandreo/curso-grass-gis-rioi
 We will first @color[#8EA33B](run R within a GRASS GIS session)
 
 <br>
-
 Open GRASS GIS in North Carolina Location and mapset user1
 
 ```
