@@ -298,12 +298,14 @@ Hint: Check for [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.u
 
 
 ---
+@snap[north span-100]
 **Thanks for your attention!!**
 
 @img[span-20](assets/img/grass_logo_alphab.png)
+@snapend
 
 @snap[south span-70]
-Veronica Andreo
+Verónica Andreo
 <br><br>
 @css[bio-contact](@fa[github pad-fa] veroandreo<br>@fa[twitter pad-fa] @VeronicaAndreo<br>@fa[envelope pad-fa] veroandreo@gmail.com)
 @snapend
