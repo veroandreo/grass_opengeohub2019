@@ -591,6 +591,12 @@ GRASS GIS and R can be used together in two ways:
 
 
 +++
+Link to source code and history in each module manual page
+ 
+![t.rast.algebra manual](assets/img/source_code_link.png)
+
+
++++
 ## Other (very) useful links
 
 - [GRASS intro workshop held at NCSU](https://ncsu-osgeorel.github.io/grass-intro-workshop/)
