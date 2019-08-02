@@ -359,7 +359,7 @@ The GUI's simplified command line offers a *Log file* button to save the history
 
 
 +++
-### Python 
+### @fa[python] Python 
 
 - 2 libraries delivered with GRASS GIS: **grass** and **pygrass**, that provide access to modules and internal C functions
 - 1 external library: [**grass-session**](https://github.com/zarch/grass-session) that can be installed with `pip`
@@ -427,7 +427,7 @@ There are two ways to use GRASS GIS functionalities within QGIS:
 
 
 +++
-### R + rgrass7
+### @fa[r-project] R + rgrass7
 
 GRASS GIS and R can be used together in two ways:
 <br><br>
