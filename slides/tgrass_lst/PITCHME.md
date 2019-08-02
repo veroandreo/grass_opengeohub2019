@@ -70,11 +70,8 @@ STDS in each mapset.
 - Space time 3D raster datasets (**ST@color[#8EA33B](R3)DS**)
 - Space time vector datasets (**ST@color[#8EA33B](V)DS**)
 
-<br><br>
-@fa[bullhorn text-green] Suppot for **image collections** is on the way! 
-Have a look at this [PR in OSGeo/grass](https://github.com/OSGeo/grass/pull/63) 
-by [Martin Landa](https://github.com/landam) for 
-[openEO](https://openeo.org/)
+<br><br><br>
+@fa[bullhorn text-green] Suppot for [**image collections**](https://github.com/OSGeo/grass/pull/63) is on the way! 
 
 
 +++
@@ -156,10 +153,10 @@ by [Martin Landa](https://github.com/landam) for
 +++
 @title[Sample mapset and code]
 
-#### @fa[download text-green] get sample mapset and code to follow the session @fa[download text-green]
+### @fa[download text-green] get sample mapset and code for the session @fa[download text-green]
 <br>
 - [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
-- [GRASS code](https://github.com/veroandreo/tgrass-foss4g2019/blob/master/code/lst_time_series_code.sh)
+- [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh)
 
 
 +++
@@ -317,15 +314,6 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[160-168](Maps between two given dates)
 @[170-177](Maps from January)
 
-<!---
-?code=code/lst_time_series_code.sh&lang=bash&title=Descriptive statistics of LST time series
-@title[Descriptive statistics]
-
-@[182-190](Print univariate stats for maps within STRDS)
-@[192-193](Get extended statistics)
-@[195-197](Write the univariate stats output to a csv file)
---->
-
 
 ---
 @title[Temporal aggregation 1]
@@ -377,8 +365,6 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[233-234](Get the earliest month in which the maximum appeared)
 @[236-241](Remove month_max_lst strds)
 
-@size[24px](We could do this year-wise to know when the annual max LST occurs and assess trends)
-
 
 +++?code=code/lst_time_series_code.sh&lang=bash&title=Display the resulting map from the CLI
 
@@ -414,17 +400,16 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[281-296](Check map list)
 
 
----
-### Animations
-
-![Animation 3month LST](assets/img/3month_lst_anim_small.gif)
-
-
 +++?code=code/lst_time_series_code.sh&lang=bash&title=Animation of seasonal LST time series
 
-@[336-339](Animation of seasonal LST)
+@[336-339]
 
+<br>
 @size[20px](See <a href="https://grass.osgeo.org/grass76/manuals/g.gui.animation.html">g.gui.animation</a> manual for further options and tweaks)
+
+
++++
+![Animation 3month LST](assets/img/3month_lst_anim_small.gif)
 
 
 ---
