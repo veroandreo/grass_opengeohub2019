@@ -559,7 +559,7 @@ We need:
 We will use **R** and **RStudio** to create a nice and easy plot with the resulting vector maps
 
 <br>
-@fa[download text-green] Download the [R code](https://github.com/veroandreo/tgrass-foss4g2019/blob/master/code/suhi_plot_R_code.r) for this part @fa[download text-green]
+@fa[download text-green] Download the [R code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/suhi_plot_R_code.r) for this part @fa[download text-green]
 
 <br><br>
 In the GRASS GIS terminal type:
