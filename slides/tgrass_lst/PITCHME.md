@@ -352,10 +352,6 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[230-231](Get basic info)
 @[233-234](Get the earliest month in which the maximum appeared)
 @[236-241](Remove month_max_lst strds)
-
-
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Display the resulting map from the CLI
-
 @[244-247](Open a monitor)
 @[249-250](Display raster map)
 @[252-253](Display only boundary of vector map)
