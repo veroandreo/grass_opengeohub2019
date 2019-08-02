@@ -153,7 +153,7 @@ STDS in each mapset.
 +++
 @title[Sample mapset and code]
 
-### @fa[download text-green] get sample mapset and code for the session @fa[download text-green]
+### @fa[download text-green] get sample mapset and code @fa[download text-green]
 <br>
 - [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
 - [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh)
