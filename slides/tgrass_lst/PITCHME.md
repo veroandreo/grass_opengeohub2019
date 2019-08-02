@@ -226,6 +226,8 @@ STDS in each mapset.
   - the *start date*,
   - *increment* option along with the *-i* flag for interval creation 
 
+<br>
+@size[20px](For more details, check the <a href="https://grass.osgeo.org/grass76/manuals/t.register.html">t.register</a> manual and related <a href="https://grasswiki.osgeo.org/wiki/Temporal_data_processing/maps_registration">map registration wiki</a> page.)
 
 +++?code=code/lst_time_series_code.sh&lang=bash&title=Register maps in STRDS (assign time stamps)
 
@@ -234,12 +236,6 @@ STDS in each mapset.
 @[96-97](Check info again)
 @[99-100](Check the list of maps in the STRDS)
 @[102-103](Check min and max per map)
-
-@size[20px](For more options, check the <a href="https://grass.osgeo.org/grass76/manuals/t.register.html">t.register</a> manual and related <a href="https://grasswiki.osgeo.org/wiki/Temporal_data_processing/maps_registration">map registration wiki</a> page.)
-
-
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Graphical Representation of the STRDS
-
 @[106-107](Graphical representation of the time series)
 
 
@@ -277,19 +273,15 @@ STDS in each mapset.
 
 @[110-114](Re-scale data to degrees Celsius)
 @[116-117](Check info)
-
-
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Time series plot
-
 @[120-127](LST time series plot for the city center of Raleigh)
-
-@size[20px](For a single point, see <a href="https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html">g.gui.tplot</a>. For a vector of points, see <a href="https://grass.osgeo.org/grass76/manuals/t.rast.what.html">t.rast.what</a>.)
 
 
 +++
 <img src="assets/img/g_gui_tplot_final.png" width="80%">
 
-@size[24px](Point coordinates can be typed directly, copied from the map display and pasted or directly chosen from the main map display.)
+@size[24px](Point coordinates can be typed directly, copied from the map display or directly chosen from the main map display.)
+<br><br>
+@size[20px](For a single point, see <a href="https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html">g.gui.tplot</a>. For a vector of points, see <a href="https://grass.osgeo.org/grass76/manuals/t.rast.what.html">t.rast.what</a>.)
 
 
 ---
@@ -331,10 +323,6 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[202-204](Get maximum LST in the STRDS)
 @[206-208](Get minimum LST in the STRDS)
 @[210-211](Change color pallete to celsius)
-
-
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Compare maps with the Mapswipe tool
-
 @[214-220](Display the new maps with mapswipe and compare them to elevation)
 
 
