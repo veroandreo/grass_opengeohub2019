@@ -398,18 +398,14 @@ id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_
 @[270-276](3-month mean LST)
 @[278-279](Check info)
 @[281-296](Check map list)
-
-
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Animation of seasonal LST time series
-
-@[336-339]
-
-<br>
-@size[20px](See <a href="https://grass.osgeo.org/grass76/manuals/g.gui.animation.html">g.gui.animation</a> manual for further options and tweaks)
+@[336-339](Animation of seasonal LST time series)
 
 
 +++
 ![Animation 3month LST](assets/img/3month_lst_anim_small.gif)
+
+<br>
+@size[20px](See <a href="https://grass.osgeo.org/grass76/manuals/g.gui.animation.html">g.gui.animation</a> manual for further options and tweaks)
 
 
 ---
@@ -528,14 +524,10 @@ We need:
 - Allows to obtain spatially aggregated time series data for polygons in a vector map
 
 
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Extract summer average LST for Raleigh (NC) urban area
++++?code=code/lst_time_series_code.sh&lang=bash&title=Summer SUHI for the city of Raleigh and surroundings
 
 @[392-393](Install v.strds.stats add-on)
 @[395-398](Extract summer average LST for Raleigh urban area)
-
-
-+++?code=code/lst_time_series_code.sh&lang=bash&title=Summer SUHI for the city of Raleigh and surroundings
-
 @[409-412](Create outside buffer - 30km)
 @[414-417](Create otside buffer - 15km)
 @[419-423](Remove 15km buffer area from the 30km buffer area)
@@ -550,7 +542,7 @@ We need:
 +++?code=code/lst_time_series_code.sh&lang=bash&title=Summer SUHI for the city of Raleigh and surroundings
 
 @[425-430](Extract zonal stats for Raleigh surroundings)
-@[432-434](Take a look at summer average LST in Raleigh and surroundings)
+@[432-438](Take a look at summer average LST in Raleigh and surroundings)
 
 
 +++
@@ -571,10 +563,6 @@ In the GRASS GIS terminal type:
 
 @[7-12](Load rgrass and sf libraries and list vectors)
 @[14-16](Import GRASS GIS vector maps)
-
-
-+++?code=code/suhi_plot_R_code.r&lang=r&title=Plotting GRASS GIS maps in R
-
 @[18-20](Convert to sf)
 @[22-24](Remove extra columns)
 @[26-27](Paste the 2 vectors together, columns are the same)
