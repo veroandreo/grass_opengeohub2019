@@ -224,8 +224,8 @@ Note:
 
 +++
 > @fa[tasks] **Task**: 
-> - Display the map representing the percentage of missing data and explore values. 
-> - Get univariate statistics of this map.
+> - Display the map representing the percentage of missing data and explore values
+> - Get univariate statistics of this map
 
 @snap[south-east span-40]
 @fa[lightbulb] Hint: [r.univar](https://grass.osgeo.org/grass76/manuals/r.univar.html)
@@ -271,7 +271,7 @@ Note:
 > - Graphically assess the results of HANTS reconstruction in pixels with higher percentage of missing data 
 > - Obtain univariate statistics for the new time series
 
-@snap[south-east span-50]
+@snap[south-east span-60]
 @fa[lightbulb] Hints: [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html) and [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.univar.html)
 @snapend
 
@@ -333,7 +333,7 @@ Hints: [g.mapsets](https://grass.osgeo.org/grass76/manuals/g.mapsets.html) and [
 +++
 > @fa[tasks] **Task**: Obtain a map with the highest growing rate per pixel in the period 2015-2017 and display it from the terminal
 
-@img[span-60](assets/img/ndvi_max_slope.png)
+@img[span-65](assets/img/ndvi_max_slope.png)
 
 <br>
 @snap[south-east span-50]
@@ -353,7 +353,7 @@ Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html
 > @fa[tasks] **Task**: Plot some of the resulting maps. What do they represent?
 
 <br>
-@snap[south-east span-50]
+@snap[south-east span-60]
 @fa[lightbulb]
 Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) manual page
 @snapend
