@@ -112,7 +112,7 @@ STDS in each mapset.
 - Use of reliability band
 - Create NDVI time series
 - Gap-filling: HANTS
-- Phenology indices
+- Phenological indices
 - NDWI time series
 - Regression between NDVI and NDWI
 @olend
@@ -187,7 +187,7 @@ Note:
 > @fa[tasks] **Task**: Compare stats among original and filtered NDVI maps for the same date using [r.univar](https://grass.osgeo.org/grass76/manuals/r.univar.html). Do stats differ?
 
 <br><br>
-Note that to decode QA bits from the QA band there's a specific GRASS GIS module: [i.modis.qc](https://grass.osgeo.org/grass76/manuals/i.modis.qc.html)
+To decode QA bits from the QA band there's a specific GRASS GIS module: [i.modis.qc](https://grass.osgeo.org/grass76/manuals/i.modis.qc.html)
 
 
 Note:
@@ -211,7 +211,7 @@ Note:
 > and select different points interactively.
 
 <br>
-@img[span-50](assets/img/monthly_ndvi.png)
+@img[span-65](assets/img/monthly_ndvi.png)
 
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Missing data
@@ -235,11 +235,14 @@ Note:
 ---
 ### Temporal gap-filling
 
-- Harmonic Analysis of Time Series (HANTS). [Roerink et al. 2000](https://www.tandfonline.com/doi/abs/10.1080/014311600209814)
+- Harmonic Analysis of Time Series (HANTS).
 - Implemented in [r.hants](https://grass.osgeo.org/grass7/manuals/addons/r.hants.html) add-on
 
 <br>
 <img src="assets/img/evi_evi_hants.png" width="60%">
+
+<br><br>
+@size[22px](See <a href="https://www.tandfonline.com/doi/abs/10.1080/014311600209814">Roerink et al. 2000</a> for details)
 
 Note:
 
@@ -309,12 +312,13 @@ Note:
 > @fa[tasks] **Task**: Associate max and min LST with max and min NDVI, and max and min LST dates with max and min NDVI dates. 
 
 <br>
-@snap[south-east span-40]
+@snap[south-east span-50]
 @fa[lightbulb]
-Hint: [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
+Hints: [g.mapsets](https://grass.osgeo.org/grass76/manuals/g.mapsets.html) and [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
 @snapend
 
-+++??code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
+
++++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
 
 @[304-306](Add modis_lst to accessible mapsets path)
 @[308-310](Associations)
@@ -329,8 +333,10 @@ Hint: [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
 +++
 > @fa[tasks] **Task**: Obtain a map with the highest growing rate per pixel in the period 2015-2017 and display it from the terminal
 
+@img[span-60](assets/img/ndvi_max_slope.png)
+
 <br>
-@snap[south-east span-40]
+@snap[south-east span-50]
 @fa[lightbulb]
 Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html)
 @snapend
@@ -347,7 +353,7 @@ Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html
 > @fa[tasks] **Task**: Plot some of the resulting maps. What do they represent?
 
 <br>
-@snap[south-east span-40]
+@snap[south-east span-50]
 @fa[lightbulb]
 Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) manual page
 @snapend
@@ -364,6 +370,8 @@ Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) 
 
 @img[span-45](assets/img/ndvi_fixed_thres.png)
 @img[span-45](assets/img/ndvi_variable_threshold.png)
+<br>
+@size[20px](Number of seasons with fixed threshold and using a varying threshold map)
 
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Water index time series
@@ -379,7 +387,7 @@ Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) 
 > @fa[tasks] **Task**: Get maximum and minimum values for each NDWI map and explore the time series plot in different points interactively
 
 <br>
-@snap[south-east span-50]
+@snap[south-east span-60]
 @fa[lightbulb]
 Hints: [t.rast.list](https://grass.osgeo.org/grass76/manuals/t.rast.list.html) and [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html)
 @snapend
