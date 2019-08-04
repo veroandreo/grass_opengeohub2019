@@ -113,26 +113,21 @@ STDS in each mapset.
 - Create NDVI time series
 - Gap-filling: HANTS
 - Phenology indices
+- NDWI time series
 - Regression between NDVI and NDWI
 @olend
 @snapend
 
----
-@snap[north span-100]
-<h3>Data for the session</h3>
-@snapend
 
-@snap[west span-50]
-@ul[](false)
+---
+### Data for the session
+
 - MODIS Vegetation product: <a href="https://lpdaac.usgs.gov/products/mod13c2v006/">MOD13C2 Collection 6</a>
 - Global monthly composites
 - Spatial resolution: 5600m 
-@ulend
-@snapend
 
-@snap[east span-50]
-![NDVI global](assets/img/mod13c2_global_ndvi.png)
-@snapend
+@img[span-60](assets/img/mod13c2_global_ndvi.png)
+
 
 +++
 @title[Sample mapset and code]
@@ -143,11 +138,16 @@ STDS in each mapset.
 - [GRASS code](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow the session
 
 
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
+
+## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink fa-spin]
+
+
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Get familiar with NDVI data
 
-@[85-89](Start GRASS GIS in modis_ndvi mapset)
-@[91-93](Add modis_lst to accessible mapsets path)
-@[95-98](List files and get info and stats)
+@[85-88](List files and get info and stats)
+@[90-92](Set computational region)
+@[94-95](Set a MASK to focus only on NC state)
 
 
 +++
@@ -161,31 +161,48 @@ STDS in each mapset.
 
 <br>
 > @fa[tasks] **Task**: 
-> - Read about this reliability band at the MOD13 [User guide](https://lpdaac.usgs.gov/documents/103/MOD13_User_Guide_V6.pdf) (pag 27).
+> - Read about this reliability band at the [MOD13 User guide](https://lpdaac.usgs.gov/documents/103/MOD13_User_Guide_V6.pdf) (pag 27).
 > - Display one of the pixel reliability bands along with NDVI band of the same date.
 > - Select only pixels with value 0 (Good quality) in the pixel reliability band. What do you notice?
 
 
+Note:
+
+- -1 Fill/NoData  Not Processed
+- 0  Good Data  Use with confidence
+- 1  Marginal data  Useful, but look at other QA information
+- 2  Snow/Ice  Target covered with snow/ice 
+- 3  Cloudy  Target not visible, covered with cloud
+- 4  Estimated  From MODIS historic time series 
+
+
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Use of reliability band
 
-@[106-108](Set computational region)
-@[110-115](Keep only best quality pixels - *nix)
-@[117-121](Keep only best quality pixels - windows)
-@[123-137](Keep only best quality pixels - all maps)
+@[103-108](Keep only best quality pixels - *nix)
+@[110-115](Keep only best quality pixels - windows)
+@[117-132](Keep only best quality pixels - all maps)
 
 
 +++
-> @fa[tasks] **Task**: Compare stats among original and filtered NDVI maps for the same date. Do they differ?
+> @fa[tasks] **Task**: Compare stats among original and filtered NDVI maps for the same date using [r.univar](https://grass.osgeo.org/grass76/manuals/r.univar.html). Do stats differ?
+
+<br><br>
+Note that to decode QA bits from the QA band there's a specific GRASS GIS module: [i.modis.qc](https://grass.osgeo.org/grass76/manuals/i.modis.qc.html)
+
+
+Note:
+
+- One gets a band per QA bit and per date and then, it should be applied to each NDVI date as we did with the pixel reliability band
 
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Create time series
 
-@[145-149](Create the STRDS)
-@[151-152](Check STRDS was created)
-@[154-155](Create file with list of maps)
-@[157-160](Register maps)
-@[162-163](Print time series info)
-@[165-166](Print list of maps in STRDS)
+@[140-144](Create the STRDS)
+@[146-147](Check STRDS was created)
+@[149-150](Create file with list of maps)
+@[152-155](Register maps)
+@[157-158](Print time series info)
+@[160-161](Print list of maps in STRDS)
 
 
 +++
@@ -193,18 +210,26 @@ STDS in each mapset.
 > Use [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html) 
 > and select different points interactively.
 
+<br>
+@img[span-50](assets/img/monthly_ndvi.png)
+
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Missing data
 
-@[174-175](Set mask)
-@[177-178](Get time series stats)
-@[180-182](Count valid data)
-@[184-186](Estimate percentage of missing data)
+@[169-170](Get time series stats)
+@[172-175](Count valid data)
+@[177-179](Get total number of maps)
+@[181-184](Estimate percentage of missing data)
+
 
 +++
 > @fa[tasks] **Task**: 
 > - Display the map representing the percentage of missing data and explore values. 
 > - Get univariate statistics of this map.
+
+@snap[south-east span-40]
+@fa[lightbulb] Hint: [r.univar](https://grass.osgeo.org/grass76/manuals/r.univar.html)
+@snapend
 
 
 ---
@@ -216,22 +241,26 @@ STDS in each mapset.
 <br>
 <img src="assets/img/evi_evi_hants.png" width="60%">
 
+Note:
+
+- there are different techniques to inpute/fill missing data both in space and time
+- in tgrass, we have t.rast.gapfill, r.series.lwr and r.hants
+- since ndvi is a cyclic variable, we'll use HANTS
+
 
 +++?code=code/ndvi_time_series_code.sh&lang=bash&title=Temporal gap-filling: HANTS
 
-@[194-195](Install r.hants extension)
-@[197-202](List maps and gap-fill with r.hants - *nix)
-@[204-208](List maps and gap-fill with r.hants - windows)
+@[192-193](Install r.hants extension)
+@[195-200](List maps and gap-fill with r.hants - *nix)
+@[202-206](List maps and gap-fill with r.hants - windows)
 
 
 +++?code=code/ndvi_time_series_code.sh&lang=bash&title=Temporal gap-filling: HANTS
 
-@[210-215](Patch original and gapfilled map - *nix)
-@[217-222](Patch original and gapfilled map - windows)
-@[224-236](Patch original and gapfilled maps)
-@[238-242](Create time series with patched data)
-@[244-250](Register maps in time series)
-@[252-253](Print time series info)
+@[211-223](Patch original and gapfilled maps)
+@[225-229](Create time series with patched data)
+@[231-238](List and register maps in time series)
+@[240-241](Print time series info)
 
 
 +++
@@ -239,54 +268,83 @@ STDS in each mapset.
 > - Graphically assess the results of HANTS reconstruction in pixels with higher percentage of missing data 
 > - Obtain univariate statistics for the new time series
 
+@snap[south-east span-50]
+@fa[lightbulb] Hints: [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html) and [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.univar.html)
+@snapend
 
----?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenology indices
 
-@[261-263](Month of maximum and month of minimum)
-@[265-272](Replace STRDS values with start_month if they match overall min or max)
-@[274-276](Get the earliest month in which the maximum and minimum appeared)
-@[278-279](Remove intermediate time series)
+---
+
+### Phenology
+
+- The study of periodic plant and animal life cycle events and how these are influenced by seasonal and interannual variations in climate
+- We will estimate indices to characterize different aspects of phenology:
+    - min and max NDVI values
+    - dates of min and max NDVI values
+    - rate of change
+    - length, start and end of growing season
+   
+
++++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
+
+@[249-256](Obtain maximum and minimum NDVI)
+@[258-262](Replace STRDS values with start_month if they match overall max)
+@[264-267](Get the earliest month in which the maximum appeared)
+@[269-276](Get NDVI minimum per year starting in December)
+@[278-281](Get index of minimum raster)
+@[283-295](Create index to month reclassification rules)
+@[297-299](Reclass index to month)
+@[301-302](Remove intermediate time series)
 
 
 +++
-> @fa[tasks] **Task**: Display the resulting maps with [g.gui.mapswipe](https://grass.osgeo.org/grass76/manuals/g.gui.mapswipe.html)
+> @fa[tasks] **Task**: Display `max_ndvi_date` and `min_ndvi_date` maps from the terminal using wx monitors
+
+@snap[south-east span-50]
+@fa[lightbulb] Hints: [d.mon](https://grass.osgeo.org/grass76/manuals/d.mon.html) and [d.rast](https://grass.osgeo.org/grass76/manuals/d.rast.html)
+@snapend
 
 
 +++
-> @fa[tasks] **Task**: Associate max LST with max NDVI, max LST date with max NDVI date. 
+> @fa[tasks] **Task**: Associate max and min LST with max and min NDVI, and max and min LST dates with max and min NDVI dates. 
 
 <br>
 @snap[south-east span-40]
 @fa[lightbulb]
-Hint: Check for [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
+Hint: [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
 @snapend
 
++++??code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
 
-+++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenology indices
+@[304-306](Add modis_lst to accessible mapsets path)
+@[308-310](Associations)
 
-@[281-284](Get time series of slopes among consequtive maps)
-@[286-289](Get maximum slope per year)
+
++++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
+
+@[312-316](Get time series of slopes among consequtive maps)
+@[318-324](Get maximum slope per year)
 
 
 +++
-> @fa[tasks] **Task**: Obtain a map with the highest growing rate per pixel in the period 2015-2017 and display it
+> @fa[tasks] **Task**: Obtain a map with the highest growing rate per pixel in the period 2015-2017 and display it from the terminal
 
 <br>
 @snap[south-east span-40]
 @fa[lightbulb]
-Hint: Check for [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html)
+Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html)
 @snapend
 
 
-+++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenology indices
++++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
 
-@[291-292](Install extension)
-@[294-297](Determine start, end and length of growing season - *nix)
-@[299-302](Determine start, end and length of growing season - windows)
+@[326-327](Install extension)
+@[329-336](Determine start, end and length of growing season - *nix)
+@[338-341](Determine start, end and length of growing season - windows)
 
 
 +++
-> @fa[tasks] **Task**: Plot the resulting maps. What do they represent?
+> @fa[tasks] **Task**: Plot some of the resulting maps. What do they represent?
 
 <br>
 @snap[south-east span-40]
@@ -295,49 +353,44 @@ Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) 
 @snapend
 
 
-+++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenology indices
++++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
 
-@[304-305](Create a threshold map to use in r.seasons)
+@[343-344](Create a threshold map to use in r.seasons)
+@[346-352](Use a threshold map instead of a threshold value)
 
 
 +++
 > @fa[tasks] **Task**: Use the threshold map in [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) and compare output maps with the outputs of using a unique threshold value
 
+@img[span-45](assets/img/ndvi_fixed_thres.png)
+@img[span-45](assets/img/ndvi_variable_threshold.png)
+
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Water index time series
 
-@[313-322](Create time series of NIR and MIR)
-@[324-326](List NIR and MIR files)
-@[328-335](Register maps)
-@[337-339](Print time series info)
-@[341-343](Estimate NDWI time series)
+@[360-369](Create time series of NIR and MIR)
+@[371-373](List NIR and MIR files)
+@[375-384](Register maps)
+@[386-388](Print time series info)
+@[390-393](Estimate NDWI time series)
 
 
 +++
 > @fa[tasks] **Task**: Get maximum and minimum values for each NDWI map and explore the time series plot in different points interactively
 
 <br>
-@snap[south-east span-40]
+@snap[south-east span-50]
 @fa[lightbulb]
-Hint: Check for [t.rast.univar](https://grass.osgeo.org/grass76/manuals/t.rast.univar.html) and [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html)
+Hints: [t.rast.list](https://grass.osgeo.org/grass76/manuals/t.rast.list.html) and [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html)
 @snapend
-
-
----?code=code/ndvi_time_series_code.sh&lang=bash&title=Frequency of flooding
-
-@[351-353](Reclassify maps according to threshold)
-@[355-356](Get flooding frequency)
-
-
-+++
-> @fa[tasks] **Task**: Which are the areas that have been flooded most frequently?
 
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Regression analysis
 
-@[364-365](Install extension)
-@[367-372](Perform regression between NDVI and NDWI time series - *nix)
-@[374-379](Perform regression between NDVI and NDWI time series - windows)
+@[405-406](Install extension)
+@[408-412](Rescale NDVI values)
+@[414-419](*nix: Perform regression between NDVI and NDWI time series)
+@[421-428](Windows: Perform regression between NDVI and NDWI time series)
 
 
 +++

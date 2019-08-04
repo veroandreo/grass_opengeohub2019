@@ -171,7 +171,8 @@ t.rast.univar input=ndvi_monthly
 
 # Count valid data
 t.rast.series input=ndvi_monthly \
-  method=count output=ndvi_count_valid
+  method=count \
+  output=ndvi_count_valid
 
 # Get total number of maps
 eval `t.info -g type=strds input=ndvi_monthly`
@@ -204,21 +205,7 @@ FOR /F %c IN ('t.rast.list "-u" "input=ndvi_monthly" "method=comma"') DO SET map
 
 r.hants in=%maplist% range=-2000,10000 nf=5 fet=500 base_period=12
 
-# *nix: Patch original with filled (one map)
-NDVI_ORIG=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt
-NDVI_HANTS=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt_hants
-
-r.patch input=${NDVI_ORIG},${NDVI_HANTS} \
-  output=${NDVI_HANTS}_patch
-
-# Windows: patch original with filled (one map)
-SET NDVI_ORIG=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt
-SET NDVI_HANTS=MOD13C2.A2015001.006.single_CMG_0.05_Deg_Monthly_NDVI_filt_hants
-
-r.patch input=%NDVI_ORIG%,%NDVI_HANTS% \
-  output=%NDVI_HANTS%_patch
-
-# Patch original with filled (all maps)
+# Patch original with filled maps
 # Windows users run bash.exe, once done type exit
 
 # Get list of maps
@@ -242,7 +229,8 @@ t.create output=ndvi_monthly_patch \
   description="Filtered, gap-filled and patched monthly NDVI - MOD13C2 - 2015-2017"
 
 # List NDVI patched files
-g.list type=raster pattern="*patch" output=list_ndvi_patched.txt
+g.list type=raster pattern="*patch" \
+  output=list_ndvi_patched.txt
 
 # Register maps
 t.register -i input=ndvi_monthly_patch \
@@ -278,7 +266,7 @@ t.rast.series input=month_max_ndvi \
   method=minimum \
   output=max_ndvi_date
   
-# Get NDVI minimum
+# Get NDVI minimum per year starting in December
 t.rast.aggregate input=ndvi_monthly_patch \
   where="start_time >= '2015-12-01' AND start_time <= '2017-11-30'" \
   method=min_raster \
@@ -292,10 +280,7 @@ t.rast.series input=annual_index_min_ndvi \
   method=minimum \
   output=min_ndvi_index
 
-# Get info 
-r.info -s min_ndvi_index
-
-# Reclass index to month
+# Index to month reclass rules
 echo "0 = 12
 1 = 1
 2 = 2
@@ -309,10 +294,11 @@ echo "0 = 12
 10 = 10
 11 = 11" >> index2month.txt
 
+# Reclass index to month
 r.reclass input=min_ndvi_index output=min_ndvi_date \
   rules=index2month.txt
 
-# Remove month_max_lst strds 
+# Remove intermediate strds 
 t.remove -rf inputs=month_max_ndvi,annual_index_min_ndvi
 
 # Add `modis_lst` to accessible mapsets path
@@ -346,22 +332,24 @@ r.seasons input=`t.rast.list -u input=ndvi_monthly_patch method=comma` \
   n=3 \
   nout=ndvi_season \
   threshold_value=3000 \
-  min_length=5
+  min_length=5 \
+  max_gap=4
 
 # Windows: Start, end and length of growing season 
 FOR /F %c IN ('t.rast.list "-u" "input=ndvi_monthly_patch" "separator=," "method=comma"') DO SET ndvi_list=%c
 
-r.seasons input=%ndvi_list% prefix=ndvi_season n=3 nout=ndvi_season threshold_value=3000 min_length=5
+r.seasons input=%ndvi_list% prefix=ndvi_season n=3 nout=ndvi_season threshold_value=3000 min_length=5 max_gap=1
 
 # Create a threshold map: min ndvi + 0.1*ndvi
 r.mapcalc expression="threshold_ndvi = ndvi_min*1.1"
 
 r.seasons input=`t.rast.list -u input=ndvi_monthly_patch method=comma` \
-  prefix=ndvi_season \
+  prefix=ndvi_season_thres \
   n=3 \
-  nout=ndvi_season \
+  nout=ndvi_season_thres \
   threshold_map=threshold_ndvi \
-  min_length=5
+  min_length=5 \
+  max_gap=4
 
 
 #
@@ -410,19 +398,6 @@ t.rast.list ndwi_monthly \
 
 
 #
-# Frequency of inundation
-#
-
-
-# Set to 1 pixels with NDWI > 0.8
-t.rast.mapcalc -n input=ndwi_monthly output=flood \
-  basename=flood expression="if(ndwi_monthly > 0.8, 1, null())"
-
-# Estimate flood frequency
-t.rast.series input=flood output=flood_freq method=sum
-
-
-#
 # Regression between NDWI and NDVI
 #
 
@@ -430,15 +405,21 @@ t.rast.series input=flood output=flood_freq method=sum
 # Install extension
 g.extension extension=r.regression.series
 
+# Rescale NDVI values
+t.rast.algebra \
+  expression="ndvi_monthly_rescaled = ndvi_monthly_patch * 0.0001" \
+  basename=ndvi_rescaled \
+  suffix=gran
+
 # *nix
-xseries=`t.rast.list input=ndvi_monthly_patch method=comma`
+xseries=`t.rast.list input=ndvi_monthly_rescaled method=comma`
 yseries=`t.rast.list input=ndwi_monthly method=comma`
 
 r.regression.series xseries=$xseries yseries=$yseries \
   output=ndvi_ndwi_rsq method=rsq
 
 # Windows
-FOR /F %c IN ('t.rast.list "-u" "input=ndvi_monthly_patch" "method=comma"') DO SET xseries=%c
+FOR /F %c IN ('t.rast.list "-u" "input=ndvi_monthly_rescaled" "method=comma"') DO SET xseries=%c
 FOR /F %c IN ('t.rast.list "-u" "input=ndwi_monthly" "method=comma"') DO SET yseries=%c
 
 r.regression.series xseries=%xseries% yseries=%yseries% \
