@@ -13,9 +13,90 @@ Verónica Andreo
 @snapend
 
 
+---
+@title[The TGRASS framework]
+
+## The TGRASS framework
+
+@ul
+- TGRASS is the temporal enabled GRASS GIS designed to easily handle time series data
+- TGRASS is fully @color[#8EA33B](based on metadata) and does not duplicate any dataset
+- @color[#8EA33B](Snapshot) approach, i.e., adds time stamps to maps
+- A collection of time stamped maps (snapshots) of the same variable are called @color[#8EA33B](space-time datasets or STDS)
+- Maps in a STDS can have different spatial and temporal extents
+@ulend
+
+<!---
+TGRASS uses an SQL database to store the temporal and spatial extension
+of STDS, as well as the topological relationships among maps and among
+STDS in each mapset.
+--->
+
+
++++
+@title[STDS]
+
+## @fa[layer-group text-green] Space-time datasets
+
+- Space time raster datasets (**ST@color[#8EA33B](R)DS**)
+- Space time 3D raster datasets (**ST@color[#8EA33B](R3)DS**)
+- Space time vector datasets (**ST@color[#8EA33B](V)DS**)
+
+<br><br><br>
+@fa[bullhorn text-green] Suppot for [**image collections**](https://github.com/OSGeo/grass/pull/63) is on the way! 
+
+
++++
+@title[Other TGRASS notions]
+
+## Other TGRASS notions
+
+@ul
+- Time can be defined as @color[#8EA33B](intervals) (start and end time) or @color[#8EA33B](instances) (only start time)
+- Time can be @color[#8EA33B](absolute) (e.g., 2017-04-06 22:39:49) or @color[#8EA33B](relative) (e.g., 4 years, 90 days)
+- @color[#8EA33B](Granularity) is the greatest common divisor of the temporal extents (and possible gaps) of all maps in the space-time cube
+@ulend
+
+
++++
+### Other TGRASS notions
+
+- @color[#8EA33B](Topology) refers to temporal relations between time intervals in a STDS.
+
+<img src="assets/img/temp_relation.png">
+
+
++++
+### Other TGRASS notions
+
+- @color[#8EA33B](Temporal sampling) is used to determine the state of one process during a second process.
+
+<img src="assets/img/temp_samplings.png" width="55%">
+
+
++++
+@title[Temporal modules]
+
+## @fa[tools text-green] Spatio-temporal modules
+
+- @color[#8EA33B](**t.\***): General modules to handle STDS of all types
+- @color[#8EA33B](**t.rast.\***): Modules that deal with STRDS
+- @color[#8EA33B](**t.rast3d.\***): Modules that deal with STR3DS
+- @color[#8EA33B](**t.vect.\***): Modules that deal with STVDS
+
+
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
+@title[TGRASS workflow]
+
+## TGRASS framework and workflow
+
+
++++?image=assets/img/tgrass_flowchart.png&position=center&size=auto 93%
+
+
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-## Hands-on to NDVI time series for environmental monitoring @fa[layer-group text-13 text-gray]
+## Hands-on to NDVI time series for environmental monitoring @fa[layer-group text-13 text-green]
 <br>
 
 ---
@@ -54,17 +135,12 @@ Verónica Andreo
 @snapend
 
 +++
-@snap[north span-100]
-<h3>Data for the session</h3>
-@snapend
+@title[Sample mapset and code]
 
-@snap[midpoint span-100]
-@ol[](false)
-- @fa[download] Download [modis_ndvi](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false) mapset
-- Unzip it within North Carolina location: `$HOME/grassdata/nc_spm_08_grass7/modis_ndvi`
-- @fa[download] Download the [code](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow this session
-@olend
-@snapend
+### @fa[download text-green] get sample mapset and code @fa[download text-green]
+
+- [modis_ndvi mapset](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false): download and unzip it within North Carolina location: `$HOME/grassdata/nc_spm_08_grass7/modis_ndvi`
+- [GRASS code](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow the session
 
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Get familiar with NDVI data

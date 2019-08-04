@@ -9,22 +9,22 @@
 
 ########### Before the workshop (done for you in advance) ##############
 
-# Install i.modis add-on (requires pymodis library - www.pymodis.org)
-g.extension extension=i.modis
+#~ # Install i.modis add-on (requires pymodis library - www.pymodis.org)
+#~ g.extension extension=i.modis
 
-# Download and import MODIS LST data 
-# Note: User needs to be registered at Earthdata: 
-# https://urs.earthdata.nasa.gov/users/new
-i.modis.download settings=$HOME/gisdata/SETTING \
-  product=lst_terra_monthly_5600 \
-  tile=h11v05 \
-  startday=2015-01-01 endday=2017-12-31 \
-  folder=/tmp
+#~ # Download and import MODIS LST data 
+#~ # Note: User needs to be registered at Earthdata: 
+#~ # https://urs.earthdata.nasa.gov/users/new
+#~ i.modis.download settings=$HOME/gisdata/SETTING \
+  #~ product=lst_terra_monthly_5600 \
+  #~ tile=h11v05 \
+  #~ startday=2015-01-01 endday=2017-12-31 \
+  #~ folder=/tmp
 
-# Import LST Day 
-# optionally also LST Night: spectral="( 1 1 0 0 0 1 0 0 0 0 0 0 0 )"
-i.modis.import files=/tmp/listfileMOD11B3.006.txt \
-  spectral="( 1 0 0 0 0 0 0 0 0 0 0 0 )"
+#~ # Import LST Day 
+#~ # optionally also LST Night: spectral="( 1 1 0 0 0 1 0 0 0 0 0 0 0 )"
+#~ i.modis.import files=/tmp/listfileMOD11B3.006.txt \
+  #~ spectral="( 1 0 0 0 0 0 0 0 0 0 0 0 )"
 
 
 ############## For the workshop (what you have to do) ##################
