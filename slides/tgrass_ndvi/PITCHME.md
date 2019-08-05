@@ -120,20 +120,22 @@ STDS in each mapset.
 
 
 ---
+@title[Sample mapset and code]
+
 ### Data for the session
 
 - MODIS Vegetation product: <a href="https://lpdaac.usgs.gov/products/mod13c2v006/">MOD13C2 Collection 6</a>
 - Global monthly composites
 - Spatial resolution: 5600m 
 
+<br>
 @img[span-60](assets/img/mod13c2_global_ndvi.png)
 
 
 +++
-@title[Sample mapset and code]
-
 ### @fa[download text-green] get sample mapset and code @fa[download text-green]
 
+<br>
 - [modis_ndvi mapset](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false): download and unzip it within North Carolina location: `$HOME/grassdata/nc_spm_08_grass7/modis_ndvi`
 - [GRASS code](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow the session
 
@@ -155,14 +157,22 @@ STDS in each mapset.
 > - Display EVI, NIR and QA maps and get information about minimum and maximum values
 > - What do you notice about the values?
 
+Note:
+
+Values are scaled as follows 
+
+- NDVI and EVI, from -2000 to 10000
+- Bands, from 0 to 10000
+- QA band, from 0 to 65534
+
 
 ---
 ### Use of reliability band
 
 <br>
 > @fa[tasks] **Task**: 
-> - Read about this reliability band at the [MOD13 User guide](https://lpdaac.usgs.gov/documents/103/MOD13_User_Guide_V6.pdf) (pag 27).
-> - Display one of the pixel reliability bands along with NDVI band of the same date.
+> - Read about this reliability band at the [MOD13 User guide](https://lpdaac.usgs.gov/documents/103/MOD13_User_Guide_V6.pdf) (pag 27)
+> - Display one of the pixel reliability bands along with NDVI band of the same date
 > - Select only pixels with value 0 (Good quality) in the pixel reliability band. What do you notice?
 
 
@@ -178,8 +188,8 @@ Note:
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Use of reliability band
 
-@[103-108](Keep only best quality pixels - *nix)
-@[110-115](Keep only best quality pixels - windows)
+@[103-108](*nix - Keep only best quality pixels)
+@[110-115](Windows - Keep only best quality pixels)
 @[117-132](Keep only best quality pixels - all maps)
 
 
@@ -241,8 +251,8 @@ Note:
 <br>
 <img src="assets/img/evi_evi_hants.png" width="60%">
 
-<br><br>
-@size[22px](See <a href="https://www.tandfonline.com/doi/abs/10.1080/014311600209814">Roerink et al. 2000</a> for details)
+<br>
+@size[22px](See <a href="https://www.tandfonline.com/doi/abs/10.1080/014311600209814">Roerink et al. 2000</a> for more details)
 
 Note:
 
@@ -254,12 +264,8 @@ Note:
 +++?code=code/ndvi_time_series_code.sh&lang=bash&title=Temporal gap-filling: HANTS
 
 @[192-193](Install r.hants extension)
-@[195-200](List maps and gap-fill with r.hants - *nix)
-@[202-206](List maps and gap-fill with r.hants - windows)
-
-
-+++?code=code/ndvi_time_series_code.sh&lang=bash&title=Temporal gap-filling: HANTS
-
+@[195-200](*nix - List maps and gap-fill with r.hants)
+@[202-206](Windows - List maps and gap-fill with r.hants)
 @[211-223](Patch original and gapfilled maps)
 @[225-229](Create time series with patched data)
 @[231-238](List and register maps in time series)
@@ -321,11 +327,7 @@ Hints: [g.mapsets](https://grass.osgeo.org/grass76/manuals/g.mapsets.html) and [
 +++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
 
 @[304-306](Add modis_lst to accessible mapsets path)
-@[308-310](Associations)
-
-
-+++?code=code/ndvi_time_series_code.sh&lang=bash&title=Phenological indices
-
+@[308-310](Correlation)
 @[312-316](Get time series of slopes among consequtive maps)
 @[318-324](Get maximum slope per year)
 
@@ -350,7 +352,7 @@ Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html
 
 
 +++
-> @fa[tasks] **Task**: Plot some of the resulting maps. What do they represent?
+> @fa[tasks] **Task**: Display some of the resulting maps. What do they represent?
 
 <br>
 @snap[south-east span-60]

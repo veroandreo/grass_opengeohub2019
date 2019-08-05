@@ -153,15 +153,8 @@ STDS in each mapset.
 +++
 @title[Sample mapset and code]
 
-### @fa[download text-green] get sample mapset and code @fa[download text-green]
-<br>
-- [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
-- [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh) to follow the session
-
-
-+++
 @snap[north span-100]
-### Something about MODIS LST</h3>
+### Data for the session</h3>
 @snapend
 
 @snap[west span-50]
@@ -176,6 +169,14 @@ STDS in each mapset.
 @snap[east span-50]
 ![LST tile](assets/img/modis_lst_tile.png)
 @snapend
+
+
++++
+### @fa[download text-green] get sample mapset and code @fa[download text-green]
+
+<br>
+- [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
+- [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh) to follow the session
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
