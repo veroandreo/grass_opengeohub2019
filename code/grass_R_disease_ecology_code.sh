@@ -2,9 +2,9 @@
 
 ########################################################################
 # Commands for GRASS - R interface exercise: 
-# Modelling Aedes albopictus potential distribution in NC
+# Modelling Aedes albopictus potential distribution in Northern Italy
 # Author: Veronica Andreo
-# Date: October, 2018
+# Date: August, 2019
 ########################################################################
 
 
@@ -13,16 +13,16 @@
 #
 
 
+# set region
+g.region vector= align=
+r.mask vector=
+
 # install extension (requires pygbif: pip install pygbif)
 g.extension extension=v.in.pygbif
 
-# set region
-g.region vector=nc_state align=MOD11B3.A2015001.h11v05.single_LST_Day_6km@modis_lst
-r.mask vector=nc_state
-
 # import data from gbif
 v.in.pygbif output=aedes_albopictus taxa="Aedes albopictus" \
- date_from="2013-01-01" date_to="2018-09-30" 
+ date_from="2010-01-01" date_to="2018-12-31" 
 
 # clip to NC state
 v.clip input=aedes_albopictus clip=nc_state \
@@ -69,13 +69,8 @@ t.rast.series input=LST_Day_monthly_celsius@modis_lst method=average \
  where="strftime('%m', start_time)='12' OR strftime('%m', start_time)='01' OR strftime('%m', start_time)='02'" \
  output=LST_average_win --o 
 
-# average NDVI
-t.rast.series input=ndvi_monthly_patch@modis_ndvi method=average \
- output=ndvi_average --o
 
-# average NDWI
-t.rast.series input=ndwi_monthly@modis_ndvi method=average \
- output=ndwi_average --o
+# add other variables 
 
 
 

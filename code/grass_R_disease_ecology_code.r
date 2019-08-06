@@ -1,10 +1,11 @@
 ########################################################################
 # Commands for GRASS - R interface exercise: 
-# Modelling Aedes albopictus potential distribution in NC
+# Modelling Aedes albopictus potential distribution in Northern Italy
 #
 # Original example contributed by Carol Garzon Lopez 
 # Adapted by Veronica Andreo
 # Date: October, 2018
+# Updated: August, 2019
 ########################################################################
 
 
@@ -32,13 +33,13 @@ library(biomod2)
 
 
 # path to GRASS binaries
-myGRASS <- "/usr/local/grass74"
+myGRASS <- "/usr/local/grass76"
 # path to GRASS database
 myGISDbase <- "/home/veroandreo/grassdata/"
 # path to location
-myLocation <- "nc_spm_08_grass7"
+myLocation <- "eulaea"
 # path to mapset
-myMapset <- "user1"
+myMapset <- "italy_lst"
 
 # start GRASS GIS from R
 initGRASS(gisBase = myGRASS, 
@@ -64,14 +65,10 @@ LST_mean <- readRAST("LST_average")
 LST_min <- readRAST("LST_minimum")
 LST_mean_summer <- readRAST("LST_average_sum")
 LST_mean_winter <- readRAST("LST_average_win")
-NDVI_mean <- readRAST("ndvi_average")
-NDWI_mean <- readRAST("ndwi_average")
 
-
-
+# podria hacer una lista e importar con bucle, rasterizar al importar y, luego stack
 
 # visualize in mapview
-mapview(NDVI_mean)
 mapview(LST_mean) + Aa_pres
 
 
