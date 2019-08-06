@@ -33,27 +33,27 @@ Verónica Andreo
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-### Interface GRASS - @fab[r-poject text-12] for disease ecology
+### Interface GRASS - @fab[r-project text-12] for disease ecology
 
 
 ---
 The link between GRASS GIS and R is provided by the 
 [**rgrass7**](https://cran.r-project.org/web/packages/rgrass7/index.html) package:
-
+<br>
 - `initGRASS()` 
 - `execGRASS()`
 - `gmeta()`
 - `readVECT()`
 - `readRAST()`
-
+<br>
 Currently rgrass7 links GRASS and R by means of *sp* package, but an 
 [update to support sf and stars](https://github.com/rsbivand/rgrass7/issues/6) is on the way!
 <br><br>
-@size[22px](Kudos to Roger Bivand! @fa[smile-o fa-spin])
+@size[22px](Kudos to Roger Bivand!)
 
 
 +++
-GRASS GIS and @fab[r-poject text-12] can be used together in two ways:
+GRASS GIS and @fab[r-project text-12] can be used together in two ways:
 <br><br>
 - Using [R within a GRASS GIS session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#R_within_GRASS),
 - Using [GRASS GIS within an R session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#GRASS_within_R),
@@ -79,14 +79,14 @@ GRASS GIS and @fab[r-poject text-12] can be used together in two ways:
 
 
 ---
-For more detailed examples of both uses, check the following links:
+For more detailed examples, check the following links:
 
-- [R and GRASS](https://gitpitch.com/veroandreo/curso-grass-gis-rioiv/master?p=slides/06_R_grass&grs=gitlab#/4) presentation
+- [R and GRASS](https://gitpitch.com/veroandreo/curso-grass-gis-rioiv/master?p=slides/06_R_grass&grs=gitlab#/4) presentation from Argentina course (in English)
 - [Example of GRASS - R for raster time series](https://grasswiki.osgeo.org/wiki/Temporal_data_processing/GRASS_R_raster_time_series_processing)
 
 
 ---
-There is another R package that provides link to GRASS and other GIS:
+There is another R package that provides link to GRASS as well as other GIS:
 <br>
 
 **link2GI**
@@ -97,7 +97,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-## Hands-on to space time analysis for disease ecology with GRASS and R
+## Hands-on to space time analysis for disease ecology with GRASS and @fab[r-project text-12]
 
 
 ---
@@ -153,7 +153,7 @@ add a map
 --->
 
 
----?code=code/06_grass_R_sp_distribution_code.sh&lang=bash&title=Importing species records
+---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Importing species records
 
 @[16-17](Install v.in.pygbif)
 @[19-21](Set region and MASK)
@@ -167,7 +167,7 @@ add a map
 > [d.vect.colbp](https://github.com/ecodiv/d.vect.colbp) addons.
 
 
----?code=code/06_grass_R_sp_distribution_code.sh&lang=bash&title=Creating random background points
+---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Creating random background points
 
 @[37-39](Create buffer around *Aedes albopictus* records)
 @[41-43](Generate random points)
@@ -177,7 +177,7 @@ add a map
 > **Task**: Display with different colors the GBIF records, the buffer areas and the random points.
 
 
----?code=code/06_grass_R_sp_distribution_code.sh&lang=bash&title=Creating environmental layers
+---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Creating environmental layers
 
 @[51-52](Add modis_lst and modis_ndvi to path in user1 mapset)
 @[54-56](Average LST)
@@ -196,19 +196,19 @@ add a map
 Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
 
 
-+++?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Install and load packages
++++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Install and load packages
 
 @[16-20](Install packages)
 @[22-26](Load packages)
 
 
-+++?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Initialize GRASS GIS
++++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Initialize GRASS GIS
 
 @[34-41](Set parameters to start GRASS)
 @[43-50](Initialize GRASS GIS)
 
 
----?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Read vector and raster data
+---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Read vector and raster data
 
 @[58-60](Read vector data)
 @[62-71](Read raster data)
@@ -222,13 +222,13 @@ Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
 ![Mapview: LST + A. albopictus presence points](assets/img/mapview_LST_pres.png)
 
 
----?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Data formatting
+---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Data formatting
 
 @[83-94](Response variable)
 @[96-104](Explanatory variables)
 
 
----?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Run Random Forest model
+---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Run Random Forest model
 
 @[112-113](Default options)
 @[115-128](Run model)
@@ -238,7 +238,7 @@ Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
 > **Task**: Explore the model output
 
 
----?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Model evaluation
+---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Model evaluation
 
 @[138-139](Extract all evaluation data)
 @[141-142](TSS: True Skill Statistics)
@@ -246,7 +246,7 @@ Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
 @[147-148](Variable importance)
 
 
----?code=code/06_grass_R_sp_distribution_code.r&lang=r&title=Model predictions
+---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Model predictions
 
 @[156-162](Model projection settings)
 @[164-165](Obtain predictions from model)

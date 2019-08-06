@@ -48,8 +48,415 @@ v.random output=background_points npoints=100 \
 #
 
 
-# add modis_lst and modis_ndvi to path in user1 mapset
-g.mapsets mapset=modis_lst,modis_ndvi operation=add
+# create series 
+ t.create type=strds temporaltype=absolute output=lst_daily_${METHOD} \
+  title="${METHOD} Daily LST" \
+  description="Daily reconstructed LST by MM - Aggregated with ${METHOD} - 2003-2016"
+
+ # get list of maps 
+ g.list type=raster pattern=lst_????.???_${METHOD} output=lista_${METHOD}
+
+ # register maps in strds  
+ t.register -i input=lst_daily_${METHOD} file=lista_${METHOD} \
+  increment="1 days" start="2003-01-01"
+  
+
+# overall average 
+ # (promedio de las temperaturas (medias/minimas/maximas) diarias de toda la serie)
+ t.rast.series \
+  input=lst_daily_${METHOD} \
+  output=lst_${METHOD}_average \
+  method=average
+
+ # overall stddev 
+ # (desvio estandar de las temperaturas (promedio/minima/maxima) diarias de toda la serie)
+ t.rast.series \
+  input=lst_daily_${METHOD} \
+  output=lst_${METHOD}_sd \
+  method=stddev
+  
+ # yearly average 
+ # (promedio anual de las temperaturas (medias/minimas/maximas) diarias)
+ t.rast.aggregate \
+  input=lst_daily_${METHOD} \
+  output=lst_yearly_${METHOD}_average \
+  basename=lst_yearly_${METHOD}_average suffix=gran \
+  granularity="1 years" method=average \
+  nprocs=6  
+
+
+# Monthly climatology
+ for i in `seq -w 1 12` ; do 
+ 
+ # average
+ t.rast.series input=lst_daily_${METHOD} \
+  method=average \
+  where="strftime('%m', start_time)='${i}'" \
+  output=lst_${METHOD}_monthly_average_climatology_${i}
+ 
+ # sd
+ t.rast.series input=lst_daily_${METHOD} \
+  method=stddev \
+  where="strftime('%m', start_time)='${i}'" \
+  output=lst_${METHOD}_monthly_sd_climatology_${i}
+ 
+ done
+ 
+ g.message message="------------ DONE monthly climatology ${METHOD} -----------"
+
+ # Seasonal climatology
+ for i in "12 01 02" "03 04 05" "06 07 08" "09 10 11" ; do
+ 
+  set -- $i ; echo $1 $2 $3
+ 
+  # average
+  t.rast.series input=lst_daily_${METHOD} \
+	method=average \
+	where="strftime('%m',start_time)='"${1}"' or strftime('%m',start_time)='"${2}"' or strftime('%m', start_time)='"${3}"'" \
+	output=lst_${METHOD}_seasonal_average_climatology_${1}
+  
+  # sd
+  t.rast.series input=lst_daily_${METHOD} \
+	method=stddev \
+	where="strftime('%m',start_time)='"${1}"' or strftime('%m',start_time)='"${2}"' or strftime('%m', start_time)='"${3}"'" \
+	output=lst_${METHOD}_seasonal_sd_climatology_${1}
+  
+  done
+
+
+#############################################################
+# 7. Spring warming: slope(daily Tmean february-march-april)
+###
+
+t.rast.aggregate input=lst_daily_average \
+ output=spring_warming basename=spring_warming \
+ method=slope granularity="1 years" \
+ where="strftime('%m',start_time)='02' or strftime('%m',start_time)='03' or strftime('%m', start_time)='04'" \
+ suffix=gran nprocs=7
+ 
+g.message \
+ message="#------------- DONE SPRING WARMING ----------------#"
+
+
+###################################################################
+# 8. Autumnal cooling: slope(daily Tmean august-september-october)
+###
+ 
+t.rast.aggregate input=lst_daily_average \
+ output=autumnal_cooling basename=autumnal_cooling \
+ method=slope granularity="1 years" \
+ where="strftime('%m',start_time)='08' or strftime('%m',start_time)='09' or strftime('%m', start_time)='10'" \
+ suffix=gran nprocs=7
+ 
+g.message \
+ message="#------------- DONE AUTUMNAL COOLING ----------------#"
+
+
+##############################################
+# 11. Start/end and length of growing season
+###
+
+# install extension
+g.extension r.seasons
+
+### mosquito growing season (threshold=10C, min duration 150 days)
+
+for YEAR in ${YEARS[*]} ; do 
+
+ t.rast.list -u lst_daily_average columns=name \
+  where="strftime('%Y',start_time)='${YEAR}'" \
+  output=list_${YEAR}
+  
+ r.seasons file=list_${YEAR} \
+  prefix=mosq_season_${YEAR}_ n=1 nout=mosq_season_${YEAR}_ \
+  threshold=14157.5 min_length=150 max_gap=12
+ 
+ g.message \
+  message="#------- DONE r.seasons mosquitoes ${YEAR} ----------#"
+
+ # length
+ r.mapcalc expression="mosq_season_length_${YEAR}_1 = \
+  mosq_season_${YEAR}_1_end1 - mosq_season_${YEAR}_1_start1 + 1"
+  
+ r.mapcalc expression="mosq_season_length_${YEAR}_2 = \
+  mosq_season_${YEAR}_1_end2 - mosq_season_${YEAR}_1_start2 + 1" 
+
+ g.message \
+  message="#------- DONE length of mosquitoes season ${YEAR} ---------#"
+  
+done
+
+### wnv transmision season (threshold(EIPmedian)=14.3, min duration 120 days)
+# In Greece: first reported cases in June, last in October
+
+for YEAR in ${YEARS[*]} ; do 
+
+ # use list generated for mosquitoes
+ r.seasons file=list_${YEAR} \
+  prefix=wnv_season_eip50_${YEAR}_ n=1 nout=wnv_season_eip50_${YEAR} \
+  threshold=14372.5 min_length=120 max_gap=12
+ 
+ g.message \
+  message="#------- DONE r.seasons WNV ${YEAR} ----------#"
+
+ # length
+ r.mapcalc expression="wnv_season_length_eip50_${YEAR}_1 = \
+  wnv_season_eip50_${YEAR}_1_end1 - wnv_season_eip50_${YEAR}_1_start1 + 1"
+  
+ r.mapcalc expression="wnv_season_length_eip50_${YEAR}_2 = \
+  wnv_season_eip50_${YEAR}_1_end2 - wnv_season_eip50_${YEAR}_1_start2 + 1" 
+ 
+ g.message \
+  message="#------- DONE length of WNV season eip50 ${YEAR} ---------#"
+
+done
+
+# get median start and end of season
+
+for i in "mosq" "wnv" ; do 
+
+ if [ "${i}" == 'mosq' ] ; then
+ 
+ # core season
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_20??_1_start1` \
+  output=${i}_season_median_start1 method=median
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_20??_1_end1` \
+  output=${i}_season_median_end1 method=median
+
+ # max season
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_20??_1_start2` \
+  output=${i}_season_median_start2 method=median
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_20??_1_end2` \
+  output=${i}_season_median_end2 method=median
+ 
+ else
+ 
+ for eip in "eip10" "eip50" ; do 
+ # core season
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_${eip}_20??_1_start1` \
+  output=${i}_season_median_${eip}_start1 method=median
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_${eip}_20??_1_end1` \
+  output=${i}_season_median_${eip}_end1 method=median
+
+ # max season
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_${eip}_20??_1_start2` \
+  output=${i}_season_median_${eip}_start2 method=median
+ r.series \
+  input=`g.list type=raster sep=comma pattern=${i}_season_${eip}_20??_1_end2` \
+  output=${i}_season_median_${eip}_end2 method=median
+ done
+ 
+ fi
+ 
+done
+
+###########################################
+# 16. Number of days with Tmean >= 20 <= 30 (optimal develop T mosquitoes)
+###
+
+t.rast.algebra \
+ expression="tmean_higher20_lower30 = if(lst_daily_average >= 14657.5 && lst_daily_average <= 15157.5, lst_daily_average, null())" \
+ basename=tmean_higher20_lower30 \
+ nprocs=7
+
+t.rast.aggregate input=tmean_higher20_lower30 \
+ output=count_tmean_higher20_lower30 basename=tmean_higher20_lower30 \
+ method=count granularity="1 years" \
+ suffix=gran nprocs=7
+
+g.message \
+ message="#-------- DONE number of days with optimum Tmean for mosquitoes -------#"
+ 
+t.info count_tmean_higher20_lower30
+t.rast.list count_tmean_higher20_lower30 columns=name,start_time,end_time,min,max
+
+
+# accumulation (if above does not work, start April 1st)
+t.rast.accumulate -n input=reconstructed_lst \
+ output=mosq_daily_bedd \
+ basename=mosq_daily_bedd suffix=gran \
+ start="2003-04-01" stop="2016-10-31" \
+ cycle="7 months" offset="5 months" granularity="1 day" \
+ method=bedd limits=7,34 \
+ scale=0.02 shift=-273.15 
+
+t.info mosq_daily_bedd
+t.rast.list mosq_daily_bedd columns=name,start_time,end_time,min,max
+
+
+# MOSQUITOES CYCLES detection
+
+# arrays
+cycle=(`seq 1 20`)
+cycle_beg=(`seq 1 230 4600`)
+cycle_end=(`seq 230 230 4600`)
+
+# length of the array
+count=${#cycle[@]}
+
+for i in `seq 1 $count` ; do
+
+ echo "cycle: "${cycle[$i-1]}" - "${cycle_beg[$i-1]} ${cycle_end[$i-1]}
+
+ # identify cycles
+ t.rast.accdetect input=mosq_daily_bedd \
+  occurrence=mosq_occurrence_cycle${cycle[$i-1]} \
+  indicator=mosq_indicator_cycle${cycle[$i-1]} \
+  basename=mosq_cycle${cycle[$i-1]} \
+  start="2003-04-01" stop="2016-10-31" \
+  cycle="7 months" offset="5 months" \
+  range=${cycle_beg[$i-1]},${cycle_end[$i-1]}
+
+ # yearly spatial occurrence 
+
+ # extract areas that have full cycles
+ # indicator takes 1, 2 or 3 for start, middle and end of cycle
+ t.rast.aggregate input=mosq_indicator_cycle${cycle[$i-1]} \
+  output=mosq_cycle${cycle[$i-1]}_yearly \
+  basename=mosq_c${cycle[$i-1]}_yearly \
+  granularity="1 year" method=maximum \
+  suffix=gran nprocs=7
+
+ # keep only complete cycles
+ t.rast.mapcalc input=mosq_cycle${cycle[$i-1]}_yearly \
+  output=mosq_cycle${cycle[$i-1]}_yearly_clean \
+  basename=mosq_clean_c${cycle[$i-1]} \
+  expression="if(mosq_cycle${cycle[$i-1]}_yearly == 3, ${cycle[$i-1]}, null())" \
+  nprocs=7
+ 
+ #~ # get DOY in which each cycle is completed each year
+ #~ t.rast.mapcalc input=mosq_cycle${cycle[$i-1]}_yearly \
+  #~ output=doy_mosq_cycle${cycle[$i-1]}_yearly_clean \
+  #~ basename=doy_mosq_cycle${cycle[$i-1]}_yearly_clean \
+  #~ expression="if(mosq_cycle${cycle[$i-1]}_yearly == 3, start_doy(), null())" \
+  #~ nprocs=7
+	
+ # duration of the mosquito cycle
+	
+ # beginning
+ t.rast.aggregate input=mosq_occurrence_cycle${cycle[$i-1]} \
+  output=mosq_min_day_cycle${cycle[$i-1]} \
+  basename=occ_min_day_c${cycle[$i-1]} \
+  method=minimum granularity="1 year" \
+  suffix=gran nprocs=7
+	
+ # end
+ t.rast.aggregate input=mosq_occurrence_cycle${cycle[$i-1]} \
+  output=mosq_max_day_cycle${cycle[$i-1]} \
+  basename=occ_max_day_c${cycle[$i-1]} \
+  method=maximum granularity="1 year" \
+  suffix=gran nprocs=7
+	
+ # difference
+ t.rast.mapcalc input=mosq_min_day_cycle${cycle[$i-1]},mosq_max_day_cycle${cycle[$i-1]} \
+  output=mosq_duration_cycle${cycle[$i-1]} \
+  basename=mosq_duration_cycle${cycle[$i-1]} \
+  expression="mosq_max_day_cycle${cycle[$i-1]} - mosq_min_day_cycle${cycle[$i-1]} + 1"
+  nprocs=7
+
+done
+  
+### Transmision of WNV ###
+
+#~ base T = 14.3 (12.6)
+#~ cut-off = 32
+#~ EIPmedian = 109
+#~ lifespan = 12
+
+# accumulation
+t.rast.accumulate -n input=reconstructed_lst \
+ output=wnv_daily_bedd \
+ basename=wnv_daily_bedd suffix=gran \
+ start="2003-04-01" stop="2016-10-31" \
+ cycle="7 months" offset="5 months" granularity="1 day" \
+ method=bedd limits=14.3,32 \
+ scale=0.02 shift=-273.15
+
+# get max, divide by 109 to know max number of EIP per year 
+t.info -g wnv_daily_bedd | grep max_
+
+# EIP detection
+
+# arrays
+eip=(`seq 1 28`)
+eip_beg=(`seq 1 109 2944`)
+eip_end=(`seq 109 109 3052`)
+
+# length of the array
+count=${#eip[@]}
+
+for i in `seq 1 $count` ; do
+ 
+ # detect EIP
+ t.rast.accdetect input=wnv_daily_bedd \
+  occurrence=wnv_occurrence_eip${eip[$i-1]} \
+  indicator=wnv_indicator_eip${eip[$i-1]} \
+  basename=wnv_eip${eip[$i-1]} \
+  start="2003-04-01" stop="2016-10-31" \
+  cycle="7 months" offset="5 months" \
+  range=${eip_beg[$i-1]},${eip_end[$i-1]}
+   
+ # extract areas with all EIP
+ t.rast.aggregate input=indicator_eip${eip[$i-1]} \
+  output=eip${eip[$i-1]}_yearly \
+  basename=eip${eip[$i-1]}_yearly \
+  granularity="1 year" method=maximum \
+  suffix=gran nprocs=7
+
+ t.rast.mapcalc input=eip${eip[$i-1]}_yearly \
+  output=eip${eip[$i-1]}_yearly_clean \
+  basename=eip${eip[$i-1]}_yearly_clean \
+  expression="if(eip${eip[$i-1]}_yearly == 3, ${eip[$i-1]}, null())" \
+  nprocs=7
+ 
+ #~ # extract DOY in which each EIP is completed each year
+ #~ t.rast.mapcalc input=eip${eip[$i-1]}_yearly \
+  #~ basename=doy_eip${eip[$i-1]}_yearly_clean \
+  #~ output=doy_eip${eip[$i-1]}_yearly_clean \
+  #~ expression="if(eip${eip[$i-1]}_yearly == 3, start_doy(), null())" \
+  #~ nprocs=7
+
+ # estimate duration of EIP
+ # first day
+ t.rast.aggregate input=wnv_occurrence_eip${eip[$i-1]} \
+  output=wnv_min_day_eip${eip[$i-1]} \
+  basename=occ_min_day_eip${eip[$i-1]} \
+  method=minimum granularity="1 year" \
+  suffix=gran nprocs=6
+
+ # last day
+ t.rast.aggregate input=wnv_occurrence_eip${eip[$i-1]} \
+  output=wnv_max_day_eip${eip[$i-1]} \
+  basename=occ_max_day_eip${eip[$i-1]} \
+  method=maximum granularity="1 year" \
+  suffix=gran nprocs=6
+
+ # difference
+ t.rast.mapcalc input=wnv_min_day_eip${eip[$i-1]},wnv_max_day_eip${eip[$i-1]} \
+  expression="wnv_max_day_eip${eip[$i-1]} - wnv_min_day_eip${eip[$i-1]}" \
+  output=wnv_duration_eip${eip[$i-1]} \
+  basename=wnv_duration_eip${eip[$i-1]} \
+  nprocs=6	
+ 
+ # min duration of each EIP and year of occurrence
+ t.rast.series input=wnv_duration_eip${eip[$i-1]} \
+  method=minimum output=wnv_min_duration_eip${eip[$i-1]}
+ t.rast.series input=wnv_duration_eip${eip[$i-1]} \
+  method=min_raster output=wnv_year_of_min_duration_eip${eip[$i-1]}
+ 
+done
+
+
+# add some example of counting consecutive days
+
+
 
 # average LST
 t.rast.series input=LST_Day_monthly_celsius@modis_lst method=average \
@@ -70,40 +477,11 @@ t.rast.series input=LST_Day_monthly_celsius@modis_lst method=average \
  output=LST_average_win --o 
 
 
-# add other variables 
-
-
-
 
 
 ### Some extra examples ###
 
-
-## Example of t.rast.accumulate and t.rast.accdetect application
-
-# Accumulation
-t.rast.accumulate input=LST_Day_monthly output=lst_acc limits=15,32 \
-start="2015-03-01" cycle="7 months" offset="5 months" basename=lst_acc \
-suffix=gran scale=0.02 shift=-273.15 method=mean granularity="1 month"
-
-# First cycle at 100°C - 190°C GDD
-t.rast.accdetect input=lst_acc occ=insect_occ_c1 start="2015-03-01" \
-cycle="7 months" range=100,200 basename=insect_c1 indicator=insect_ind_c1
-
-
 ## Example to count consecutive maps meeting a certain condition
-
-# Create 100 maps with random values for temperatures - *nix
-for map in `seq 1 100` ; do
- r.mapcalc -s expression="daily_temp_${map} = rand(-20,30)"
- echo daily_temp_${map} >> map_list.txt
-done
-
-# Create 100 maps with random values for temperatures - windows
-FOR /L %s IN (1,1,100) DO (
- r.mapcalc -s expression="daily_temp_%s = rand(-20,30)";
- ECHO daily_temp_%s >> map_list.txt
-)
 
 # Create time series and register maps
 t.create type=strds temporaltype=absolute \
