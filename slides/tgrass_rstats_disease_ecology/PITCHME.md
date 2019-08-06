@@ -33,20 +33,21 @@ Verónica Andreo
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-### Interface GRASS - @fab[r-project text-12] for disease ecology
+### GRASS and @fab[r-project text-12] for disease ecology
 
 
 ---
 The link between GRASS GIS and R is provided by the 
 [**rgrass7**](https://cran.r-project.org/web/packages/rgrass7/index.html) package:
 <br>
-- `initGRASS()` 
-- `execGRASS()`
-- `gmeta()`
-- `readVECT()`
-- `readRAST()`
+- `initGRASS()`: 
+- `execGRASS()`:
+- `gmeta()`:
+- `readVECT()` and `readRAST()`:
+- `writeVECT() and `writeRAST()`:
+
 <br>
-Currently rgrass7 links GRASS and R by means of *sp* package, but an 
+*rgrass7* links GRASS and R by means of *sp* package by default, but an 
 [update to support sf and stars](https://github.com/rsbivand/rgrass7/issues/6) is on the way!
 <br><br>
 @size[22px](Kudos to Roger Bivand!)
@@ -81,7 +82,7 @@ GRASS GIS and @fab[r-project text-12] can be used together in two ways:
 ---
 For more detailed examples, check the following links:
 
-- [R and GRASS](https://gitpitch.com/veroandreo/curso-grass-gis-rioiv/master?p=slides/06_R_grass&grs=gitlab#/4) presentation from Argentina course (in English)
+- [R and GRASS](https://gitpitch.com/veroandreo/curso-grass-gis-rioiv/master?p=slides/06_R_grass&grs=gitlab#/4) presentation, course taught in Argentina (in English)
 - [Example of GRASS - R for raster time series](https://grasswiki.osgeo.org/wiki/Temporal_data_processing/GRASS_R_raster_time_series_processing)
 
 
@@ -89,7 +90,7 @@ For more detailed examples, check the following links:
 There is another R package that provides link to GRASS as well as other GIS:
 <br>
 
-**link2GI**
+[**link2GI**](https://cran.r-project.org/web/packages/link2GI/index.html)
 
 <br>
 See the [vignette on how to set GRASS database with link2GI](https://github.com/gisma/link2gi2018/tree/master/R/vignette) for further details
@@ -107,7 +108,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 @snap[west span-100]
 <br><br>
-@ol[list-content-verbose]
+@ol[](false)
 - Importing species records
 - Creating random background points
 - Creating environmental layers
@@ -124,18 +125,14 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @snapend
 
 @snap[west span-50]
-@ol[list-content-verbose](false)
-- Records of *Aedes albopictus* (Asian tiger mosquito) in NC
-- Environmental layers derived from RS products
+@ol[](false)
+- Records of *Aedes albopictus* (Asian tiger mosquito) in Northern Italy from [GBIF](https://www.gbif.org/)
+- Environmental layers derived from reconstructed daily MODIS LST products
 @olend
 @snapend
 
 @snap[east span-50]
 ![Aedes](assets/img/aedes_albopictus.jpg)
-@snapend
-
-@snap[south span-100]
-Download the [GRASS code]() and [R code]() to follow this session
 @snapend
 
 
@@ -144,13 +141,23 @@ Download the [GRASS code]() and [R code]() to follow this session
 ### Data for the session
 @snapend
 
-- reconstructed LST by mundialis
-- daily data
-- 1km spatial resolution
+- reconstructed LST by mundialis (based on [Metz et al., 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm))
+- daily average LST
+- 1 km spatial resolution
 
 <!--- 
 add a map
 --->
+
+
++++
+
+### @fa[download text-green] get sample location and code @fa[download text-green]
+
+<br>
+- [eu_laea](): download and unzip within grassdata folder: `$HOME/grassdata/eu_laea`
+- [GRASS code]()
+- [R code]()
 
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Importing species records
@@ -158,19 +165,19 @@ add a map
 @[16-17](Install v.in.pygbif)
 @[19-21](Set region and MASK)
 @[23-25](Import data from GBIF)
-@[27-29](Clip to NC state)
+@[27-29](Clip to northern Italy)
 
 
 +++
 > **Task**: Explore univariate statistics of downloaded data. Check the 
-> [d.vect.colhist](https://grass.osgeo.org/grass74/manuals/addons/d.vect.colhist.html) and
+> [d.vect.colhist](https://grass.osgeo.org/grass76/manuals/addons/d.vect.colhist.html) and
 > [d.vect.colbp](https://github.com/ecodiv/d.vect.colbp) addons.
 
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Creating random background points
 
 @[37-39](Create buffer around *Aedes albopictus* records)
-@[41-43](Generate random points)
+@[41-43](Generate random background points)
 
 
 +++
@@ -179,17 +186,12 @@ add a map
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Creating environmental layers
 
-@[51-52](Add modis_lst and modis_ndvi to path in user1 mapset)
 @[54-56](Average LST)
 @[58-60](Minimum LST)
 @[62-65](Average LST of summer)
 @[67-70](Average LST of winter)
 @[72-74](Average NDVI)
 @[76-78](Average NDWI)
-
-
-+++
-> **Task**: Which other variable could we generate/use?
 
 
 ---
@@ -215,11 +217,11 @@ Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
 
 
 +++
-> **Task**: Display raster maps and points in RStudio using sf and mapview
+> **Task**: Display raster maps and points in RStudio using **sf** and **mapview**
 
 
 +++
-![Mapview: LST + A. albopictus presence points](assets/img/mapview_LST_pres.png)
+![Mapview: LST + *A. albopictus* presence points](assets/img/mapview_LST_pres.png)
 
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Data formatting
