@@ -39,25 +39,26 @@ Verónica Andreo
 ---
 The link between GRASS GIS and R is provided by the 
 [**rgrass7**](https://cran.r-project.org/web/packages/rgrass7/index.html) package:
-<br>
-- `initGRASS()`: 
-- `execGRASS()`:
-- `gmeta()`:
-- `readVECT()` and `readRAST()`:
-- `writeVECT() and `writeRAST()`:
 
 <br>
-*rgrass7* links GRASS and R by means of *sp* package by default, but an 
-[update to support sf and stars](https://github.com/rsbivand/rgrass7/issues/6) is on the way!
-<br><br>
+- `initGRASS()`: starts GRASS GIS from R
+- `execGRASS()`: runs GRASS GIS commands
+- `gmeta()`: shows GRASS location metadata
+- `readVECT()` and `readRAST()`: read vector and raster maps from GRASS into *sp* objects
+- `writeVECT()` and `writeRAST()`: write *sp* objects into GRASS GIS database
+
+<br>
+*rgrass7* links GRASS and R by means of *sp* package by default, but an [update to support sf and stars](https://github.com/rsbivand/rgrass7/issues/6) is on the way!
+
+<br>
 @size[22px](Kudos to Roger Bivand!)
 
 
 +++
 GRASS GIS and @fab[r-project text-12] can be used together in two ways:
 <br><br>
-- Using [R within a GRASS GIS session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#R_within_GRASS),
-- Using [GRASS GIS within an R session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#GRASS_within_R),
+- Using [R within a GRASS GIS session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#R_within_GRASS)
+- Using [GRASS GIS within an R session](https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7#GRASS_within_R)
 
 <br><br>
 @size[22px](Details and examples at the <a href="https://grasswiki.osgeo.org/wiki/R_statistics/rgrass7">GRASS and R wiki</a>)
@@ -66,15 +67,15 @@ GRASS GIS and @fab[r-project text-12] can be used together in two ways:
 +++
 - Using @color[#8EA33B](**R within a GRASS GIS session**), i.e. starting R (or RStudio) from the GRASS GIS terminal
   - we do not need to initialize GRASS with `initGRASS()`, just type `R` or `rstudio` in the GRASS GIS terminal
-  - we access GRASS GIS funtionalities and database through `execGRASS()`
+  - we access GRASS GIS funtionalities (and database) through `execGRASS()`
   - we use `readVECT()`, `readRAST()` to read data from GRASS DB to do analysis and plots in R
   - we write data (back) to GRASS GIS database with `writeVECT()` and `writeRAST()`
 
 
 +++
-- Using @color[#8EA33B](**GRASS GIS within a R session**), i.e. we connect to GRASS GIS database from within R (or RStudio).
+- Using @color[#8EA33B](**GRASS GIS within an R session**), i.e. we connect to GRASS GIS database from within R (or RStudio).
   - we need to start GRASS GIS with `initGRASS()` (GRASS is not running beforehand)
-  - we access GRASS GIS funtionalities and database through `execGRASS()`
+  - we access GRASS GIS funtionalities (and database) through `execGRASS()`
   - we use `readVECT()`, `readRAST()` to read data from GRASS DB to do analysis and plots in R
   - we write data (back) to GRASS GIS database with `writeVECT()` and `writeRAST()`
 
@@ -141,8 +142,8 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 ### Data for the session
 @snapend
 
-- reconstructed LST by mundialis (based on [Metz et al., 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm))
-- daily average LST
+- Reconstructed LST by mundialis based on [Metz et al., 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
+- Daily average LST
 - 1 km spatial resolution
 
 <!--- 
