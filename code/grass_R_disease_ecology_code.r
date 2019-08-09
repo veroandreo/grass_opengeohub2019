@@ -28,37 +28,18 @@ library(biomod2)
 
 
 #
-# Set GRASS GIS variables for initialization
-#
-
-
-# path to GRASS binaries
-myGRASS <- "/usr/local/grass76"
-# path to GRASS database
-myGISDbase <- "/home/veroandreo/grassdata/"
-# path to location
-myLocation <- "eulaea"
-# path to mapset
-myMapset <- "italy_lst"
-
-# start GRASS GIS from R
-initGRASS(gisBase = myGRASS, 
-		  home = tempdir(), 
-		  gisDbase = myGISDbase, 
-		  location = myLocation, 
-          mapset = myMapset,
-          SG="elevation",
-          override = TRUE)
-
-
-#
 # Read raster and vector data
 #
 
 
+# use sf for vectors
+use_sf()
+
 # read vector layers
 Aa_pres <- readVECT("aedes_albopictus_clip")
 Aa_abs <- readVECT("background_points")
+
+# use sp for rasters (stars support on the way)
 
 # read raster layers
 LST_mean <- readRAST("LST_average")                                                                                                                                       
@@ -78,7 +59,7 @@ mapview(LST_mean) + Aa_pres
 
 
 # response variable
-n_pres <- length(Aa_pres[,1])
+n_pres <- length(Aa_pres@data[,1])
 n_abs <- length(Aa_abs@data[,1])
  
 myRespName <- 'Aedes_albopictus'

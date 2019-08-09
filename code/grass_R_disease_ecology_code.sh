@@ -425,6 +425,7 @@ t.rast.series input=LST_Day_monthly_celsius@modis_lst method=average \
  output=LST_average_win --o 
 
 
+Start RStudio
 
 
 ### Some extra examples ###

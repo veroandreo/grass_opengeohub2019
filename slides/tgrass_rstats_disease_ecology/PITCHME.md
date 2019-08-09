@@ -66,18 +66,16 @@ GRASS GIS and @fab[r-project text-12] can be used together in two ways:
 
 +++
 - Using @color[#8EA33B](**R within a GRASS GIS session**), i.e. starting R (or RStudio) from the GRASS GIS terminal
-  - we do not need to initialize GRASS with `initGRASS()`, just type `R` or `rstudio` in the GRASS GIS terminal
-  - we access GRASS GIS funtionalities (and database) through `execGRASS()`
+  - we do not need to initialize GRASS with `initGRASS()`, just type `R` or `rstudio &` in the GRASS GIS terminal
+  - we access GRASS GIS funtionalities and database through `execGRASS()`
   - we use `readVECT()`, `readRAST()` to read data from GRASS DB to do analysis and plots in R
   - we write data (back) to GRASS GIS database with `writeVECT()` and `writeRAST()`
 
 
 +++
 - Using @color[#8EA33B](**GRASS GIS within an R session**), i.e. we connect to GRASS GIS database from within R (or RStudio).
-  - we need to start GRASS GIS with `initGRASS()` (GRASS is not running beforehand)
-  - we access GRASS GIS funtionalities (and database) through `execGRASS()`
-  - we use `readVECT()`, `readRAST()` to read data from GRASS DB to do analysis and plots in R
-  - we write data (back) to GRASS GIS database with `writeVECT()` and `writeRAST()`
+  - we need to start GRASS GIS with `initGRASS()` (usually by creating a throw away location)
+  - we access GRASS GIS funtionalities through `execGRASS()` (usually to apply them on data outside GRASS DB)
 
 
 ---
@@ -156,9 +154,9 @@ add a map
 ### @fa[download text-green] get sample location and code @fa[download text-green]
 
 <br>
-- [eu_laea](): download and unzip within grassdata folder: `$HOME/grassdata/eu_laea`
-- [GRASS code]()
-- [R code]()
+- [eu_laea location with LST mapset](): download and unzip within your grassdata folder
+- [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.sh)
+- [R code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.r)
 
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Importing species records
