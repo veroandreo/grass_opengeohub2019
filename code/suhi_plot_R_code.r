@@ -11,13 +11,10 @@ library(sf)
 # List available vectors
 execGRASS("g.list", parameters = list(type="vector", mapset="."))
 
-# Read in GRASS vector maps
+# Read in GRASS vector maps as sf
+use_sf()
 raleigh_summer_lst <- readVECT("raleigh_summer_lst")
 raleigh_surr_summer_lst <- readVECT("raleigh_surr_summer_lst")
-
-# Convert to sf (https://github.com/r-spatial/sf)
-raleigh_summer_lst <- st_as_sf(raleigh_summer_lst)
-raleigh_surr_summer_lst <- st_as_sf(raleigh_surr_summer_lst)
 
 # Remove columns we don't need 
 raleigh_summer_lst <- raleigh_summer_lst[,-c(2:6)]
