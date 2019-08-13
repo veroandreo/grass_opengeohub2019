@@ -450,14 +450,31 @@ GRASS GIS and R can be used together in two ways:
 
 
 +++
-### Actinia: The GRASS GIS REST API 
-
-@markus: add more details, pls
-
-@snap[south-east span-30]
-@img[span-50](https://wenzeslaus.github.io/grass-gis-talks/img/actinia_logo.svg)
+@snap[north span-100]
+### *actinia*: The GRASS GIS REST API 
 @snapend
 
+@snap[midpoint span-100]
+@ul[](false)
+- Open source REST API for scalable, distributed, high performance processing of geo data using GRASS GIS
+- Core functionality: processing of geo-data and time series of satellite images, raster and vector data
+- OSGeo Community Project since 2019
+@ulend
+<br><br><br>
+@snapend
+
+@snap[south-west span-75 text-08]
+Don't miss the **Cloud based processing of geo and Earth observation data** talk on Wednesday or Thursday
+<br><br>
+@snapend
+
+@snap[south-east span-30 text-05]
+@img[span-70](https://wenzeslaus.github.io/grass-gis-talks/img/actinia_logo.svg)
+<br>
+https://actinia.mundialis.de/
+<br>
+DOI:[10.5281/zenodo.2631917](https://doi.org/10.5281/zenodo.2631917)
+@snapend
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 ## Some useful commands and cool stuff
@@ -557,7 +574,7 @@ GRASS GIS and R can be used together in two ways:
  # running a module
  grass76 $HOME/grassdata/nc_spm_08_grass7/PERMANENT/ --exec r.info elevation
  
- # running a script
+ # running a bash script
  grass76 $HOME/grassdata/nc_spm_08_grass7/PERMANENT/ --exec sh test.sh
 
  ## test.sh might be as simple as:
