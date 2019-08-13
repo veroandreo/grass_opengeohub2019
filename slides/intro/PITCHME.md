@@ -451,6 +451,7 @@ GRASS GIS and R can be used together in two ways:
 
 +++
 @snap[north span-100]
+<br>
 ### *actinia*: The GRASS GIS REST API 
 @snapend
 
@@ -463,9 +464,9 @@ GRASS GIS and R can be used together in two ways:
 <br><br><br>
 @snapend
 
-@snap[south-west span-75 text-08]
-Don't miss the **Cloud based processing of geo and Earth observation data** talk on Wednesday or Thursday
-<br><br>
+@snap[south-west span-75 text-08 fragment]
+@box[bg-gold text-white rounded](Don't miss the **Cloud based processing of geo and Earth observation data** talk on Wednesday or Thursday)
+<br><br><br>
 @snapend
 
 @snap[south-east span-30 text-05]
