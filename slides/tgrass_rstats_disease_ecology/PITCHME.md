@@ -142,7 +142,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 @snap[west span-40]
 @ul[](false)
-- Reconstructed LST by [mundialis](https://www.mundialis.de/en/) based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
+- Reconstructed MODIS LST by [mundialis](https://www.mundialis.de/en/) based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
 - Daily average LST
 - 1 km spatial resolution
 @ulend
