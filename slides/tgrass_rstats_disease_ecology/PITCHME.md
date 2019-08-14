@@ -140,7 +140,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 ### Data for the session
 @snapend
 
-@snap[west span-50]
+@snap[west span-40]
 @ul[](false)
 - Reconstructed LST by mundialis based on [Metz et al., 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
 - Daily average LST
@@ -148,10 +148,12 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @ulend
 @snapend
 
-@snap[east span-50]
+@snap[east span-60]
 ![LST July 2018](assets/img/lst_north_italy_july2018.png)
 <br>
-@size[20px](LST, July 2018 - Northern Italy. Note SUHI over Milan city.)
+@size[20px](LST, July 2018 - Northern Italy.)
+<br>
+@size[20px](Note SUHI over Milan city.)
 @snapend
 
 +++
