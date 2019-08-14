@@ -140,7 +140,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 ### Data for the session
 @snapend
 
-@snap[west span-40]
+@snap[west span-45]
 @ul[](false)
 - Reconstructed LST by mundialis based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
 - Daily average LST
