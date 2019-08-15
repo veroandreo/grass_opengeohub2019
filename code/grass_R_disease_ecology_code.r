@@ -1,9 +1,14 @@
 ########################################################################
-# Commands for GRASS - R interface exercise: 
+# R commands for the session: 
+# "Analysis of space-time satellite data for disease ecology 
+# applications with GRASS GIS and R stats" at OpenGeoHub Summer School,
+# Muenster (Germany)
+#
 # Modelling Aedes albopictus potential distribution in Northern Italy
 #
 # Original example contributed by Carol Garzon Lopez 
 # Adapted by Veronica Andreo
+#
 # Date: October, 2018
 # Updated: August, 2019
 ########################################################################
@@ -14,13 +19,13 @@
 #
 
 
-# install packagess
+# Install packagess
 # install.packages("raster")
 # install.packages("rgrass7")
 # install.packages("mapview")
 # install.packages("biomod2")
 
-# load libraries
+# Load libraries
 library(raster)
 library(rgrass7)
 library(mapview)
@@ -32,24 +37,23 @@ library(biomod2)
 #
 
 
-# use sf for vectors
+# Use sf for vectors
 use_sf()
 
-# read vector layers
-Aa_pres <- readVECT("aedes_albopictus_clip")
+# Read vector layers
+Aa_pres <- readVECT("aedes_albopictus")
 Aa_abs <- readVECT("background_points")
 
-# use sp for rasters (stars support on the way)
+# Use sp for rasters (stars support on the way)
+use_sp()
 
-# read raster layers
-LST_mean <- readRAST("LST_average")                                                                                                                                       
-LST_min <- readRAST("LST_minimum")
-LST_mean_summer <- readRAST("LST_average_sum")
-LST_mean_winter <- readRAST("LST_average_win")
+# Read raster layers
 
-# podria hacer una lista e importar con bucle, rasterizar al importar y, luego stack
+# hacer una lista e importar con bucle, rasterizar al importar y, luego stack
 
-# visualize in mapview
+# Stack raster layers
+
+# Quick visualization in mapview
 mapview(LST_mean) + Aa_pres
 
 
@@ -58,7 +62,7 @@ mapview(LST_mean) + Aa_pres
 #
 
 
-# response variable
+# Response variable
 n_pres <- length(Aa_pres@data[,1])
 n_abs <- length(Aa_abs@data[,1])
  
@@ -71,7 +75,7 @@ myResp <- c(pres,abs)
 myRespXY <- rbind(cbind(Aa_pres@coords[,1],Aa_pres@coords[,2]), 
 				  cbind(Aa_abs@coords[,1],Aa_abs@coords[,2]))
 
-# explanatory variables
+# Explanatory variables
 myExpl <- stack(raster(LST_mean),raster(LST_min),
 				raster(LST_mean_summer),raster(LST_mean_winter),
 				raster(NDVI_mean),raster(NDWI_mean))
@@ -87,19 +91,19 @@ myBiomodData <- BIOMOD_FormatingData(resp.var = myResp,
 #
 
 
-# default options
+# Default options
 myBiomodOption <- BIOMOD_ModelingOptions()
 
-# run model
+# Run model
 myBiomodModelOut <- BIOMOD_Modeling(
   myBiomodData,
-  models = c('RF'),  # algoritmos de analisis para hacer el modelo
+  models = c('RF'),  
   models.options = myBiomodOption,
   NbRunEval=2,     
-  DataSplit=80,   # porcentaje de los datos para evaluación
+  DataSplit=80,
   Prevalence=0.5,
   VarImport=3,
-  models.eval.meth = c('TSS','ROC'), # metricas para evaluar el modelo
+  models.eval.meth = c('TSS','ROC'),
   SaveObj = TRUE,
   rescal.all.models = TRUE,
   do.full.models = FALSE,
@@ -113,7 +117,7 @@ myBiomodModelOut
 #
 
 
-# extract all evaluation data
+# Extract all evaluation data
 myBiomodModelEval <- get_evaluations(myBiomodModelOut)
 
 # TSS: True Skill Statistics
@@ -122,7 +126,7 @@ myBiomodModelEval["TSS","Testing.data","RF",,]
 # ROC: Receiver-operator curve
 myBiomodModelEval["ROC","Testing.data",,,]
 
-# variable importance
+# Variable importance
 get_variables_importance(myBiomodModelOut)
 
 
@@ -142,6 +146,6 @@ myBiomodProj <- BIOMOD_Projection(
 mod_proj <- get_predictions(myBiomodProj)
 mod_proj
 
-# plot predicted potential distribution
+# Plot predicted potential distribution
 plot(mod_proj, main = "Predicted potential distribution - RF")
 
