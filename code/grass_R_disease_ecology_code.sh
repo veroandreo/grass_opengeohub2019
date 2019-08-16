@@ -298,21 +298,20 @@ t.rast.list input=mosq_daily_bedd \
   columns=name,start_time,end_time,min,max
 
 
-## Detection of mosquito cycles
+## Detection of mosquito generations
 
-# arrays
+# Arrays
 cycle=(`seq 1 9`)
 cycle_beg=(`seq 1 300 2700`)
 cycle_end=(`seq 300 300 2700`)
-
-# length of the array
+# Length of the array
 count=${#cycle[@]}
 
 for i in `seq 1 $count` ; do
 
   echo "cycle: "${cycle[$i-1]}" - "${cycle_beg[$i-1]} ${cycle_end[$i-1]}
 
-  # Identify cycles
+  # Identify generations
   t.rast.accdetect input=mosq_daily_bedd \
     occurrence=mosq_occurrence_cycle_${cycle[$i-1]} \
     indicator=mosq_indicator_cycle_${cycle[$i-1]} \
@@ -368,28 +367,38 @@ done
 # Maximum number of generations per pixel per year
 for i in `seq 1 5` ; do 
   g.list type=raster sep=comma pattern=mosq_clean_c*_${i}
-  r.series input=`g.list type=raster sep=comma pattern=mosq_clean_c*_${i}` \
-    output=mosq_generations_${i} method=maximum
+  r.series \
+    input=`g.list type=raster sep=comma pattern=mosq_clean_c*_${i}` \
+    output=mosq_generations_${i} \
+    method=maximum
 done
 
 # Median number of generations per pixel
-r.series input=`g.list type=raster sep=comma pattern=mosq_generations_*` \
-  output=median_mosq_generations method=median
-
+r.series \
+  input=`g.list type=raster sep=comma pattern=mosq_generations_*` \
+  output=median_mosq_generations \
+  method=median
 
 # Median duration of generations per year per pixel
 for i in `seq 1 5` ; do 
   g.list type=raster sep=comma pattern=mosq_duration_cycle*_${i}
-  r.series input=`g.list type=raster sep=comma pattern=mosq_duration_cycle*_${i}` \
-    output=mosq_generation_median_duration_${i} method=median
+  r.series \
+    input=`g.list type=raster sep=comma pattern=mosq_duration_cycle*_${i}` \
+    output=mosq_generation_median_duration_${i} \
+    method=median
 done
 
 # Median duration of generations per pixel
-r.series input=`g.list type=raster sep=comma pattern=mosq_generation_median_duration_*` \
-  output=median_mosq_generation_duration method=median
+r.series \
+  input=`g.list type=raster sep=comma pattern=mosq_generation_median_duration_*` \
+  output=median_mosq_generation_duration \
+  method=median
 
 
+#
 # Start RStudio from within GRASS GIS
+#
+
 rstudio &
 
 

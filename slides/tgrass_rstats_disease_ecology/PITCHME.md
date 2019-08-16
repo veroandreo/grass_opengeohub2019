@@ -216,12 +216,17 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @[264-270](Calculate consecutive days with LSTmean >= 35)
 @[272-274](Inspect values)
 @[276-279](Median number of consecutive days with LSTmean >= 35 (2014-2018))
-@[]()
-@[]()
-@[]()
-@[]()
-@[]()
-@[]()
+@[282-291](Accumulation of degree days)
+@[293-298](Get basic info and inspect values)
+@[301-308](Detection of mosquito generations)
+@[310-321](Identify generations)
+@[323-337](Extract areas that have full generations)
+@[339-362](Duration of each mosquito generation)
+@[367-374](Maximum number of generations per pixel per year)
+@[376-380](Median number of generations per pixel)
+@[382-389](Median duration of generations per pixel per year)
+@[391-395](Median duration of generations per pixel)
+@[398-403](Start RStudio from within GRASS GIS)
 
 
 +++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Install and load packages
