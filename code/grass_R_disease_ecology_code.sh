@@ -103,7 +103,7 @@ t.rast.algebra \
 
 ## Bioclimatic variables
   
-# Monthly avg, min and max LST climatology to feed r.bioclim
+# Long term monthly avg, min and max LST
 for i in `seq -w 1 12` ; do 
   
   # average
@@ -178,8 +178,8 @@ g.extension extension=r.seasons
 
 # Detect seasons
 for YEAR in `seq 2014 2018` ; do 
-  
-  # Lists per year
+
+  # Get map list per year
   t.rast.list -u lst_daily_celsius \
     columns=name \
     where="strftime('%Y',start_time)='${YEAR}'" \
@@ -204,30 +204,19 @@ for YEAR in `seq 2014 2018` ; do
  
 done
 
-# Start and end of core season
+# Mean length of mosquito season
 r.series \
-  input=`g.list type=raster sep=comma pattern=mosq_season_201?_1_start1` \
-  output=mosq_season_median_start1 \
-  method=median
-
+  input=`g.list type=raster pattern=mosq_season_length*1 separator=,` \
+  output=avg_mosq_season_1_length \
+  method=average
+  
 r.series \
-  input=`g.list type=raster sep=comma pattern=mosq_season_201?_1_end1` \
-  output=mosq_season_median_end1 \
-  method=median
-
-# Start and end of extended season
-r.series \
-  input=`g.list type=raster sep=comma pattern=mosq_season_201?_1_start2` \
-  output=mosq_season_median_start2 \
-  method=median
-
-r.series \
-  input=`g.list type=raster sep=comma pattern=mosq_season_201?_1_end2` \
-  output=mosq_season_median_end2 \
-  method=median
+  input=`g.list type=raster pattern=mosq_season_length*2 separator=,` \
+  output=avg_mosq_season_2_length \
+  method=average
 
 
-## Number of days with LSTmean >= 20 <= 30
+## Number of days with LSTmean >= 20 and <= 30
 
 # Keep only pixels meeting the condition
 t.rast.algebra -n \
@@ -240,14 +229,19 @@ t.rast.algebra -n \
 t.rast.aggregate input=tmean_higher20_lower30 \
   output=count_tmean_higher20_lower30 \
   basename=tmean_higher20_lower30 \
+  suffix=gran \
   method=count \
-  granularity="1 years" \
-  suffix=gran
+  granularity="1 years"
 
 # Inspect values
 t.rast.list \
   count_tmean_higher20_lower30 \
   columns=name,start_time,end_time,min,max
+
+# Mean number of days with LSTmean >= 20 and <= 30
+t.rast.series input=count_tmean_higher20_lower30 \
+  output=avg_count_tmean_higher20_lower30 \
+  method=average
 
 
 ## Number of consecutive days with LSTmean >= 35
@@ -255,24 +249,31 @@ t.rast.list \
 # Create annual mask
 t.rast.aggregate input=lst_daily \
   output=annual_mask \
-  basename=annual_mask suffix=gran \
+  basename=annual_mask \
+  suffix=gran \
   granularity="1 year" \
   method=count
 
 # Replace values by zero
-
+t.rast.mapcalc \
+  input=annual_mask \
+  output=annual_mask_0 \
+  expression="if(annual_mask, 0)" \
+  basename=annual_mask_0
 
 # Calculate consecutive days with LSTmean >= 35
-t.rast.algebra basename=higher35_days suffix=gran \
-  expression="higher35_consec_days = annual_mask {+,contains,l} \
+t.rast.algebra \
+  expression="higher35_consec_days = annual_mask_0 {+,contains,l} \
   if(lst_daily_celsius >= 35.0 && lst_daily_celsius[-1] >= 35.0 || \
-  lst_daily_celsius[1] >= 35.0 && lst_daily_celsius >= 35.0, 1, 0)"
+  lst_daily_celsius[1] >= 35.0 && lst_daily_celsius >= 35.0, 1, 0)" \
+  basename=higher35_days \
+  suffix=gran
 
 # Inspect values
 t.rast.list input=higher35_consec_days \
   columns=name,start_time,end_time,min,max
 
-# Median number of consecutive days with LSTmean >= 35 (2010-2018)
+# Median number of consecutive days with LSTmean >= 35 (2014-2018)
 t.rast.series input=higher35_consec_days \
   output=_median_higher35_consec_days \
   method=median

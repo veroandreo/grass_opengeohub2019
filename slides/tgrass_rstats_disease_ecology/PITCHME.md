@@ -193,6 +193,37 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @[92-96](Convert K to Celsius)
 
 
++++?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Generate environmental variables from LST STRDS
+
+@[104-127](Long term monthly avg, min and max LST)
+@[129-130](Install r.bioclim)
+@[132-137](Estimate temperature related bioclimatic variables)
+@[140-149](Annual spring warming)
+@[151-154](Average spring warming)
+@[157-166](Annual autumnal cooling)
+@[168-171](Average autumnal cooling)
+@[174-177](Install r.seasons)
+@[179-186](Detect seasons: get map list per year)
+@[188-195](Detect mosquito season)
+@[197-205](Detect seasons: estimate length of mosquito season)
+@[207-216](Average length of mosquito season)
+@[219-226](Number of days with LSTmean >= 20 and <= 30)
+@[228-234](Count how many times per year the condition is met)
+@[236-239](Inspect values)
+@[241-244](Mean number of days with LSTmean >= 20 and <= 30)
+@[247-255](Number of consecutive days with LSTmean >= 35)
+@[257-262](Replace values by zero)
+@[264-270](Calculate consecutive days with LSTmean >= 35)
+@[272-274](Inspect values)
+@[276-279](Median number of consecutive days with LSTmean >= 35 (2014-2018))
+@[]()
+@[]()
+@[]()
+@[]()
+@[]()
+@[]()
+
+
 +++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Install and load packages
 
 @[16-20](Install packages)
