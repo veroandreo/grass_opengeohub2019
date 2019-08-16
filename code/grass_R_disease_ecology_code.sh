@@ -150,7 +150,7 @@ t.rast.aggregate input=lst_daily_celsius \
 
 # Average spring warming
 t.rast.series input=annual_spring_warming \
-  output=average_spring_warming \
+  output=avg_spring_warming \
   method=average
 
 
@@ -167,7 +167,7 @@ t.rast.aggregate input=lst_daily_celsius \
 
 # Average autumnal cooling
 t.rast.series input=annual_autumnal_cooling \
-  output=average_autumnal_cooling \
+  output=avg_autumnal_cooling \
   method=average
 
 
@@ -275,7 +275,7 @@ t.rast.list input=higher35_consec_days \
 
 # Median number of consecutive days with LSTmean >= 35 (2014-2018)
 t.rast.series input=higher35_consec_days \
-  output=_median_higher35_consec_days \
+  output=median_higher35_consec_days \
   method=median
 
 

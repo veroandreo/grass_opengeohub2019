@@ -20,10 +20,10 @@
 
 
 # Install packagess
-# install.packages("raster")
-# install.packages("rgrass7")
-# install.packages("mapview")
-# install.packages("biomod2")
+install.packages("raster")
+install.packages("rgrass7")
+install.packages("mapview")
+install.packages("biomod2")
 
 # Load libraries
 library(raster)
@@ -33,7 +33,7 @@ library(biomod2)
 
 
 #
-# Read raster and vector data
+# Read vector data
 #
 
 
@@ -44,17 +44,45 @@ use_sf()
 Aa_pres <- readVECT("aedes_albopictus")
 Aa_abs <- readVECT("background_points")
 
+
+#
+# Read raster data
+#
+
+
 # Use sp for rasters (stars support on the way)
 use_sp()
 
+# List rasters by pattern
+worldclim <- execGRASS("g.list", 
+                        parameters = list(
+                        type = "raster",
+                        pattern = "worldclim*"))
+
+avg <- execGRASS("g.list", 
+                  parameters = list(
+                  type = "raster",
+                  pattern = "avg*"))
+
+median <- execGRASS("g.list", 
+                     parameters = list(
+                     type = "raster",
+                     pattern = "median*", 
+                     exclude = "*[1-5]"))
+
+# Concatenate map lists
+to_import <- c(attributes(worldclim)$resOut,
+               attributes(avg)$resOut,
+               attributes(median)$resOut)
+
 # Read raster layers
-
-# hacer una lista e importar con bucle, rasterizar al importar y, luego stack
-
-# Stack raster layers
+predictors <- list()
+for (i in to_import){
+  predictors[i] <- raster(readRAST(i))
+}
 
 # Quick visualization in mapview
-mapview(LST_mean) + Aa_pres
+mapview(predictors[[1]]) + Aa_pres
 
 
 #
@@ -76,9 +104,9 @@ myRespXY <- rbind(cbind(Aa_pres@coords[,1],Aa_pres@coords[,2]),
 				  cbind(Aa_abs@coords[,1],Aa_abs@coords[,2]))
 
 # Explanatory variables
-myExpl <- stack(raster(LST_mean),raster(LST_min),
-				raster(LST_mean_summer),raster(LST_mean_winter),
-				raster(NDVI_mean),raster(NDWI_mean))
+
+# Stack raster layers
+myExpl_r <- raster::stack(predictors)
 
 myBiomodData <- BIOMOD_FormatingData(resp.var = myResp,
                                      expl.var = myExpl,
