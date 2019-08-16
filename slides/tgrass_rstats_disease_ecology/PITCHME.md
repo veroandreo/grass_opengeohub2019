@@ -37,21 +37,18 @@ Verónica Andreo
 
 
 ---
-The link between GRASS GIS and R is provided by the 
-[**rgrass7**](https://cran.r-project.org/web/packages/rgrass7/index.html) package:
+### [**rgrass7**](https://cran.r-project.org/web/packages/rgrass7/index.html)
 
 <br>
-- `initGRASS()`: starts GRASS GIS from R
-- `execGRASS()`: runs GRASS GIS commands
+- `initGRASS()`: starts a GRASS GIS session from R
+- `execGRASS()`: executes GRASS GIS commands
 - `gmeta()`: shows GRASS location metadata
-- `readVECT()` and `readRAST()`: read vector and raster maps from GRASS into *sp* objects
+- `readVECT()` and `readRAST()`: read vector and raster maps from GRASS into *sp* objects 
 - `writeVECT()` and `writeRAST()`: write *sp* objects into GRASS GIS database
 
 <br>
-*rgrass7* links GRASS and R by means of *sp* package by default, but an [update to support sf and stars](https://github.com/rsbivand/rgrass7/issues/6) is on the way!
-
-<br>
-@size[22px](Kudos to Roger Bivand!)
+An [update to support sf and stars](https://github.com/rsbivand/rgrass7/issues/6)
+is on the way! Kudos to Roger Bivand!
 
 
 +++
@@ -78,26 +75,23 @@ GRASS GIS and @fab[r-project text-12] can be used together in two ways:
   - we access GRASS GIS funtionalities through `execGRASS()` (usually to apply them on data outside GRASS DB)
 
 
----
++++
 For more detailed examples, check the following links:
 
 - [R and GRASS](https://gitpitch.com/veroandreo/curso-grass-gis-rioiv/master?p=slides/06_R_grass&grs=gitlab#/4) presentation, course taught in Argentina (in English)
 - [Example of GRASS - R for raster time series](https://grasswiki.osgeo.org/wiki/Temporal_data_processing/GRASS_R_raster_time_series_processing)
 
 
----
-There is another R package that provides link to GRASS as well as other GIS:
-<br>
++++
+### [**link2GI**](https://cran.r-project.org/web/packages/link2GI/index.html)
 
-[**link2GI**](https://cran.r-project.org/web/packages/link2GI/index.html)
-
-<br>
+<br><br>
 See the [vignette on how to set GRASS database with link2GI](https://github.com/gisma/link2gi2018/tree/master/R/vignette) for further details
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-## Hands-on to space time analysis for disease ecology with GRASS and @fab[r-project text-12]
+## Hands-on to space-time analysis for disease ecology with GRASS and @fab[r-project text-12]
 
 
 ---
@@ -137,7 +131,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 +++
 @snap[north span-100]
-### Data for the session
+### Data for the session: LST
 @snapend
 
 @snap[west span-40]
@@ -170,40 +164,33 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Importing species records
 
-@[16-17](Install v.in.pygbif)
-@[19-21](Set region and MASK)
-@[23-25](Import data from GBIF)
-@[27-29](Clip to northern Italy)
-
-
-+++
-> **Task**: Explore univariate statistics of downloaded data. Check the 
-> [d.vect.colhist](https://grass.osgeo.org/grass76/manuals/addons/d.vect.colhist.html) and
-> [d.vect.colbp](https://github.com/ecodiv/d.vect.colbp) addons.
+@[22-23](Set computational region)
+@[25-26](Install v.in.pygbif)
+@[28-32](Import data from GBIF)
 
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Creating random background points
 
-@[37-39](Create buffer around *Aedes albopictus* records)
-@[41-43](Generate random background points)
+@[40-43](Create buffer around *Aedes albopictus* records)
+@[45-51](Create a vector mask to limit background points)
+@[53-57](Substract buffers from vector mask)
+@[59-63](Generate random background points)
 
 
 +++
-> **Task**: Display with different colors the GBIF records, the buffer areas and the random points.
+> **Task**: Display with different colors the GBIF records and the random points.
+
+<br>
+@img[span-80](assets/img/points_aedes_background.png)
 
 
----?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Creating environmental layers
+---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Create daily LST STRDS
 
-@[54-56](Average LST)
-@[58-60](Minimum LST)
-@[62-65](Average LST of summer)
-@[67-70](Average LST of winter)
-@[72-74](Average NDVI)
-@[76-78](Average NDWI)
-
-
----
-Just for fun, close GRASS GIS, we'll initialize it again but from RStudio
+@[71-76](Create time series)
+@[78-81](Get list of maps)
+@[83-87](Register maps in STRDS)
+@[89-90](Get info about the STRDS)
+@[92-96](Convert K to Celsius)
 
 
 +++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Install and load packages

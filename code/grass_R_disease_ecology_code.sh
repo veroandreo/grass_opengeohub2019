@@ -92,7 +92,8 @@ t.info input=lst_daily
 # Convert K to Celsius
 t.rast.algebra \
   expression="lst_daily_celsius = lst_daily * 0.02 - 273.15" \
-  basename=lst suffix=gran
+  basename=lst \
+  suffix=gran
 
 
 #
