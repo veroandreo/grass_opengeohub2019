@@ -136,7 +136,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @snapend
 
 @snap[west span-40]
-<br>
+<br><br>
 @ul[](false)
 - MODIS LST reconstructed by [mundialis](https://www.mundialis.de/en/) based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
 - Daily average LST
@@ -302,7 +302,6 @@ Note:
 ---
 @snap[south span-50]
 @size[18px](Presentation powered by)
-<br>
 <a href="https://gitpitch.com/">
-<img src="assets/img/gitpitch_logo.png" width="20%"></a>
+<img src="assets/img/gitpitch_logo.png" width="25%"></a>
 @snapend

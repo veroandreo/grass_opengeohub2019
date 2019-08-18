@@ -78,11 +78,11 @@ t.create type=strds \
 # Get list of maps 
 g.list type=raster \
   pattern="lst_201*" \
-  output=list_lst.txt
+  output=list_lst.csv
 
 # Register maps in strds  
 t.register -i input=lst_daily \
-  file=list_lst.txt \
+  file=list_lst.csv \
   increment="1 days" \
   start="2014-01-01"
 
