@@ -137,6 +137,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @snapend
 
 @snap[west span-40]
+<br>
 @ul[](false)
 - Reconstructed MODIS LST by [mundialis](https://www.mundialis.de/en/) based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
 - Daily average LST (from reconstructed 4 MODIS overpasses)
@@ -146,11 +147,10 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @snapend
 
 @snap[east span-60 text-center]
-<br>
+<br><br>
 ![LST July 2018](assets/img/lst_north_italy_july2018.png)
 <br>
 @size[20px](LST, July 2018 - Northern Italy.)
-<br>
 @size[20px](Note SUHI over Milan city.)
 @snapend
 
