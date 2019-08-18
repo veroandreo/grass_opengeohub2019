@@ -24,12 +24,14 @@ install.packages("raster")
 install.packages("rgrass7")
 install.packages("mapview")
 install.packages("biomod2")
+install.packages("sf")
 
 # Load libraries
 library(raster)
 library(rgrass7)
 library(mapview)
 library(biomod2)
+library(sf)
 
 
 #
@@ -42,7 +44,7 @@ use_sf()
 
 # Read vector layers
 Aa_pres <- readVECT("aedes_albopictus")
-Aa_abs <- readVECT("background_points")
+background <- readVECT("background_points")
 
 
 #
@@ -92,22 +94,25 @@ mapview(predictors[[1]]) + Aa_pres
 
 # Response variable
 n_pres <- length(Aa_pres@data[,1])
-n_abs <- length(Aa_abs@data[,1])
+n_backg <- length(background@data[,1])
  
 myRespName <- 'Aedes_albopictus'
 
 pres <- rep(1, n_pres)
-abs <- rep(0, n_abs)
-myResp <- c(pres,abs)
+backg <- rep(0, n_backg)
+myResp <- c(pres, backg)
 
-myRespXY <- rbind(cbind(Aa_pres@coords[,1],Aa_pres@coords[,2]), 
-				  cbind(Aa_abs@coords[,1],Aa_abs@coords[,2]))
+myRespXY <- rbind(cbind(Aa_pres@coords[,1], Aa_pres@coords[,2]), 
+				  cbind(background@coords[,1], background@coords[,2]))
+
 
 # Explanatory variables
 
 # Stack raster layers
-myExpl_r <- raster::stack(predictors)
+myExpl <- raster::stack(predictors)
 
+
+# All together
 myBiomodData <- BIOMOD_FormatingData(resp.var = myResp,
                                      expl.var = myExpl,
                                      resp.xy = myRespXY,
@@ -137,6 +142,7 @@ myBiomodModelOut <- BIOMOD_Modeling(
   do.full.models = FALSE,
   modeling.id = paste(myRespName,"FirstModeling",sep=""))
 
+# Inspect the model
 myBiomodModelOut
 
 
@@ -163,6 +169,7 @@ get_variables_importance(myBiomodModelOut)
 #
 
 
+# Set parameters for model projection
 myBiomodProj <- BIOMOD_Projection(
                 modeling.output = myBiomodModelOut, 
                 new.env = myExpl,                     
@@ -171,9 +178,10 @@ myBiomodProj <- BIOMOD_Projection(
                 compress = FALSE, 
                 build.clamping.mask = FALSE)
 
+# Obtain predictions
 mod_proj <- get_predictions(myBiomodProj)
 mod_proj
 
-# Plot predicted potential distribution
+# Plot predicted model
 plot(mod_proj, main = "Predicted potential distribution - RF")
 

@@ -229,61 +229,48 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @[398-403](Start RStudio from within GRASS GIS)
 
 
-+++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Install and load packages
++++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Within R...
 
-@[16-20](Install packages)
-@[22-26](Load packages)
-
-
-+++?code=code/grass_R_disease_ecology_code.r&lang=r&title=Initialize GRASS GIS
-
-@[34-41](Set parameters to start GRASS)
-@[43-50](Initialize GRASS GIS)
-
-
----?code=code/grass_R_disease_ecology_code.r&lang=r&title=Read vector and raster data
-
-@[58-60](Read vector data)
-@[62-71](Read raster data)
-
+@[22-27](Install packages)
+@[29-34](Load packages)
+@[42-43](Use sf to read vector data)
+@[45-47](Import *Ae. albopictus* and background points)
+@[55-56](Use sp to read raster data)
+@[58-73](List rasters by patterns)
+@[75-78](Concatenate raster map lists)
+@[80-84](Read raster maps)
+@[86-87](Quick visualization in mapview)
 
 +++
-> **Task**: Display raster maps and points in RStudio using **sf** and **mapview**
-
-
-+++
-![Mapview: LST + *A. albopictus* presence points](assets/img/mapview_LST_pres.png)
+![Mapview: LST + *A. albopictus* presence points]()
 
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Data formatting
 
-@[83-94](Response variable)
-@[96-104](Explanatory variables)
-
+@[95-106](Response variable)
+@[109-112](Explanatory variables)
+@[115-119](Pasting altogether)
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Run Random Forest model
 
-@[112-113](Default options)
-@[115-128](Run model)
-
-
-+++
-> **Task**: Explore the model output
+@[127-1280](Default options)
+@[130-143](Run model)
+@[145-146](Inspect the model)
 
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Model evaluation
 
-@[138-139](Extract all evaluation data)
-@[141-142](TSS: True Skill Statistics)
-@[144-145](ROC: Receiver-operator curve)
-@[147-148](Variable importance)
+@[154-155](Extract all evaluation data)
+@[157-158](TSS: True Skill Statistics)
+@[160-161](ROC: Receiver-operator curve)
+@[163-164](Variable importance)
 
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Model predictions
 
-@[156-162](Model projection settings)
-@[164-165](Obtain predictions from model)
-@[167-168](Plot predicted potential distribution)
+@[172-179](Model projection settings)
+@[181-183](Obtain predictions from model)
+@[185-186](Plot predicted potential distribution)
 
 
 +++
