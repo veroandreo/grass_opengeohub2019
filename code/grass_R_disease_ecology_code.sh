@@ -143,10 +143,13 @@ r.bioclim \
 t.rast.aggregate input=lst_daily_celsius \
   output=annual_spring_warming \
   basename=spring_warming \
+  suffix=gran \
   method=slope \
   granularity="1 years" \
-  where="strftime('%m',start_time)='02' or strftime('%m',start_time)='03' or strftime('%m', start_time)='04'" \
-  suffix=gran
+  where="strftime('%m',start_time)='02' or \
+         strftime('%m',start_time)='03' or \
+         strftime('%m', start_time)='04'"
+
 
 # Average spring warming
 t.rast.series input=annual_spring_warming \
@@ -160,10 +163,13 @@ t.rast.series input=annual_spring_warming \
 t.rast.aggregate input=lst_daily_celsius \
   output=annual_autumnal_cooling \
   basename=autumnal_cooling \
+  suffix=gran \
   method=slope \
   granularity="1 years" \
-  where="strftime('%m',start_time)='08' or strftime('%m',start_time)='09' or strftime('%m', start_time)='10'" \
-  suffix=gran
+  where="strftime('%m',start_time)='08' or \
+         strftime('%m',start_time)='09' or \
+         strftime('%m', start_time)='10'"
+
 
 # Average autumnal cooling
 t.rast.series input=annual_autumnal_cooling \
@@ -238,7 +244,7 @@ t.rast.list \
   count_tmean_higher20_lower30 \
   columns=name,start_time,end_time,min,max
 
-# Mean number of days with LSTmean >= 20 and <= 30
+# Average number of days with LSTmean >= 20 and <= 30
 t.rast.series input=count_tmean_higher20_lower30 \
   output=avg_count_tmean_higher20_lower30 \
   method=average
@@ -334,7 +340,8 @@ for i in `seq 1 $count` ; do
   t.rast.mapcalc input=mosq_cycle${cycle[$i-1]}_yearly \
     output=mosq_cycle${cycle[$i-1]}_yearly_clean \
     basename=mosq_clean_c${cycle[$i-1]} \
-    expression="if(mosq_cycle${cycle[$i-1]}_yearly == 3, ${cycle[$i-1]}, null())"
+    expression="if(mosq_cycle${cycle[$i-1]}_yearly == 3, \
+    ${cycle[$i-1]}, null())"
   
   # Duration of each mosquito generation
   
@@ -359,7 +366,8 @@ for i in `seq 1 $count` ; do
     input=mosq_min_day_cycle${cycle[$i-1]},mosq_max_day_cycle${cycle[$i-1]} \
     output=mosq_duration_cycle${cycle[$i-1]} \
     basename=mosq_duration_cycle${cycle[$i-1]} \
-    expression="mosq_max_day_cycle${cycle[$i-1]} - mosq_min_day_cycle${cycle[$i-1]} + 1"
+    expression="mosq_max_day_cycle${cycle[$i-1]} - \
+    mosq_min_day_cycle${cycle[$i-1]} + 1"
 
 done
 
@@ -368,14 +376,14 @@ done
 for i in `seq 1 5` ; do 
   g.list type=raster sep=comma pattern=mosq_clean_c*_${i}
   r.series \
-    input=`g.list type=raster sep=comma pattern=mosq_clean_c*_${i}` \
+    input=`g.list type=raster pattern=mosq_clean_c*_${i} sep=,` \
     output=mosq_generations_${i} \
     method=maximum
 done
 
 # Median number of generations per pixel
 r.series \
-  input=`g.list type=raster sep=comma pattern=mosq_generations_*` \
+  input=`g.list type=raster pattern=mosq_generations_* sep=,` \
   output=median_mosq_generations \
   method=median
 
@@ -383,14 +391,14 @@ r.series \
 for i in `seq 1 5` ; do 
   g.list type=raster sep=comma pattern=mosq_duration_cycle*_${i}
   r.series \
-    input=`g.list type=raster sep=comma pattern=mosq_duration_cycle*_${i}` \
+    input=`g.list type=raster pattern=mosq_duration_cycle*_${i} sep=,` \
     output=mosq_generation_median_duration_${i} \
     method=median
 done
 
 # Median duration of generations per pixel
 r.series \
-  input=`g.list type=raster sep=comma pattern=mosq_generation_median_duration_*` \
+  input=`g.list type=raster pattern=mosq_generation_median_duration_* sep=,` \
   output=median_mosq_generation_duration \
   method=median
 

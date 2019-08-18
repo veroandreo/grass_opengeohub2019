@@ -151,7 +151,6 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 ![LST July 2018](assets/img/lst_north_italy_july2018.png)
 <br>
 @size[20px](LST, July 2018 - Northern Italy.)
-@size[20px](Note SUHI over Milan city.)
 @snapend
 
 +++
@@ -176,10 +175,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 
 +++
-> **Task**: Display with different colors the GBIF records and the random points.
-
-<br>
-@img[span-80](assets/img/points_aedes_background.png)
+@img[span-70](assets/img/points_aedes_background.png)
 
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Create daily LST STRDS
@@ -199,35 +195,35 @@ Note:
 @[104-127](Long term monthly avg, min and max LST)
 @[129-130](Install r.bioclim)
 @[132-137](Estimate temperature related bioclimatic variables)
-@[140-149](Annual spring warming)
-@[151-154](Average spring warming)
-@[157-166](Annual autumnal cooling)
-@[168-171](Average autumnal cooling)
-@[174-177](Install r.seasons)
-@[179-186](Detect seasons: get map list per year)
-@[188-195](Detect mosquito season)
-@[197-205](Estimate length of mosquito season)
-@[207-216](Average length of mosquito season)
-@[219-226](Number of days with LSTmean >= 20 and <= 30)
-@[228-234](Count how many times per year the condition is met)
-@[236-239](Inspect values)
-@[241-244](Mean number of days with LSTmean >= 20 and <= 30)
-@[247-255](Number of consecutive days with LSTmean >= 35)
-@[257-262](Replace values by zero)
-@[264-270](Calculate consecutive days with LSTmean >= 35)
-@[272-274](Inspect values)
-@[276-279](Median number of consecutive days with LSTmean >= 35 (2014-2018))
-@[282-291](Accumulation of degree days)
-@[293-298](Get basic info and inspect values)
-@[301-308](Detection of mosquito generations)
-@[310-321](Identify generations)
-@[323-337](Extract areas that have full generations)
-@[339-362](Duration of each mosquito generation)
-@[367-374](Maximum number of generations per pixel per year)
-@[376-380](Median number of generations per pixel)
-@[382-389](Median duration of generations per pixel per year)
-@[391-395](Median duration of generations per pixel)
-@[398-403](Start RStudio from within GRASS GIS)
+@[140-151](Annual spring warming)
+@[154-157](Average spring warming)
+@[160-171](Annual autumnal cooling)
+@[174-177](Average autumnal cooling)
+@[180-183](Install r.seasons)
+@[185-192](Detect seasons: get map list per year)
+@[194-201](Detect mosquito season)
+@[203-211](Estimate length of mosquito season)
+@[213-222](Average length of mosquito season)
+@[225-232](Number of days with LSTmean >= 20 and <= 30)
+@[234-240](Count how many times per year the condition is met)
+@[242-245](Inspect values)
+@[247-250](Average number of days with LSTmean >= 20 and <= 30)
+@[253-261](Number of consecutive days with LSTmean >= 35)
+@[263-268](Replace values by zero)
+@[270-276](Calculate consecutive days with LSTmean >= 35)
+@[278-280](Inspect values)
+@[282-285](Median number of consecutive days with LSTmean >= 35 (2014-2018))
+@[288-297](Accumulation of degree days)
+@[299-304](Get basic info and inspect values)
+@[307-314-](Detection of mosquito generations)
+@[316-327](Identify generations)
+@[329-344](Extract areas that have full generations)
+@[348-370](Duration of each mosquito generation)
+@[375-382](Maximum number of generations per pixel per year)
+@[384-388](Median number of generations per pixel)
+@[390-397](Median duration of generations per pixel per year)
+@[399-403](Median duration of generations per pixel)
+@[406-413](Start RStudio from within GRASS GIS)
 
 Note:
     Show some plots, i.e., areas with full generations, 
