@@ -429,8 +429,8 @@ Verónica Andreo
 @snapend
 
 ---
-## The end! @fa[grin-beam-sweat fa-spin text-green fragment]
-
+## The end! @fa[grin-beam-sweat fa-2x text-green fragment]
+<br><br>
 
 @snap[south span-50]
 @size[18px](Presentation powered by)
