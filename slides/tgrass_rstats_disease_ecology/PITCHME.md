@@ -139,9 +139,10 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @snap[west span-40]
 <br>
 @ul[](false)
-- Reconstructed MODIS LST by [mundialis](https://www.mundialis.de/en/) based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
+- MODIS LST reconstructed by [mundialis](https://www.mundialis.de/en/) based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
 - Daily average LST (from reconstructed 4 MODIS overpasses)
 - 1 km spatial resolution
+- Converted to Celsius degrees
 @ulend
 <br><br>
 @snapend
@@ -243,7 +244,7 @@ Note:
 @[86-87](Quick visualization in mapview)
 
 +++
-![Mapview: LST + *A. albopictus* presence points]()
+![Mapview: LST + *A. albopictus* presence points](assets/img/aedes_envvar_mapview.png)
 
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Data formatting
@@ -252,34 +253,36 @@ Note:
 @[109-112](Explanatory variables)
 @[115-119](Pasting altogether)
 
----?code=code/grass_R_disease_ecology_code.r&lang=r&title=Run Random Forest model
+---?code=code/grass_R_disease_ecology_code.r&lang=r&title=MaxEnt model
 
-@[127-1280](Default options)
-@[130-143](Run model)
-@[145-146](Inspect the model)
-
-
----?code=code/grass_R_disease_ecology_code.r&lang=r&title=Model evaluation
-
-@[154-155](Extract all evaluation data)
-@[157-158](TSS: True Skill Statistics)
-@[160-161](ROC: Receiver-operator curve)
-@[163-164](Variable importance)
+@[127-132](Set options)
+@[134-146](Run model)
+@[148-149](Inspect the model)
+@[154-158](Extract all evaluation data)
+@[160-161](Accuracy)
+@[163-164](ROC: Receiver-operator curve)
+@[166-167](Variable importance)
 
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Model predictions
 
-@[172-179](Model projection settings)
-@[181-183](Obtain predictions from model)
-@[185-186](Plot predicted potential distribution)
+@[175-182](Model projection settings)
+@[184-186](Obtain predictions from model)
+@[188-190](Plot predicted potential distribution)
+@[192-193](Visualize in mapview)
+
++++
+![Predicted distribution with MaxEnt](assets/img/aedes_maxent_runs.png)
 
 
 +++
-![Predicted distribution with RF](assets/img/pred_distrib.png)
+> **Task**: Explore the algorithms available in `BIOMOD_Modeling()` and try with a different one. Compare assumptions and results. 
 
 
----
-> **Task**: Explore algorithms available in `BIOMOD_Modeling()` and try with a different one. Compare the results. 
+---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Write model predictions into GRASS GIS DB
+
+@[201-203](Export only one run)
+@[205-211](Export all MaxEnt runs)
 
 
 ---

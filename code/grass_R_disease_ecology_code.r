@@ -19,19 +19,19 @@
 #
 
 
-# Install packagess
-install.packages("raster")
+# Install packages
 install.packages("rgrass7")
+install.packages("raster")
+install.packages("sf")
 install.packages("mapview")
 install.packages("biomod2")
-install.packages("sf")
 
 # Load libraries
-library(raster)
 library(rgrass7)
+library(raster)
+library(sf)
 library(mapview)
 library(biomod2)
-library(sf)
 
 
 #
@@ -84,7 +84,7 @@ for (i in to_import){
 }
 
 # Quick visualization in mapview
-mapview(predictors[[1]]) + Aa_pres
+mapview(predictors[[16]]) + Aa_pres
 
 
 #
@@ -93,17 +93,17 @@ mapview(predictors[[1]]) + Aa_pres
 
 
 # Response variable
-n_pres <- length(Aa_pres@data[,1])
-n_backg <- length(background@data[,1])
+n_pres <- dim(Aa_pres)[1]
+n_backg <- dim(background)[1]
  
-myRespName <- 'Aedes_albopictus'
+myRespName <- 'Aedes.albopictus'
 
 pres <- rep(1, n_pres)
 backg <- rep(0, n_backg)
 myResp <- c(pres, backg)
 
-myRespXY <- rbind(cbind(Aa_pres@coords[,1], Aa_pres@coords[,2]), 
-				  cbind(background@coords[,1], background@coords[,2]))
+myRespXY <- rbind(st_coordinates(Aa_pres),
+		          st_coordinates(background))
 
 
 # Explanatory variables
@@ -124,23 +124,26 @@ myBiomodData <- BIOMOD_FormatingData(resp.var = myResp,
 #
 
 
-# Default options
-myBiomodOption <- BIOMOD_ModelingOptions()
+# Set options
+myBiomodOption <- BIOMOD_ModelingOptions(
+  MAXENT.Phillips = 
+    list( path_to_maxent.jar = "/home/veroandreo/software/maxent/maxent.jar",
+          lq2lqptthreshold = 100,
+          l2lqthreshold = 100))
 
 # Run model
 myBiomodModelOut <- BIOMOD_Modeling(
   myBiomodData,
-  models = c('RF'),  
+  models = c('MAXENT.Phillips'),  
   models.options = myBiomodOption,
-  NbRunEval=2,     
+  NbRunEval=5,     
   DataSplit=80,
-  Prevalence=0.5,
-  VarImport=3,
-  models.eval.meth = c('TSS','ROC'),
+  VarImport=10,
+  models.eval.meth = c('ROC','ACCURACY'),
   SaveObj = TRUE,
-  rescal.all.models = TRUE,
+  rescal.all.models = FALSE,
   do.full.models = FALSE,
-  modeling.id = paste(myRespName,"FirstModeling",sep=""))
+  modeling.id = paste(myRespName,"FirstModeling",sep="_"))
 
 # Inspect the model
 myBiomodModelOut
@@ -151,11 +154,11 @@ myBiomodModelOut
 #
 
 
-# Extract all evaluation data
+# Extract evaluation data
 myBiomodModelEval <- get_evaluations(myBiomodModelOut)
 
-# TSS: True Skill Statistics
-myBiomodModelEval["TSS","Testing.data","RF",,]
+# Accuracy
+myBiomodModelEval["ACCURACY","Testing.data",,,]
 
 # ROC: Receiver-operator curve
 myBiomodModelEval["ROC","Testing.data",,,]
@@ -183,5 +186,25 @@ mod_proj <- get_predictions(myBiomodProj)
 mod_proj
 
 # Plot predicted model
-plot(mod_proj, main = "Predicted potential distribution - RF")
+plot(mod_proj)
+plot(mod_proj[[4]], main = "Predicted potential distribution")
+
+# Use mapview for quick visualizations
+mapview(mod_proj[[4]]) + Aa_pres
+
+
+#
+# Optionally, write data back to GRASS GIS
+#
+
+
+# Only one layer
+g <- as(mod_proj[[4]], 'SpatialGridDataFrame')
+writeRAST(g, "maxent_albopictus", flags = "overwrite")
+
+# Export all MaxEnt runs
+for(i in seq_along(1:length(mod_proj@layers))){
+  writeRAST(as(mod_proj[[i]], 'SpatialGridDataFrame'), 
+            paste0("maxent_albopictus_", i, sep=""))
+}
 
