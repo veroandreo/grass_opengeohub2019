@@ -638,7 +638,7 @@ In the GRASS GIS terminal type:
 ---
 @snap[south span-50]
 @size[18px](Presentation powered by)
-<br>
 <a href="https://gitpitch.com/">
-<img src="assets/img/gitpitch_logo.png" width="20%"></a>
+<img src="assets/img/gitpitch_logo.png" width="30%"></a>
+<br>
 @snapend

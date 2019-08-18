@@ -303,5 +303,6 @@ Note:
 @snap[south span-50]
 @size[18px](Presentation powered by)
 <a href="https://gitpitch.com/">
-<img src="assets/img/gitpitch_logo.png" width="25%"></a>
+<img src="assets/img/gitpitch_logo.png" width="30%"></a>
+<br>
 @snapend

@@ -429,15 +429,12 @@ Verónica Andreo
 @snapend
 
 ---
-## The end! 
-
-<br>
-@fa[grin-beam-sweat fa-3x fa-spin text-green]
+## The end! @fa[grin-beam-sweat fa-3x fa-spin text-green fragment]
 
 
 @snap[south span-50]
 @size[18px](Presentation powered by)
-<br>
 <a href="https://gitpitch.com/">
-<img src="assets/img/gitpitch_logo.png" width="20%"></a>
+<img src="assets/img/gitpitch_logo.png" width="30%"></a>
+<br>
 @snapend

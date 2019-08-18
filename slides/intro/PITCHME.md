@@ -684,6 +684,7 @@ We should add some exercises, no??
 Markus Neteler
 <br>
 @css[bio-contact](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/MarkusNeteler">@MarkusNeteler</a>) 
+<br>
 @snapend
 
 @snap[east span-40 text-center]
@@ -692,11 +693,13 @@ Markus Neteler
 Verónica Andreo
 <br>
 @css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a>)
+<br>
 @snapend
 
 @snap[south span-50]
 @size[18px](Presentation powered by)
-<br>
 <a href="https://gitpitch.com/">
-<img src="assets/img/gitpitch_logo.png" width="20%"></a>
+<img src="assets/img/gitpitch_logo.png" width="30%"></a>
+<br>
+@snapend
 @snapend
