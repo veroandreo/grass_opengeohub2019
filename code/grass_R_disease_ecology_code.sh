@@ -73,11 +73,11 @@ t.create type=strds \
   temporaltype=absolute \
   output=lst_daily \
   title="Average Daily LST" \
-  description="Average daily LST - 2014-2018"
+  description="Average daily LST in C degrees - 2014-2018"
 
 # Get list of maps 
 g.list type=raster \
-  pattern="lst_201[4-8]*avg" \
+  pattern="lst_201*" \
   output=list_lst.txt
 
 # Register maps in strds  
@@ -88,12 +88,6 @@ t.register -i input=lst_daily \
 
 # Get info about the strds
 t.info input=lst_daily
-
-# Convert K to Celsius
-t.rast.algebra \
-  expression="lst_daily_celsius = lst_daily * 0.02 - 273.15" \
-  basename=lst \
-  suffix=gran
 
 
 #
@@ -107,19 +101,19 @@ t.rast.algebra \
 for i in `seq -w 1 12` ; do 
   
   # average
-  t.rast.series input=lst_daily_celsius \
+  t.rast.series input=lst_daily \
     method=average \
     where="strftime('%m', start_time)='${i}'" \
     output=lst_average_${i}
   
   # minimum
-  t.rast.series input=lst_daily_celsius \
+  t.rast.series input=lst_daily \
     method=minimum \
     where="strftime('%m', start_time)='${i}'" \
     output=lst_minimum_${i}
   
   # maximum
-  t.rast.series input=lst_daily_celsius \
+  t.rast.series input=lst_daily \
     method=maximum \
     where="strftime('%m', start_time)='${i}'" \
     output=lst_maximum_${i}  
@@ -140,7 +134,7 @@ r.bioclim \
 ## Spring warming
 
 # Annual spring warming: slope(daily Tmean february-march-april)
-t.rast.aggregate input=lst_daily_celsius \
+t.rast.aggregate input=lst_daily \
   output=annual_spring_warming \
   basename=spring_warming \
   suffix=gran \
@@ -149,7 +143,6 @@ t.rast.aggregate input=lst_daily_celsius \
   where="strftime('%m',start_time)='02' or \
          strftime('%m',start_time)='03' or \
          strftime('%m', start_time)='04'"
-
 
 # Average spring warming
 t.rast.series input=annual_spring_warming \
@@ -160,7 +153,7 @@ t.rast.series input=annual_spring_warming \
 ## Autumnal cooling
 
 # Annual autumnal cooling: slope(daily Tmean august-september-october)
-t.rast.aggregate input=lst_daily_celsius \
+t.rast.aggregate input=lst_daily \
   output=annual_autumnal_cooling \
   basename=autumnal_cooling \
   suffix=gran \
@@ -169,7 +162,6 @@ t.rast.aggregate input=lst_daily_celsius \
   where="strftime('%m',start_time)='08' or \
          strftime('%m',start_time)='09' or \
          strftime('%m', start_time)='10'"
-
 
 # Average autumnal cooling
 t.rast.series input=annual_autumnal_cooling \
@@ -186,7 +178,7 @@ g.extension extension=r.seasons
 for YEAR in `seq 2014 2018` ; do 
 
   # Get map list per year
-  t.rast.list -u lst_daily_celsius \
+  t.rast.list -u lst_daily \
     columns=name \
     where="strftime('%Y',start_time)='${YEAR}'" \
     output=list_${YEAR}.txt
@@ -210,7 +202,7 @@ for YEAR in `seq 2014 2018` ; do
  
 done
 
-# Mean length of mosquito season
+# Average length of mosquito season
 r.series \
   input=`g.list type=raster pattern=mosq_season_length*1 separator=,` \
   output=avg_mosq_season_1_length \
@@ -226,8 +218,8 @@ r.series \
 
 # Keep only pixels meeting the condition
 t.rast.algebra -n \
-  expression="tmean_higher20_lower30 = if(lst_daily_celsius >= 20.0 && \
-  lst_daily_celsius <= 30.0, 1, null())" \
+  expression="tmean_higher20_lower30 = if(lst_daily >= 20.0 && \
+  lst_daily <= 30.0, 1, null())" \
   basename=tmean_higher20_lower30 \
   suffix=gran 
 
@@ -270,8 +262,8 @@ t.rast.mapcalc \
 # Calculate consecutive days with LSTmean >= 35
 t.rast.algebra \
   expression="higher35_consec_days = annual_mask_0 {+,contains,l} \
-  if(lst_daily_celsius >= 35.0 && lst_daily_celsius[-1] >= 35.0 || \
-  lst_daily_celsius[1] >= 35.0 && lst_daily_celsius >= 35.0, 1, 0)" \
+  if(lst_daily >= 35.0 && lst_daily[-1] >= 35.0 || \
+  lst_daily[1] >= 35.0 && lst_daily >= 35.0, 1, 0)" \
   basename=higher35_days \
   suffix=gran
 
@@ -288,7 +280,7 @@ t.rast.series input=higher35_consec_days \
 ## Growing Degree Days
 
 # Accumulation of degree days
-t.rast.accumulate -n input=lst_daily_celsius \
+t.rast.accumulate -n input=lst_daily \
   output=mosq_daily_bedd \
   basename=mosq_daily_bedd \
   suffix=gran \
@@ -374,7 +366,7 @@ done
 
 # Maximum number of generations per pixel per year
 for i in `seq 1 5` ; do 
-  g.list type=raster sep=comma pattern=mosq_clean_c*_${i}
+  g.list type=raster sep=, pattern=mosq_clean_c*_${i}
   r.series \
     input=`g.list type=raster pattern=mosq_clean_c*_${i} sep=,` \
     output=mosq_generations_${i} \
@@ -389,7 +381,7 @@ r.series \
 
 # Median duration of generations per year per pixel
 for i in `seq 1 5` ; do 
-  g.list type=raster sep=comma pattern=mosq_duration_cycle*_${i}
+  g.list type=raster sep=, pattern=mosq_duration_cycle*_${i}
   r.series \
     input=`g.list type=raster pattern=mosq_duration_cycle*_${i} sep=,` \
     output=mosq_generation_median_duration_${i} \
