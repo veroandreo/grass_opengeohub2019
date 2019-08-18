@@ -112,6 +112,10 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @olend
 @snapend
 
+@snap[south span-100]
+@size[20px](Check <a href="https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_lst#/">Analyzing space-time satellite data with GRASS GIS for environmental monitoring</a> presentation for an intro to time series in GRASS GIS.)
+@snapend
+
 
 ---
 @snap[north span-100]
@@ -161,6 +165,10 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 - [eu_laea location with LST mapset](https://apps.mundialis.de/workshops/geostat2019/grassdata_eu_laea_northern_italy_LST_1km_daily_celsius_reconstructed.zip): download and unzip within your grassdata folder
 - [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.sh)
 - [R code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.r)
+
+
+---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
+## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink fa-spin]
 
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Importing species records and creating random background points

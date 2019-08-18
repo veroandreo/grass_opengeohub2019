@@ -14,6 +14,34 @@ Verónica Andreo
 
 
 ---
+@title[About the trainer]
+
+@snap[west]
+@css[bio-about](PhD in Biology<br>MSc in Remote Sensing and GIS<br>Researcher @ Tropical Medicine Institute<br>Applications of RS & GIS for disease ecology<br><br><i>Keywords:</i> RS, GIS, Time series, SDM,<br>Disease Ecology, Rodents, Hantavirus)
+<br><br><br>
+@css[bio-about](<a href="https://grass.osgeo.org/">GRASS GIS</a> Dev Team<br><a href="https://www.osgeo.org/">OSGeo</a> Charter member<br>FOSS4G enthusiast and advocate)
+@snapend
+
+@snap[east]
+@css[bio-headline](About me)
+<br><br>
+![myphoto](assets/img/vero_round_small.png)
+<br><br>
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a> @fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
+@snapend
+
+
+---
+@title[First FOSS GIS with time support]
+
+@color[#8EA33B](GRASS GIS) is **the first FOSS GIS** that incorporated
+capabilities to **manage, analyze, process and visualize spatio-temporal
+data**, as well as the temporal relationships among time series.
+<br><br>
+@fa[layer-group fa-3x text-green]
+
+
++++
 @title[The TGRASS framework]
 
 ## The TGRASS framework
@@ -118,8 +146,29 @@ STDS in each mapset.
 @olend
 @snapend
 
-
 ---
+@title[Sample location]
+
+@snap[north span-100]
+### Sample location: North Carolina
+@snapend
+
+@snap[west span-60]
+<br>
+@ul[](false)
+- Download the [**North Carolina full dataset**](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip)
+- Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
+- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`
+@ulend
+@snapend
+
+@snap[east span-40]
+<br><br>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-92.32910156250001%2C31.297327991404266%2C-73.98193359375001%2C38.89103282648846&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/35.183/-83.156">View Larger Map</a></small>
+@snapend
+
+
++++
 @title[Sample mapset and code]
 
 ### Data for the session

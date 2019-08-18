@@ -129,6 +129,25 @@ STDS in each mapset.
 
 
 ---
+@snap[north-west span-60]
+<h3>Overview</h3>
+@snapend
+
+@snap[west span-100]
+<br><br>
+@ol[](false)
+- Data for the session
+- Create time series and register maps
+- Convert from K to Celsius
+- Temporal operations
+- Temporal aggregations
+- Climatologies and anomalies
+- Zonal statistics and SUHI
+@olend
+@snapend
+
+
+---
 @title[Sample location]
 
 @snap[north span-100]
