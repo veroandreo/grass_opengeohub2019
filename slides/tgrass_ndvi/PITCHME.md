@@ -235,7 +235,7 @@ Note:
 - 4  Estimated  From MODIS historic time series 
 
 
----?code=code/ndvi_time_series_code.sh&lang=bash&title=Use of reliability band
++++?code=code/ndvi_time_series_code.sh&lang=bash&title=Use of reliability band
 
 @[103-108](*nix - Keep only best quality pixels)
 @[110-115](Windows - Keep only best quality pixels)
@@ -463,6 +463,29 @@ Hints: [t.rast.list](https://grass.osgeo.org/grass76/manuals/t.rast.list.html) a
 
 
 ---
+@title[Useful resources]
+
+## Other (very) useful resources
+
+- [Temporal data processing wiki](https://grasswiki.osgeo.org/wiki/Temporal_data_processing)
+- [GRASS GIS and R for time series processing wiki](https://grasswiki.osgeo.org/wiki/Temporal_data_processing/GRASS_R_raster_time_series_processing)
+- [GRASS GIS temporal workshop at NCSU](http://ncsu-geoforall-lab.github.io/grass-temporal-workshop/)
+- [GRASS GIS workshop held in Jena 2018](http://training.gismentors.eu/grass-gis-workshop-jena-2018/index.html)
+- [GRASS GIS course IRSAE 2018](http://training.gismentors.eu/grass-gis-irsae-winter-course-2018/index.html)
+- [GRASS GIS course in Argentina 2018](https://gitlab.com/veroandreo/curso-grass-gis-rioiv)
+
+
+---
+@title[References]
+
+## References
+
+- Gebbert, S., Pebesma, E. (2014). *A temporal GIS for field based environmental modeling*. Environmental Modelling & Software, 53, 1-12. [DOI](https://doi.org/10.1016/j.envsoft.2013.11.001)
+- Gebbert, S., Pebesma, E. (2017). *The GRASS GIS temporal framework*. International Journal of Geographical Information Science 31, 1273-1292. [DOI](http://dx.doi.org/10.1080/13658816.2017.1306862)
+- Gebbert, S., Leppelt, T. and Pebesma, E. (2019). *A Topology Based Spatio-Temporal Map Algebra for Big Data Analysis*. Data, 4, 86. [DOI](https://doi.org/10.3390/data4020086)
+
+
+---
 @snap[north span-100]
 <br>
 **Thanks for your attention!!**
@@ -476,6 +499,7 @@ Verónica Andreo
 @css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
 <br><br>
 @snapend
+
 
 ---
 ## The end! @fa[grin-beam-sweat fa-2x text-green fragment]

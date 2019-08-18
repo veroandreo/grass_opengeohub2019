@@ -302,9 +302,42 @@ Note:
 
 
 ---
-**Thanks for your attention!!**
+@title[Useful resources]
 
-![GRASS GIS logo](assets/img/grass_logo_alphab.png)
+## Other (very) useful resources
+
+- [Temporal data processing wiki](https://grasswiki.osgeo.org/wiki/Temporal_data_processing)
+- [GRASS GIS and R for time series processing wiki](https://grasswiki.osgeo.org/wiki/Temporal_data_processing/GRASS_R_raster_time_series_processing)
+- [GRASS GIS temporal workshop at NCSU](http://ncsu-geoforall-lab.github.io/grass-temporal-workshop/)
+- [GRASS GIS workshop held in Jena 2018](http://training.gismentors.eu/grass-gis-workshop-jena-2018/index.html)
+- [GRASS GIS course IRSAE 2018](http://training.gismentors.eu/grass-gis-irsae-winter-course-2018/index.html)
+- [GRASS GIS course in Argentina 2018](https://gitlab.com/veroandreo/curso-grass-gis-rioiv)
+
+
+---
+@title[References]
+
+## References
+
+- Gebbert, S., Pebesma, E. (2014). *A temporal GIS for field based environmental modeling*. Environmental Modelling & Software, 53, 1-12. [DOI](https://doi.org/10.1016/j.envsoft.2013.11.001)
+- Gebbert, S., Pebesma, E. (2017). *The GRASS GIS temporal framework*. International Journal of Geographical Information Science 31, 1273-1292. [DOI](http://dx.doi.org/10.1080/13658816.2017.1306862)
+- Gebbert, S., Leppelt, T. and Pebesma, E. (2019). *A Topology Based Spatio-Temporal Map Algebra for Big Data Analysis*. Data, 4, 86. [DOI](https://doi.org/10.3390/data4020086)
+
+
+---
+@snap[north span-100]
+<br>
+**Thanks for your attention!!**
+@snapend
+
+@snap[south span-60]
+@img[about-team-pic span-30](assets/img/vero_round_small.png)
+<br>
+Verónica Andreo
+<br>
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
+<br><br>
+@snapend
 
 
 ---

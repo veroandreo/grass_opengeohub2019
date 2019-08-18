@@ -647,11 +647,19 @@ In the GRASS GIS terminal type:
 
 
 ---
-@title[Thanks]
-
+@snap[north span-100]
+<br>
 **Thanks for your attention!!**
+@snapend
 
-![GRASS GIS logo](assets/img/grass_logo_alphab.png)
+@snap[south span-60]
+@img[about-team-pic span-30](assets/img/vero_round_small.png)
+<br>
+Verónica Andreo
+<br>
+@css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
+<br><br>
+@snapend
 
 
 ---
