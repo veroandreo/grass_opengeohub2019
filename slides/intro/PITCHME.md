@@ -610,11 +610,18 @@ DOI:[10.5281/zenodo.2631917](https://doi.org/10.5281/zenodo.2631917)
 
 +++
 If you are more curious...
+<br>
 - Link to source code and history in each module manual page, eg., 
 [t.rast.algebra](https://grass.osgeo.org/grass76/manuals/t.rast.algebra.html)
 
 <br> 
 @img[span-85](assets/img/source_code_link.png)
+
+
+---
+## QUESTIONS?
+
+<img src="assets/img/gummy-question.png" width="45%">
 
 
 ---
@@ -624,7 +631,7 @@ If you are more curious...
 - Neteler, M., Bowman, M.H., Landa, M. and Metz, M. (2012): *GRASS GIS: a multi-purpose Open Source GIS*. Environmental Modelling & Software, 31: 124-130 [DOI](http://dx.doi.org/10.1016/j.envsoft.2011.11.014)
 
 
-+++
+---
 ## Other (very) useful links
 
 - [GRASS intro workshop held at NCSU](https://ncsu-osgeorel.github.io/grass-intro-workshop/)
@@ -635,19 +642,16 @@ If you are more curious...
 
 
 ---
-## QUESTIONS?
+**TO BE DECIDED**
 
-<img src="assets/img/gummy-question.png" width="45%">
+<br>
+- add some exercises as in: https://gitpitch.com/veroandreo/grass-gis-conae/master?p=exercises/01_getting_familiar&grs=gitlab#/11
+  - open grass
+  - display raster and vector maps
+  - set the region
+  - set a mask
 
-
----
-
-We should add some exercises, no??
-
-- open grass
-- display raster and vector maps
-- set the region
-- set a mask
+- or... link to MN's gesotat2018 presentation
 
 
 ---
