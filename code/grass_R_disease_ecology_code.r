@@ -189,9 +189,6 @@ mod_proj
 plot(mod_proj)
 plot(mod_proj[[4]], main = "Predicted potential distribution")
 
-# Use mapview for quick visualizations
-mapview(mod_proj[[4]]) + Aa_pres
-
 
 #
 # Optionally, write data back to GRASS GIS

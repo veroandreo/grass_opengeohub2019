@@ -242,7 +242,7 @@ t.rast.series input=count_tmean_higher20_lower30 \
   method=average
 
 
-## Number of consecutive days with LSTmean >= 35
+## Number of consecutive days with LSTmean >= 33
 
 # Create annual mask
 t.rast.aggregate input=lst_daily \
@@ -259,11 +259,11 @@ t.rast.mapcalc \
   expression="if(annual_mask, 0)" \
   basename=annual_mask_0
 
-# Calculate consecutive days with LSTmean >= 35
+# Calculate consecutive days with LSTmean >= 33
 t.rast.algebra \
   expression="higher35_consec_days = annual_mask_0 {+,contains,l} \
-  if(lst_daily >= 35.0 && lst_daily[-1] >= 35.0 || \
-  lst_daily[1] >= 35.0 && lst_daily >= 35.0, 1, 0)" \
+  if(lst_daily >= 33.0 && lst_daily[-1] >= 33.0 || \
+  lst_daily[1] >= 33.0 && lst_daily >= 33.0, 1, 0)" \
   basename=higher35_days \
   suffix=gran
 
@@ -271,7 +271,7 @@ t.rast.algebra \
 t.rast.list input=higher35_consec_days \
   columns=name,start_time,end_time,min,max
 
-# Median number of consecutive days with LSTmean >= 35 (2014-2018)
+# Median number of consecutive days with LSTmean >= 33
 t.rast.series input=higher35_consec_days \
   output=median_higher35_consec_days \
   method=median

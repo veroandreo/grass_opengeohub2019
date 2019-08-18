@@ -32,7 +32,6 @@ Verónica Andreo
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
-
 ### GRASS and @fab[r-project text-12] for disease ecology
 
 
@@ -63,7 +62,7 @@ GRASS GIS and @fab[r-project text-12] can be used together in two ways:
 
 +++
 - Using @color[#8EA33B](**R within a GRASS GIS session**), i.e. starting R (or RStudio) from the GRASS GIS terminal
-<br>
+<br><br>
   - we do not need to initialize GRASS with `initGRASS()`, just type `R` or `rstudio &` in the GRASS GIS terminal
   - we access GRASS GIS funtionalities and database through `execGRASS()`
   - we use `readVECT()`, `readRAST()` to read data from GRASS DB to do analysis and plots in R
@@ -72,14 +71,14 @@ GRASS GIS and @fab[r-project text-12] can be used together in two ways:
 
 +++
 - Using @color[#8EA33B](**GRASS GIS within an R session**), i.e. we connect to GRASS GIS database from within R (or RStudio).
-<br>
+<br><br>
   - we need to start GRASS GIS with `initGRASS()` (usually by creating a throw away location)
   - we access GRASS GIS funtionalities through `execGRASS()` (usually to apply them on data outside GRASS DB)
 
 
 +++
 For more detailed examples check:
-<br>
+<br><br>
 - [R and GRASS](https://gitpitch.com/veroandreo/curso-grass-gis-rioiv/master?p=slides/06_R_grass&grs=gitlab#/4) presentation
 - [Example of GRASS - R for raster time series](https://grasswiki.osgeo.org/wiki/Temporal_data_processing/GRASS_R_raster_time_series_processing) wiki
 
@@ -92,12 +91,12 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
-
 ## Hands-on to space-time analysis for disease ecology with GRASS GIS and @fab[r-project text-12]
 
 
 ---
 @snap[north-west span-60]
+<br>
 ### Overview
 @snapend
 
@@ -140,7 +139,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 <br>
 @ul[](false)
 - MODIS LST reconstructed by [mundialis](https://www.mundialis.de/en/) based on [Metz et al. 2017](https://www.mdpi.com/2072-4292/9/12/1333/htm)
-- Daily average LST (from reconstructed 4 MODIS overpasses)
+- Daily average LST
 - 1 km spatial resolution
 - Converted to Celsius degrees
 @ulend
@@ -154,12 +153,12 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @size[20px](LST, July 2018 - Northern Italy.)
 @snapend
 
-+++
 
++++
 ### @fa[download text-green] get sample location and code @fa[download text-green]
 
 <br>
-- [eu_laea location with LST mapset](): download and unzip within your grassdata folder
+- [eu_laea location with LST mapset](https://apps.mundialis.de/workshops/geostat2019/grassdata_eu_laea_northern_italy_LST_1km_daily_celsius_reconstructed.zip): download and unzip within your grassdata folder
 - [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.sh)
 - [R code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.r)
 
@@ -192,7 +191,7 @@ Note:
 
 +++?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Generate environmental variables from LST STRDS
 
-@[98-121](Long term monthly avg, min and max LST)
+@[100-121](Long term monthly avg, min and max LST)
 @[123-124](Install r.bioclim)
 @[126-131](Estimate temperature related bioclimatic variables)
 @[134-145](Annual spring warming)
@@ -218,7 +217,8 @@ Note:
 @[299-306](Detection of mosquito generations)
 @[308-319](Identify generations)
 @[321-336](Extract areas that have full generations)
-@[340-362](Duration of each mosquito generation)
+@[338-354](Beginning and End of each mosquito generation)
+@[356-364](Duration of each mosquito generation)
 @[367-374](Maximum number of generations per pixel per year)
 @[376-380](Median number of generations per pixel)
 @[382-389](Median duration of generations per pixel per year)
@@ -243,6 +243,7 @@ Note:
 @[80-84](Read raster maps)
 @[86-87](Quick visualization in mapview)
 
+
 +++
 ![Mapview: LST + *A. albopictus* presence points](assets/img/aedes_envvar_mapview.png)
 
@@ -253,12 +254,13 @@ Note:
 @[109-112](Explanatory variables)
 @[115-119](Pasting altogether)
 
+
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=MaxEnt model
 
 @[127-132](Set options)
 @[134-146](Run model)
 @[148-149](Inspect the model)
-@[154-158](Extract all evaluation data)
+@[152-158](Extract all evaluation data)
 @[160-161](Accuracy)
 @[163-164](ROC: Receiver-operator curve)
 @[166-167](Variable importance)
@@ -269,7 +271,7 @@ Note:
 @[175-182](Model projection settings)
 @[184-186](Obtain predictions from model)
 @[188-190](Plot predicted potential distribution)
-@[192-193](Visualize in mapview)
+
 
 +++
 ![Predicted distribution with MaxEnt](assets/img/aedes_maxent_runs.png)
@@ -281,8 +283,8 @@ Note:
 
 ---?code=code/grass_R_disease_ecology_code.r&lang=r&title=Write model predictions into GRASS GIS DB
 
-@[201-203](Export only one run)
-@[205-211](Export all MaxEnt runs)
+@[193-200](Export only one MaxEnt run)
+@[202-208](Export all MaxEnt runs)
 
 
 ---
