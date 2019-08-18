@@ -683,19 +683,19 @@ If you are more curious...
 @snapend
 
 @snap[west span-40 text-center]
+<br>
 @img[about-team-pic span-35](assets/img/markus_round.png)
 <br>
 Markus Neteler
-<br>
 @css[bio-contact](@fa[github pad-fa] <a href="https://github.com/neteler/">neteler</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/MarkusNeteler">@MarkusNeteler</a>) 
 <br>
 @snapend
 
 @snap[east span-40 text-center]
+<br>
 @img[about-team-pic span-35](assets/img/vero_round_small.png)
 <br>
 Verónica Andreo
-<br>
 @css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a>)
 <br>
 @snapend
