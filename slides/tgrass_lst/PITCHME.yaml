@@ -76,3 +76,10 @@ slide-number : true
 #
 
 mathjax : TeX-AMS_HTML-full
+
+#
+# Loading
+#
+
+eager-loading : true
+

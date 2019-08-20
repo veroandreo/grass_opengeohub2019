@@ -69,3 +69,9 @@ layout : center
 
 transition : none
 slide-number : true 
+
+#
+# Loading
+#
+
+eager-loading : true
