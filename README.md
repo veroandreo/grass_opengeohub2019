@@ -63,7 +63,8 @@ For a quick-start guide, see: https://live.osgeo.org/en/quickstart/osgeolive_qui
 * [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html): Extracts seasons from a time series.
 * [r.regression.series](https://grass.osgeo.org/grass7/manuals/addons/r.regression.series.html): Calculates linear regression parameters between two time series.
 * [v.strds.stats](https://grass.osgeo.org/grass7/manuals/addons/v.strds.stats.html): Estimates zonal statistics from space-time raster datasets based on a polygon vector map.
-* [v.in.pygbif](https://grass.osgeo.org/grass76/manuals/addons/v.in.pygbif.html): Searches and imports [GBIF](https://www.gbif.org/) species distribution data. it requires [pygbif](https://pygbif.readthedocs.io/en/stable/) library.
+* [v.in.pygbif](https://grass.osgeo.org/grass7/manuals/addons/v.in.pygbif.html): Searches and imports [GBIF](https://www.gbif.org/) species distribution data. it requires [pygbif](https://pygbif.readthedocs.io/en/stable/) library.
+* [r.bioclim](https://grass.osgeo.org/grass7/manuals/addons/r.bioclim.html): Calcuates bioclimatic indices.
 
 Install with `g.extension extension=name_of_addon`
 
@@ -72,17 +73,21 @@ Install with `g.extension extension=name_of_addon`
 * [North Carolina location (full dataset, 150Mb)](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip): download and unzip within `$HOME/grassdata`.
 * [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_lst.zip?inline=false): download and unzip within the North Carolina location in `$HOME/grassdata/nc_spm_08_grass7`.
 * [modis_ndvi mapset (15 Mb)](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false): download and unzip within the North Carolina location in `$HOME/grassdata/nc_spm_08_grass7`.
+* [italy_lst](): download and unzip within `$HOME/grassdata`.
 
 Your `grassdata` folder should look like this:
 
 ```
   grassdata/
-   ├── nc_spm_08_grass7
-     ├── landsat
-     ├── modis_lst
-     ├── modis_ndvi
-     ├── PERMANENT
-     └── user1
+  ├── eu_laea
+  │   ├── italy_lst
+  │   └── PERMANENT
+  └── nc_spm_08_grass7
+      ├── landsat
+      ├── modis_lst
+      ├── modis_ndvi
+      ├── PERMANENT
+      └── user1
 ```
 
 ## The trainer
