@@ -12,9 +12,9 @@
 
 We will use **GRASS GIS 7.6.1** (current stable version). It can be installed either 
 through standalone installers/binaries or through OSGeo-Live (which includes all
-OSGeo software and packages). See the 
+OSGeo software and packages). See this 
 [**Installation guide**](https://gitpitch.com/veroandreo/grass-gis-conae/master?p=slides/00_installation&grs=gitlab) 
-presentation for details.
+for details (Follow only the GRASS GIS part).
 
 
 ### Standalone installers for different OS:
@@ -38,7 +38,7 @@ Install GRASS GIS 7.6.1 from the "unstable" package repository:
 ```
 sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 sudo apt-get update
-sudo apt-get install grass
+sudo apt-get install grass grass-gui grass-dev
 ```
 
 ##### Fedora, openSuSe Linux

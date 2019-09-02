@@ -133,7 +133,6 @@ A bit of (geek) GRASS GIS history...
 ---
 @snap[midpoint span-100]
 Well, except for this... @fa[flushed text-green fa-2x fragment]
-<br><br>
 @img[span-55](assets/img/start_screen1.png)
 @snapend
 
@@ -245,11 +244,11 @@ or from github (or similar repositories) using
 @snap[west]
 The @color[#8EA33B](**computational region**) is the *actual setting of the region 
 boundaries and the actual raster resolution*.
-<br><br>
+<br>
 The @color[#8EA33B](**computational region**) can be set and changed by means of
 [g.region](https://grass.osgeo.org/grass76/manuals/g.region.html) to the
 extent of a vector map, a raster map or manually to some area of interest. 
-<br><br>
+<br>
 *Output raster maps* will have their extent and resolution equal to
 those of the current computational region, while vector maps are 
 always considered in their original extent.
@@ -642,47 +641,12 @@ If you are more curious...
 
 
 ---
-**TO BE DECIDED**
-
-<br>
-- add some exercises as in: https://gitpitch.com/veroandreo/grass-gis-conae/master?p=exercises/01_getting_familiar&grs=gitlab#/11
-  - open grass
-  - display raster and vector maps
-  - set the region
-  - set a mask
-
-- or... link to MN's gesotat2018 presentation
-
-
----
-@title[Sample Dataset]
-
-@snap[north span-100]
-### Sample location: North Carolina
-@snapend
-
-@snap[west span-60]
-<br>
-@ul[](false)
-- Download the [**North Carolina full dataset**](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip)
-- Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
-- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`, the path should then look like `$HOME/grassdata/nc_spm_08_grass7`
-@ulend
-@snapend
-
-@snap[east span-40]
-<br><br>
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-92.32910156250001%2C31.297327991404266%2C-73.98193359375001%2C38.89103282648846&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/35.183/-83.156">View Larger Map</a></small>
-@snapend
-
-
----
 @snap[north span-100]
 <br>
 ### Thanks for your attention!!
 @snapend
 
-@snap[west span-40 text-center]
+@snap[west span-45 text-center]
 <br>
 @img[about-team-pic span-35](assets/img/markus_round.png)
 <br>
@@ -691,7 +655,7 @@ Markus Neteler
 <br>
 @snapend
 
-@snap[east span-40 text-center]
+@snap[east span-45 text-center]
 <br>
 @img[about-team-pic span-35](assets/img/vero_round_small.png)
 <br>
@@ -700,10 +664,19 @@ Verónica Andreo
 <br>
 @snapend
 
+
+---
+Move on to:
+<br><br>
+https://neteler.gitlab.io/grass-gis-analysis/
+<br><br>
+for an intro hands-on session with GRASS GIS
+
+
 @snap[south span-50]
 @size[18px](Presentation powered by)
 <a href="https://gitpitch.com/">
 <img src="assets/img/gitpitch_logo.png" width="30%"></a>
 <br>
 @snapend
-@snapend
+
