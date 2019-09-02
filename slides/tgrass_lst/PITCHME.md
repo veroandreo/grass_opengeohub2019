@@ -160,7 +160,7 @@ STDS in each mapset.
 - Download the [**North Carolina location**](https://github.com/veroandreo/grass_opengeohub2019/raw/master/data/nc_basic_ogh_2019.zip)
 - Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
 - Unzip the file `nc_basic_ogh_2019.zip` within `grassdata`
-- Download the [script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh) to follow the session
+- Download the [GRASS script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh) to follow the session
 @ulend
 @snapend
 
