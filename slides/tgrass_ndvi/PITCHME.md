@@ -150,7 +150,7 @@ STDS in each mapset.
 @title[Sample location and code]
 
 @snap[north span-100]
-### Ad-hoc sample location: North Carolina
+### Sample location: North Carolina
 @snapend
 
 @snap[west span-60]
@@ -308,7 +308,7 @@ Note:
 @[192-193](Install r.hants extension)
 @[195-200](*nix - List maps and gap-fill with r.hants)
 @[202-206](Windows - List maps and gap-fill with r.hants)
-@[211-223](Patch original and gapfilled maps)
+@[208-223](Patch original and gapfilled maps)
 @[225-229](Create time series with patched data)
 @[231-238](List and register maps in time series)
 @[240-241](Print time series info)
@@ -360,9 +360,8 @@ Note:
 > @fa[tasks] **Task**: Associate max and min LST with max and min NDVI, and max and min LST dates with max and min NDVI dates. 
 
 <br>
-@snap[south-east span-50]
-@fa[lightbulb]
-Hints: [g.mapsets](https://grass.osgeo.org/grass76/manuals/g.mapsets.html) and [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
+@snap[south-east span-60]
+@fa[lightbulb] Hints: [g.mapsets](https://grass.osgeo.org/grass76/manuals/g.mapsets.html) and [r.covar](https://grass.osgeo.org/grass76/manuals/r.covar.html)
 @snapend
 
 
@@ -381,8 +380,7 @@ Hints: [g.mapsets](https://grass.osgeo.org/grass76/manuals/g.mapsets.html) and [
 
 <br>
 @snap[south-east span-50]
-@fa[lightbulb]
-Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html)
+@fa[lightbulb] Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html)
 @snapend
 
 
@@ -398,8 +396,7 @@ Hint: [t.rast.series](https://grass.osgeo.org/grass76/manuals/t.rast.series.html
 
 <br>
 @snap[south-east span-60]
-@fa[lightbulb]
-Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) manual page
+@fa[lightbulb] Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) manual page
 @snapend
 
 
@@ -432,8 +429,7 @@ Check [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html) 
 
 <br>
 @snap[south-east span-60]
-@fa[lightbulb]
-Hints: [t.rast.list](https://grass.osgeo.org/grass76/manuals/t.rast.list.html) and [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html)
+@fa[lightbulb] Hints: [t.rast.list](https://grass.osgeo.org/grass76/manuals/t.rast.list.html) and [g.gui.tplot](https://grass.osgeo.org/grass76/manuals/g.gui.tplot.html)
 @snapend
 
 

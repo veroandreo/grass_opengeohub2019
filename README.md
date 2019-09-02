@@ -60,14 +60,18 @@ For a quick-start guide, see: https://live.osgeo.org/en/quickstart/osgeolive_qui
 ### GRASS GIS Add-ons that will be used during the course
 
 * [i.modis](https://grass.osgeo.org/grass7/manuals/addons/i.modis.html): Toolset to download and process MODIS products. It requires [pyModis](http://www.pymodis.org/info.html#how-to-install-pymodis) library.
+* [v.strds.stats](https://grass.osgeo.org/grass7/manuals/addons/v.strds.stats.html): Estimates zonal statistics from space-time raster datasets based on a polygon vector map.
 * [r.hants](https://grass.osgeo.org/grass7/manuals/addons/r.hants.html): Gap filling with Harmonic Analysis of Time Series (HANTS) method.
 * [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html): Extracts seasons from a time series.
 * [r.regression.series](https://grass.osgeo.org/grass7/manuals/addons/r.regression.series.html): Calculates linear regression parameters between two time series.
-* [v.strds.stats](https://grass.osgeo.org/grass7/manuals/addons/v.strds.stats.html): Estimates zonal statistics from space-time raster datasets based on a polygon vector map.
-* [v.in.pygbif](https://grass.osgeo.org/grass7/manuals/addons/v.in.pygbif.html): Searches and imports [GBIF](https://www.gbif.org/) species distribution data. it requires [pygbif](https://pygbif.readthedocs.io/en/stable/) library.
+* [v.in.pygbif](https://grass.osgeo.org/grass7/manuals/addons/v.in.pygbif.html): Searches and imports [GBIF](https://www.gbif.org/) species distribution data. It requires [pygbif](https://pygbif.readthedocs.io/en/stable/) library.
 * [r.bioclim](https://grass.osgeo.org/grass7/manuals/addons/r.bioclim.html): Calcuates bioclimatic indices.
 
 Install with `g.extension extension=name_of_addon`
+
+## Other software
+
+We will use the software MaxEnt for the tutorial related to disease ecology. The software can be downloaded from: https://biodiversityinformatics.amnh.org/open_source/maxent/
 
 ## Data
 
@@ -92,9 +96,9 @@ In the end, your `grassdata` folder should look like this:
 
 ## The trainer
 
-**Verónica Andreo** is a researcher for [CONICET](http://www.conicet.gov.ar/?lan=en)
+[**Verónica Andreo**](https://veroandreo.gitlab.io/) is a researcher for [CONICET](http://www.conicet.gov.ar/?lan=en)
 working at the Argentinean Space Agency [(CONAE)](http://ig.conae.unc.edu.ar/)
-in Cordoba, Argentina. Her main interests are remote sensing and GIS tools
+in Córdoba, Argentina. Her main interests are remote sensing and GIS tools
 for disease ecology research fields and applications. 
 Vero is an [OSGeo](http://www.osgeo.org/) Charter member and a [FOSS4G](http://foss4g.org/) 
 enthusiast and advocate. 

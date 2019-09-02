@@ -138,7 +138,7 @@ STDS in each mapset.
 @ol[](false)
 - Data for the session
 - Create time series and register maps
-- Convert from K to Celsius
+- Convert from K to Celsius degrees
 - Temporal operations
 - Temporal aggregations
 - Climatologies and anomalies
@@ -151,7 +151,7 @@ STDS in each mapset.
 @title[Sample location and code]
 
 @snap[north span-100]
-### Ad-hoc sample location: North Carolina
+### Sample location: North Carolina
 @snapend
 
 @snap[west span-60]

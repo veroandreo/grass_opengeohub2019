@@ -7,6 +7,7 @@
 @snapend
 
 @snap[south message-box-white span-100]
+<br>
 @size[30px](OpenGeoHub Summer School 2019, M&uuml;nster)
 <br>
 @snapend
@@ -662,6 +663,10 @@ Markus Neteler
 Verónica Andreo
 @css[bio-contact](@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a><br>@fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a>)
 <br>
+@snapend
+
+@snap[south span-100]
+Don't miss the other GRASS GIS tutorials this week! :)
 @snapend
 
 
