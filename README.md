@@ -82,7 +82,7 @@ In the end, your `grassdata` folder should look like this:
   ├── eu_laea
   │   ├── italy_lst
   │   └── PERMANENT
-  └── nc_basic_oph_2019
+  └── nc_basic_ogh_2019
       ├── modis_lst
       ├── modis_ndvi
       ├── PERMANENT
