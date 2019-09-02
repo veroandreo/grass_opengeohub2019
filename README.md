@@ -92,8 +92,8 @@ In the end, your `grassdata` folder should look like this:
 ## The trainer
 
 **Verónica Andreo** is a researcher for [CONICET](http://www.conicet.gov.ar/?lan=en)
-working at the Institute of Tropical Medicine [(INMeT)](https://www.argentina.gob.ar/salud/inmet)
-in Puerto Iguazú, Argentina. Her main interests are remote sensing and GIS tools
+working at the Argentinean Space Agency [(CONAE)](http://ig.conae.unc.edu.ar/)
+in Cordoba, Argentina. Her main interests are remote sensing and GIS tools
 for disease ecology research fields and applications. 
 Vero is an [OSGeo](http://www.osgeo.org/) Charter member and a [FOSS4G](http://foss4g.org/) 
 enthusiast and advocate. 

@@ -17,7 +17,7 @@ Verónica Andreo
 @title[About the trainer]
 
 @snap[west]
-@css[bio-about](PhD in Biology<br>MSc in Remote Sensing and GIS<br>Researcher @ Tropical Medicine Institute<br>Applications of RS & GIS for disease ecology<br><br><i>Keywords:</i> RS, GIS, Time series, SDM,<br>Disease Ecology, Rodents, Hantavirus)
+@css[bio-about](PhD in Biology<br>MSc in Remote Sensing and GIS<br>Researcher @ Argentinean Space Agency<br>Applications of RS & GIS for disease ecology<br><br><i>Keywords:</i> RS, GIS, Time series, SDM,<br>Disease Ecology, Rodents, Hantavirus)
 <br><br><br>
 @css[bio-about](<a href="https://grass.osgeo.org/">GRASS GIS</a> Dev Team<br><a href="https://www.osgeo.org/">OSGeo</a> Charter member<br>FOSS4G enthusiast and advocate)
 @snapend
@@ -163,8 +163,8 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 <br>
 - [eu_laea location with LST mapset](https://apps.mundialis.de/workshops/geostat2019/grassdata_eu_laea_northern_italy_LST_1km_daily_celsius_reconstructed.zip): download and unzip within your grassdata folder
-- [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.sh)
-- [R code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.r)
+- [GRASS script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.sh)
+- [R script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.r)
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
