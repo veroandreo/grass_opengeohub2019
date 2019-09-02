@@ -60,6 +60,7 @@ For a quick-start guide, see: https://live.osgeo.org/en/quickstart/osgeolive_qui
 ### GRASS GIS Add-ons that will be used during the course
 
 * [i.modis](https://grass.osgeo.org/grass7/manuals/addons/i.modis.html): Toolset to download and process MODIS products. It requires [pyModis](http://www.pymodis.org/info.html#how-to-install-pymodis) library.
+* [r.hants](https://grass.osgeo.org/grass7/manuals/addons/r.hants.html): Gap filling with Harmonic Analysis of Time Series (HANTS) method.
 * [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html): Extracts seasons from a time series.
 * [r.regression.series](https://grass.osgeo.org/grass7/manuals/addons/r.regression.series.html): Calculates linear regression parameters between two time series.
 * [v.strds.stats](https://grass.osgeo.org/grass7/manuals/addons/v.strds.stats.html): Estimates zonal statistics from space-time raster datasets based on a polygon vector map.
