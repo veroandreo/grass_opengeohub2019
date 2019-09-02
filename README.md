@@ -70,20 +70,19 @@ Install with `g.extension extension=name_of_addon`
 
 ## Data
 
-* [North Carolina location (full dataset, 150Mb)](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip): download and unzip within `$HOME/grassdata`.
-* [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_lst.zip?inline=false): download and unzip within the North Carolina location in `$HOME/grassdata/nc_spm_08_grass7`.
-* [modis_ndvi mapset (15 Mb)](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false): download and unzip within the North Carolina location in `$HOME/grassdata/nc_spm_08_grass7`.
-* [italy_lst](): download and unzip within `$HOME/grassdata`.
+Please, create a folder in your `$HOME` directory, or under `Documents` if in Windows, and name it **grassdata**. Then, download the following ready to use *locations* and unzip them within `grassdata`:
 
-Your `grassdata` folder should look like this:
+* [North Carolina (70 Mb)]()
+* [Nothern Italy(1 Gb)]()
+
+In the end, your `grassdata` folder should look like this:
 
 ```
   grassdata/
   ├── eu_laea
   │   ├── italy_lst
   │   └── PERMANENT
-  └── nc_spm_08_grass7
-      ├── landsat
+  └── nc_basic_oph_2019
       ├── modis_lst
       ├── modis_ndvi
       ├── PERMANENT
