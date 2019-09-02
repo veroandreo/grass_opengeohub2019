@@ -147,18 +147,19 @@ STDS in each mapset.
 @snapend
 
 ---
-@title[Sample location]
+@title[Sample location and code]
 
 @snap[north span-100]
-### Sample location: North Carolina
+### Ad-hoc sample location: North Carolina
 @snapend
 
 @snap[west span-60]
 <br>
 @ul[](false)
-- Download the [**North Carolina full dataset**](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip)
+- Download the [**North Carolina location**](https://github.com/veroandreo/grass_opengeohub2019/raw/master/data/nc_basic_ogh_2019.zip)
 - Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
-- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`
+- Unzip the file `nc_basic_ogh_2019.zip` within `grassdata`
+- Download the [script](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow the session
 @ulend
 @snapend
 
@@ -179,14 +180,6 @@ STDS in each mapset.
 
 <br>
 @img[span-60](assets/img/mod13c2_global_ndvi.png)
-
-
-+++
-### @fa[download text-green] get sample mapset and code @fa[download text-green]
-
-<br>
-- [modis_ndvi mapset](https://gitlab.com/veroandreo/curso-grass-gis-rioiv/raw/master/data/modis_ndvi.zip?inline=false): download and unzip it within North Carolina location: `$HOME/grassdata/nc_spm_08_grass7/modis_ndvi`
-- [GRASS code](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow the session
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%

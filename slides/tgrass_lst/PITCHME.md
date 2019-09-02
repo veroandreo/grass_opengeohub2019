@@ -148,18 +148,19 @@ STDS in each mapset.
 
 
 ---
-@title[Sample location]
+@title[Sample location and code]
 
 @snap[north span-100]
-### Sample location: North Carolina
+### Ad-hoc sample location: North Carolina
 @snapend
 
 @snap[west span-60]
 <br>
 @ul[](false)
-- Download the [**North Carolina full dataset**](https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip)
+- Download the [**North Carolina location**](https://github.com/veroandreo/grass_opengeohub2019/raw/master/data/nc_basic_ogh_2019.zip)
 - Create a folder in your `$HOME` directory (or Documents) and name it `grassdata`
-- Unzip the file `nc_spm_08_grass7.zip` within `grassdata`
+- Unzip the file `nc_basic_ogh_2019.zip` within `grassdata`
+- Download the [script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh) to follow the session
 @ulend
 @snapend
 
@@ -188,14 +189,6 @@ STDS in each mapset.
 @snap[east span-50]
 ![LST tile](assets/img/modis_lst_tile.png)
 @snapend
-
-
-+++
-### @fa[download text-green] get sample mapset and code @fa[download text-green]
-
-<br>
-- [modis_lst mapset (2Mb)](https://gitlab.com/veroandreo/grass-gis-geostat-2018/blob/master/data/modis_lst.zip): download and unzip within `$HOME/grassdata/nc_spm_08_grass7`
-- [GRASS code](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh) to follow the session
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
