@@ -65,13 +65,13 @@ For a quick-start guide, see: https://live.osgeo.org/en/quickstart/osgeolive_qui
 * [r.seasons](https://grass.osgeo.org/grass7/manuals/addons/r.seasons.html): Extracts seasons from a time series.
 * [r.regression.series](https://grass.osgeo.org/grass7/manuals/addons/r.regression.series.html): Calculates linear regression parameters between two time series.
 * [v.in.pygbif](https://grass.osgeo.org/grass7/manuals/addons/v.in.pygbif.html): Searches and imports [GBIF](https://www.gbif.org/) species distribution data. It requires [pygbif](https://pygbif.readthedocs.io/en/stable/) library.
-* [r.bioclim](https://grass.osgeo.org/grass7/manuals/addons/r.bioclim.html): Calcuates bioclimatic indices.
+* [r.bioclim](https://grass.osgeo.org/grass7/manuals/addons/r.bioclim.html): Calculates bioclimatic indices as those in [WorldClim](https://www.worldclim.org/bioclim).
 
 Install with `g.extension extension=name_of_addon`
 
 ## Other software
 
-We will use the software MaxEnt for the tutorial related to disease ecology. The software can be downloaded from: https://biodiversityinformatics.amnh.org/open_source/maxent/
+We will use the software **MaxEnt** for the tutorial related to disease ecology. The software can be downloaded from: https://biodiversityinformatics.amnh.org/open_source/maxent/
 
 ## Data
 

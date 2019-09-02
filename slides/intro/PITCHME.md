@@ -665,8 +665,9 @@ Verónica Andreo
 <br>
 @snapend
 
-@snap[south span-100]
+@snap[south span-100 fragment]
 Don't miss the other GRASS GIS tutorials this week! :)
+<br>
 @snapend
 
 

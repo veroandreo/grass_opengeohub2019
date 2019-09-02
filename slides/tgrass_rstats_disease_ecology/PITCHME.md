@@ -103,12 +103,13 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 @snap[west span-100]
 <br>
 @ol[](false)
-- Importing species records
-- Creating random background points
-- Creating environmental layers
-- Reading data into R
+- Import species records
+- Create random background points
+- Create environmental layers
+- Read data into R
 - Model species distribution
-- Model evaluation and visualization
+- Model evaluation 
+- Visualization of results
 @olend
 @snapend
 
