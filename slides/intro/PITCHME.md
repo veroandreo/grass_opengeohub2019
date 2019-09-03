@@ -86,7 +86,7 @@ A bit of (geek) GRASS GIS history...
 @snapend
 
 @snap[north-east span-50 h3-green]
-### Disadvantages
+### Drawbacks
 @snapend
 
 @snap[east text-green span-50]
@@ -243,16 +243,11 @@ or from github (or similar repositories) using
 
 +++
 @snap[west]
-The @color[#8EA33B](**computational region**) is the *actual setting of the region 
-boundaries and the actual raster resolution*.
+The @color[#8EA33B](**computational region**) is defined by the *bounding box and resolution* (for raster and 3D raster maps).
 <br>
-The @color[#8EA33B](**computational region**) can be set and changed by means of
-[g.region](https://grass.osgeo.org/grass76/manuals/g.region.html) to the
-extent of a vector map, a raster map or manually to some area of interest. 
+It can be set and changed by means of [g.region](https://grass.osgeo.org/grass76/manuals/g.region.html) to the extent of a vector map, a raster map or manually to some area of interest (subset). 
 <br>
-*Output raster maps* will have their extent and resolution equal to
-those of the current computational region, while vector maps are 
-always considered in their original extent.
+*Output raster maps* will have their extent and resolution equal to those of the current computational region, while vector maps are always considered in their original extent.
 @snapend
 
 
@@ -274,9 +269,9 @@ always considered in their original extent.
 ---
 ## MASK
 
-- A raster map named MASK can be created to mask out areas
+- Masks are set with [r.mask](https://grass.osgeo.org/grass76/manuals/r.mask.html) or creating a raster map called `MASK`. 
+- Masks are virtual masks, they are only actually applied when reading raster maps
 - All cells that are *NULL* in the MASK map will be ignored (also all areas outside the computational region).
-- Masks are set with [r.mask](https://grass.osgeo.org/grass76/manuals/r.mask.html) or creating a raster map called **MASK**. 
 
 
 +++
@@ -355,7 +350,7 @@ The most powerful way to use GRASS GIS!!
 +++
 The GUI's simplified command line offers a *Log file* button to save the history to a file
 
-<img src="assets/img/command_prompt_gui.png" width="43%">
+<img src="assets/img/command_prompt_gui.png" width="44%">
 
 
 +++
@@ -369,7 +364,7 @@ The GUI's simplified command line offers a *Log file* button to save the history
 +++
 The simplest way to execute a Python script is through the @color[#8EA33B](Simple Python editor)
 
-<img src="assets/img/simple_python_editor.png" width="80%">
+<img src="assets/img/simple_python_editor.png" width="90%">
 
 
 +++
@@ -443,7 +438,7 @@ GRASS GIS and R can be used together in two ways:
 
 
 +++
-### WPS - OGC Web Processing Service
+### WPS + REST API
 
 - [Web Processing Service](https://en.wikipedia.org/wiki/Web_Processing_Service) is an [OGC](https://en.wikipedia.org/wiki/Open_Geospatial_Consortium) standard. 
 - [ZOO-Project](http://zoo-project.org/) and [PyWPS](http://pywps.org/) allow the user to run GRASS GIS commands in a simple way through the web.
