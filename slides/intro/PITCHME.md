@@ -641,8 +641,8 @@ If you are more curious...
 ### Try GRASS GIS online: [Binder](https://mybinder.org/) + Jupyter Notebooks
 @snapend
 
-@snap[west span-100]
-@img[span-80](assets/img/grass_in_binder.png)
+@snap[midpoint span-100]
+@img[span-72](assets/img/grass_in_binder.png)
 @snapend
 
 @snap[south-east span-80 text-right text-07]
