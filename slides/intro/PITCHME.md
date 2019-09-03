@@ -637,6 +637,18 @@ If you are more curious...
 
 
 ---
+### Try GRASS GIS online: [Binder](https://mybinder.org/) + Jupyter Notebooks
+
+@img[span-70](assets/img/grass_in_binder.png)
+
+@snap[south-east span-70 text-right]
+Repo: https://github.com/wenzeslaus/try-grass-in-jupyter
+<br>
+Just click over **launch** button!
+@snapend
+
+
+---
 @snap[north span-100]
 <br>
 ### Thanks for your attention!!
