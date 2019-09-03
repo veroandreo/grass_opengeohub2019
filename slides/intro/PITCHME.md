@@ -639,11 +639,12 @@ If you are more curious...
 ---
 ### Try GRASS GIS online: [Binder](https://mybinder.org/) + Jupyter Notebooks
 
+@snap[west span-100 text-left]
 @img[span-70](assets/img/grass_in_binder.png)
+@snapend
 
-@snap[south-east span-70 text-right]
+@snap[south-east span-70 text-right text-08]
 Repo: https://github.com/wenzeslaus/try-grass-in-jupyter
-<br>
 Just click over **launch** button!
 @snapend
 
