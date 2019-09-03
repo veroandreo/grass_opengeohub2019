@@ -364,7 +364,7 @@ The GUI's simplified command line offers a *Log file* button to save the history
 +++
 The simplest way to execute a Python script is through the @color[#8EA33B](Simple Python editor)
 
-<img src="assets/img/simple_python_editor.png" width="90%">
+<img src="assets/img/simple_python_editor.png" width="98%">
 
 
 +++
