@@ -638,7 +638,7 @@ If you are more curious...
 
 ---
 @snap[north span-100]
-### Try GRASS GIS online: [Binder](https://mybinder.org/) + Jupyter Notebooks
+### Try GRASS GIS online: [Binder](https://mybinder.org/) + Jupyter
 @snapend
 
 @snap[midpoint span-100]
