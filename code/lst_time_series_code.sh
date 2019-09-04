@@ -411,7 +411,7 @@ v.buffer input=raleigh_summer_lst \
   distance=30000 \
   output=raleigh_summer_lst_buf30
 
-# Create otside buffer - 15km
+# Create inside buffer - 15km
 v.buffer input=raleigh_summer_lst \
   distance=15000 \
   output=raleigh_summer_lst_buf15
