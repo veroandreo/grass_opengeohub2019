@@ -24,7 +24,7 @@ Verónica Andreo
 
 @snap[east]
 @css[bio-headline](About me)
-<br><br>
+<br>
 ![myphoto](assets/img/vero_round_small.png)
 <br>
 @css[bio-contact](<a href="https://veroandreo.gitlab.io/">veroandreo.gitlab.io</a><br>@fa[github pad-fa] <a href="https://github.com/veroandreo/">veroandreo</a> @fa[twitter pad-fa] <a href="https://twitter.com/VeronicaAndreo">@VeronicaAndreo</a><br>@fa[envelope pad-fa] veroandreo@gmail.com)
