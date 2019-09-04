@@ -38,8 +38,8 @@ raleigh2 <-
   select(LST_Day_mean_3month_2015_07_01_average, 
          LST_Day_mean_3month_2016_07_01_average,
          LST_Day_mean_3month_2017_07_01_average, 
-         geometry) %>% 
-  gather(YEAR, LST_summer, -geometry)
+         geom) %>% 
+  gather(YEAR, LST_summer, -geom)
 
 # Replace values in YEAR column
 raleigh2$YEAR <- rep(c(2015:2017),2)
