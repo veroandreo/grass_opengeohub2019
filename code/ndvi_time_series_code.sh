@@ -117,8 +117,8 @@ r.mapcalc \
 # For all NDVI maps (Windows users run bash.exe and once done, exit)
 
 # List of maps
-PR=`g.list type=raster pattern="*_pixel_reliability" separator=" "`
-NDVI=`g.list type=raster pattern="*_Monthly_NDVI" separator=" "`
+PR=$(g.list type=raster pattern="*_pixel_reliability" separator=" ")
+NDVI=$(g.list type=raster pattern="*_Monthly_NDVI" separator=" ")
 
 # Convert list to array
 PR=($PR)
@@ -175,7 +175,7 @@ t.rast.series input=ndvi_monthly \
   output=ndvi_count_valid
 
 # Get total number of maps
-eval `t.info -g type=strds input=ndvi_monthly`
+eval $(t.info -g type=strds input=ndvi_monthly)
 echo $number_of_maps
 
 # Estimate percentage of missing data
@@ -194,7 +194,7 @@ g.extension extension=r.hants
 
 # *nix
 # List maps
-maplist=`t.rast.list input=ndvi_monthly method=comma`
+maplist=$(t.rast.list input=ndvi_monthly method=comma)
 
 # gapfill: r.hants
 r.hants in=$maplist range=-2000,10000 nf=5 fet=500 base_period=12
@@ -209,8 +209,8 @@ r.hants in=%maplist% range=-2000,10000 nf=5 fet=500 base_period=12
 # Windows users run bash.exe, once done type exit
 
 # Get list of maps
-ORIG=`g.list type=raster pattern="*_filt" separator=" "`
-FILL=`g.list type=raster pattern="*_hants" separator=" "`
+ORIG=$(g.list type=raster pattern="*_filt" separator=" ")
+FILL=$(g.list type=raster pattern="*_hants" separator=" ")
 
 # Convert list to array
 ORIG=($ORIG)
@@ -327,7 +327,7 @@ t.rast.aggregate input=slope_ndvi \
 g.extension extension=r.seasons
 
 # *nix: Start, end and length of growing season
-r.seasons input=`t.rast.list -u input=ndvi_monthly_patch method=comma` \
+r.seasons input=$(t.rast.list -u input=ndvi_monthly_patch method=comma) \
   prefix=ndvi_season \
   n=3 \
   nout=ndvi_season \
@@ -343,7 +343,7 @@ r.seasons input=%ndvi_list% prefix=ndvi_season n=3 nout=ndvi_season threshold_va
 # Create a threshold map: min ndvi + 0.1*ndvi
 r.mapcalc expression="threshold_ndvi = ndvi_min*1.1"
 
-r.seasons input=`t.rast.list -u input=ndvi_monthly_patch method=comma` \
+r.seasons input=$(t.rast.list -u input=ndvi_monthly_patch method=comma) \
   prefix=ndvi_season_thres \
   n=3 \
   nout=ndvi_season_thres \
@@ -412,8 +412,8 @@ t.rast.algebra \
   suffix=gran
 
 # *nix
-xseries=`t.rast.list input=ndvi_monthly_rescaled method=comma`
-yseries=`t.rast.list input=ndwi_monthly method=comma`
+xseries=$(t.rast.list input=ndvi_monthly_rescaled method=comma)
+yseries=$(t.rast.list input=ndwi_monthly method=comma)
 
 r.regression.series xseries=$xseries yseries=$yseries \
   output=ndvi_ndwi_rsq method=rsq
