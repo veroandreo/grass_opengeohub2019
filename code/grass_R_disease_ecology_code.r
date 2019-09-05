@@ -84,7 +84,7 @@ for (i in to_import){
 }
 
 # Quick visualization in mapview
-mapview(predictors[[16]]) + Aa_pres
+mapview(predictors[[3]]) + Aa_pres
 
 
 #
@@ -187,7 +187,7 @@ mod_proj
 
 # Plot predicted model
 plot(mod_proj)
-plot(mod_proj[[4]], main = "Predicted potential distribution")
+plot(mod_proj[[2]], main = "Predicted potential distribution")
 
 
 #

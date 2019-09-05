@@ -26,7 +26,7 @@ g.region -p raster=lst_2010.001_avg
 g.extension extension=v.in.pygbif
 
 # Import data from GBIF
-v.in.pygbif output=aedes_albopictus_b \
+v.in.pygbif output=aedes_albopictus \
   taxa="Aedes albopictus" \
   date_from="2010-01-01" \
   date_to="2018-12-31" 
@@ -44,7 +44,7 @@ v.buffer input=aedes_albopictus \
 
 # Create a vector mask to limit background points
 r.mapcalc \
-  expression="rast_mask = if(lst_2010.001_avg, 1, null())"
+  expression="rast_mask = if(lst_2014.001_avg, 1, null())"
   
 r.to.vect input=rast_mask \
   output=vect_mask \
@@ -265,7 +265,8 @@ t.rast.algebra \
   if(lst_daily >= 33.0 && lst_daily[-1] >= 33.0 || \
   lst_daily[1] >= 33.0 && lst_daily >= 33.0, 1, 0)" \
   basename=higher35_days \
-  suffix=gran
+  suffix=gran \
+  nproc=7
 
 # Inspect values
 t.rast.list input=higher35_consec_days \
