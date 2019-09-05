@@ -1,0 +1,56 @@
+##
+# WINDOWS
+## 
+
+# Long term monthly avg, min and max LST
+FOR %i IN (01,02,03,04,05,06,07,08,09,10,11,12) DO ( 
+
+# average
+t.rast.series input=lst_daily method=average where="strftime('%m', start_time)='%i'" output=lst_average_%i
+  
+# minimum
+t.rast.series input=lst_daily method=minimum where="strftime('%m', start_time)='%i'" output=lst_minimum_%i
+ 
+# maximum
+t.rast.series input=lst_daily method=maximum where="strftime('%m', start_time)='%i'" output=lst_maximum_%i
+
+)  
+
+
+# Estimate Temperature related bioclimatic variables
+g.list type=raster pattern="lst_minimum_??" separator=,
+g.list type=raster pattern="lst_maximum_??" separator=,
+g.list type=raster pattern="lst_average_??" separator=,
+
+# copy-paste lists of maps in tmin, tmax and tavg parameters
+
+
+# Detect seasons
+FOR %i IN (2014,2015,2016,2017,2018) DO ( 
+
+# Get map list per year
+t.rast.list -u lst_daily columns=name where="strftime('%Y',start_time)='%i'" output=list_%i.txt
+
+# Mosquito season (threshold: 10C, min duration: 150 days)
+r.seasons file=list_%i.txt prefix=mosq_season_%i_ n=1 nout=mosq_season_%i threshold_value=10 min_length=150 max_gap=12
+
+# Length core season
+r.mapcalc expression="mosq_season_length_%i_1 = mosq_season_%i_1_end1 - mosq_season_%i_1_start1 + 1"
+  
+# Length extended season
+r.mapcalc expression="mosq_season_length_%i_2 = mosq_season_%i_1_end2 - mosq_season_%i_1_start2 + 1" 
+
+)
+
+
+# Average length of mosquito season
+
+g.list type=raster pattern=mosq_season_length*1 output=season1.txt
+r.series file=season1.txt output=avg_mosq_season_1_length method=average
+
+g.list type=raster pattern=mosq_season_length*2 output=season2.txt
+r.series file=season2.txt output=avg_mosq_season_2_length method=average
+
+
+FOR /F %c IN ('t.rast.list "-u" "input=ndvi_monthly_rescaled" "method=comma"') DO SET xseries=%c
+FOR /F %c IN ('t.rast.list "-u" "input=ndwi_monthly" "method=comma"') DO SET yseries=%c
