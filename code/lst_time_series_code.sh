@@ -380,8 +380,8 @@ t.rast.aggregate input=LST_Day_monthly_celsius \
 t.rast.algebra basename=LST_year_anomaly suffix=gran \
  expression="LST_year_anomaly = (LST_yearly_average - map(LST_average)) / map(LST_sd)"
 
-# Set difference color table
-t.rast.colors input=LST_year_anomaly color=difference
+# Set differences color table
+t.rast.colors input=LST_year_anomaly color=differences
 
 # Animation of annual anomalies
 g.gui.animation strds=LST_year_anomaly
@@ -432,7 +432,3 @@ v.strds.stats input=raleigh_surr \
 # Take a look at mean summer LST in Raleigh and surroundings
 v.db.select raleigh_summer_lst
 v.db.select raleigh_surr_summer_lst
-
-
-
-
