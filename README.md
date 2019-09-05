@@ -85,7 +85,7 @@ In the end, your `grassdata` folder should look like this:
 ```
   grassdata/
   ├── eu_laea
-  │   ├── italy_lst
+  │   ├── italy_LST_daily
   │   └── PERMANENT
   └── nc_basic_ogh_2019
       ├── modis_lst
