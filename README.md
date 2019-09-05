@@ -77,7 +77,7 @@ We will use the software **MaxEnt** for the tutorial related to disease ecology.
 Please, create a folder in your `$HOME` directory, or under `Documents` if in Windows, and name it **grassdata**. Then, download the following ready to use *locations* and unzip them within `grassdata`:
 
 * [North Carolina (70 Mb)](https://github.com/veroandreo/grass_opengeohub2019/raw/master/data/nc_basic_ogh_2019.zip)
-* [Northern Italy (1 Gb)](https://apps.mundialis.de/workshops/geostat2019/grassdata_eu_laea_northern_italy_LST_1km_daily_celsius_reconstructed.zip)
+* [Northern Italy (1 Gb)](https://apps.mundialis.de/workshops/geostat2019/grassdata_eu_laea_northern_italy_LST_1km_daily_celsius_reconstructed_ZLIB.zip)
 
 In the end, your `grassdata` folder should look like this:
 
