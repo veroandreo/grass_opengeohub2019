@@ -85,7 +85,7 @@ t.info input=LST_Day_monthly
 
 # in Unix systems
 t.register -i input=LST_Day_monthly \
- maps=`g.list type=raster pattern="MOD11B3*LST_Day*" separator=comma` \
+ maps=$(g.list type=raster pattern="MOD11B3*LST_Day*" separator=comma) \
  start="2015-01-01" increment="1 months"
 
 # in MS Windows, first create the list of maps
@@ -347,7 +347,7 @@ t.rast.series input=LST_Day_monthly_celsius method=average \
   output=LST_average_jan
 
 # for all months - *nix
-for MONTH in `seq -w 1 12` ; do 
+for MONTH in $(seq -w 1 12) ; do 
  t.rast.series input=LST_Day_monthly_celsius method=average \
   where="strftime('%m', start_time)='${MONTH}'" \
   output=LST_average_${MONTH}
