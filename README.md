@@ -12,7 +12,7 @@
 We will use **GRASS GIS 7.6.1** (current stable version). It can be installed either 
 through standalone installers/binaries or through OSGeo-Live (which includes all
 OSGeo software and packages). See this 
-[**Installation guide**](https://gitpitch.com/veroandreo/grass-gis-conae/master?p=slides/00_installation&grs=gitlab) 
+[**installation guide**](https://gitpitch.com/veroandreo/grass-gis-conae/master?p=slides/00_installation&grs=gitlab) 
 for details (Follow only the GRASS GIS part).
 
 
