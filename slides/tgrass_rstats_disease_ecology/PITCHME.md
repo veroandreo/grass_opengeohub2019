@@ -163,7 +163,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 ### @fa[download text-green] get sample location and code @fa[download text-green]
 
 <br>
-- [eu_laea location with LST mapset](https://apps.mundialis.de/workshops/geostat2019/grassdata_eu_laea_northern_italy_LST_1km_daily_celsius_reconstructed.zip): download and unzip within your `grassdata` folder
+- [eu_laea location with LST mapset](https://apps.mundialis.de/workshops/geostat2019/grassdata_eu_laea_northern_italy_LST_1km_daily_celsius_reconstructed_ZLIB.zip): download and unzip within your `grassdata` folder
 - [GRASS script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.sh)
 - [R script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/grass_R_disease_ecology_code.r)
 
