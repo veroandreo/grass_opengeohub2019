@@ -4,9 +4,8 @@
 
 - [Brief intro to GRASS GIS - Tuesday](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/intro)
 - [TGRASS for environmental monitoring 1: LST - Wednesday](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_lst)
-- [TGRASS for environmental monitoring 2: NDVI - Friday](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_ndvi)
 - [GRASS and R for disease ecology applications - Thursday](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_rstats_disease_ecology)
-
+- [TGRASS for environmental monitoring 2: NDVI - Friday](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_ndvi)
 
 ## Software
 
