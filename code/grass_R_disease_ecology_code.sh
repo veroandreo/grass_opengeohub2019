@@ -20,7 +20,7 @@
 
 
 # Set computational region
-g.region -p raster=lst_2010.001_avg
+g.region -p raster=lst_2014.001_avg
 
 # Install extension (requires pygbif: pip install pygbif)
 g.extension extension=v.in.pygbif
@@ -28,7 +28,7 @@ g.extension extension=v.in.pygbif
 # Import data from GBIF
 v.in.pygbif output=aedes_albopictus_b \
   taxa="Aedes albopictus" \
-  date_from="2010-01-01" \
+  date_from="2014-01-01" \
   date_to="2018-12-31" 
 
 
@@ -44,13 +44,13 @@ v.buffer input=aedes_albopictus \
 
 # Create a vector mask to limit background points
 r.mapcalc \
-  expression="rast_mask = if(lst_2010.001_avg, 1, null())"
+  expression="rast_mask = if(lst_2014.001_avg, 1, null())"
   
 r.to.vect input=rast_mask \
   output=vect_mask \
   type=area
 
-# Substract buffers from vector mask
+# Subtract buffers from vector mask
 v.overlay ainput=vect_mask \
   binput=aedes_buffer \
   operator=xor \
@@ -73,7 +73,7 @@ t.create type=strds \
   temporaltype=absolute \
   output=lst_daily \
   title="Average Daily LST" \
-  description="Average daily LST in C degrees - 2014-2018"
+  description="Average daily LST in degree C - 2014-2018"
 
 # Get list of maps 
 g.list type=raster \
@@ -98,7 +98,7 @@ t.info input=lst_daily
 ## Bioclimatic variables
   
 # Long term monthly avg, min and max LST
-for i in `seq -w 1 12` ; do 
+for i in $(seq -w 1 12) ; do 
   
   # average
   t.rast.series input=lst_daily \
@@ -123,11 +123,11 @@ done
 # Install extension
 g.extension extension=r.bioclim
  
-# Estimate Temperature related bioclimatic variables
+# Estimate temperature related bioclimatic variables
 r.bioclim \
-  tmin=`g.list type=raster pattern="lst_minimum_??" separator=,` \
-  tmax=`g.list type=raster pattern="lst_maximum_??" separator=,` \
-  tavg=`g.list type=raster pattern="lst_average_??" separator=,` \
+  tmin=$(g.list type=raster pattern="lst_minimum_??" separator=",") \
+  tmax=$(g.list type=raster pattern="lst_maximum_??" separator=",") \
+  tavg=$(g.list type=raster pattern="lst_average_??" separator=",") \
   output=worldclim_ 
 
 
@@ -175,7 +175,7 @@ t.rast.series input=annual_autumnal_cooling \
 g.extension extension=r.seasons
 
 # Detect seasons
-for YEAR in `seq 2014 2018` ; do 
+for YEAR in $(seq 2014 2018) ; do 
 
   # Get map list per year
   t.rast.list -u lst_daily \
@@ -204,12 +204,12 @@ done
 
 # Average length of mosquito season
 r.series \
-  input=`g.list type=raster pattern=mosq_season_length*1 separator=,` \
+  input=$(g.list type=raster pattern=mosq_season_length*1 separator=",") \
   output=avg_mosq_season_1_length \
   method=average
   
 r.series \
-  input=`g.list type=raster pattern=mosq_season_length*2 separator=,` \
+  input=$(g.list type=raster pattern=mosq_season_length*2 separator=",") \
   output=avg_mosq_season_2_length \
   method=average
 
@@ -299,13 +299,13 @@ t.rast.list input=mosq_daily_bedd \
 ## Detection of mosquito generations
 
 # Arrays
-cycle=(`seq 1 9`)
-cycle_beg=(`seq 1 300 2700`)
-cycle_end=(`seq 300 300 2700`)
+cycle=($(seq 1 9))
+cycle_beg=($(seq 1 300 2700))
+cycle_end=($(seq 300 300 2700))
 # Length of the array
 count=${#cycle[@]}
 
-for i in `seq 1 $count` ; do
+for i in $(seq 1 $count) ; do
 
   echo "cycle: "${cycle[$i-1]}" - "${cycle_beg[$i-1]} ${cycle_end[$i-1]}
 
@@ -365,32 +365,32 @@ done
 
 
 # Maximum number of generations per pixel per year
-for i in `seq 1 5` ; do 
-  g.list type=raster sep=, pattern=mosq_clean_c*_${i}
+for i in $(seq 1 5) ; do 
+  g.list type=raster separator="," pattern="mosq_clean_c*_${i}"
   r.series \
-    input=`g.list type=raster pattern=mosq_clean_c*_${i} sep=,` \
+    input=$(g.list type=raster pattern="mosq_clean_c*_${i}" separator=",") \
     output=mosq_generations_${i} \
     method=maximum
 done
 
 # Median number of generations per pixel
 r.series \
-  input=`g.list type=raster pattern=mosq_generations_* sep=,` \
+  input=$(g.list type=raster pattern="mosq_generations_*" separator=",") \
   output=median_mosq_generations \
   method=median
 
 # Median duration of generations per year per pixel
-for i in `seq 1 5` ; do 
-  g.list type=raster sep=, pattern=mosq_duration_cycle*_${i}
+for i in $(seq 1 5) ; do 
+  g.list type=raster separator="," pattern="mosq_duration_cycle*_${i}"
   r.series \
-    input=`g.list type=raster pattern=mosq_duration_cycle*_${i} sep=,` \
+    input=$(g.list type="raster pattern=mosq_duration_cycle*_${i}" separator=",") \
     output=mosq_generation_median_duration_${i} \
     method=median
 done
 
 # Median duration of generations per pixel
 r.series \
-  input=`g.list type=raster pattern=mosq_generation_median_duration_* sep=,` \
+  input=$(g.list type=raster pattern="mosq_generation_median_duration_*" separator=",") \
   output=median_mosq_generation_duration \
   method=median
 
@@ -400,5 +400,3 @@ r.series \
 #
 
 rstudio &
-
-
