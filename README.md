@@ -7,6 +7,12 @@
 - [GRASS and R for disease ecology applications - Thursday](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_rstats_disease_ecology)
 - [TGRASS for environmental monitoring 2: NDVI - Friday](https://gitpitch.com/veroandreo/grass_opengeohub2019/master?p=slides/tgrass_ndvi)
 
+## Videos
+
+- [Brief intro to GRASS GIS](https://www.youtube.com/watch?v=eL4M6OCvAys&list=PLXUoTpMa_9s1npXD6S9M0_2pUgnTd6cqV&index=6) - Joint tutorial with Markus Neteler
+- TGRASS for environmental monitoring: [Plenary](https://www.youtube.com/watch?v=hoLAHkFGV-Q&list=PLXUoTpMa_9s1npXD6S9M0_2pUgnTd6cqV&index=13) and [Workshop](https://www.youtube.com/watch?v=tA7j-RofIi0&list=PLXUoTpMa_9s1npXD6S9M0_2pUgnTd6cqV&index=16)
+- TGRASS and R for disease ecology applications: [Plenary](https://www.youtube.com/watch?v=dgudo6UbY2M&list=PLXUoTpMa_9s1npXD6S9M0_2pUgnTd6cqV&index=15) and [Workshop](https://www.youtube.com/watch?v=nu_ZFvmAFGw&list=PLXUoTpMa_9s1npXD6S9M0_2pUgnTd6cqV&index=14)
+
 ## Software
 
 We will use **GRASS GIS 7.6+**. It can be installed either 
@@ -14,7 +20,6 @@ through standalone installers/binaries or through OSGeo-Live (which includes all
 OSGeo software and packages). See this 
 [**installation guide**](https://gitpitch.com/veroandreo/grass-gis-conae/master?p=slides/00_installation&grs=gitlab) 
 for details (Follow only the GRASS GIS part).
-
 
 ### Standalone installers for different OS:
 
