@@ -1,6 +1,9 @@
 #
 # GitPitch Slideshow Custom Settings
 #
+
+gitpitch: 3.0
+
 # For details, visit Wiki:
 # https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings
 #
