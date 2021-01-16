@@ -54,12 +54,6 @@ data**, as well as the temporal relationships among time series.
 - Maps in a STDS can have different spatial and temporal extents
 @ulend
 
-<!---
-TGRASS uses an SQL database to store the temporal and spatial extension
-of STDS, as well as the topological relationships among maps and among
-STDS in each mapset.
---->
-
 
 +++
 @title[STDS]
@@ -154,7 +148,7 @@ STDS in each mapset.
 ### Sample location: North Carolina
 @snapend
 
-@snap[west span-60]
+@snap[west span-100]
 <br>
 @ul[](false)
 - Download the [**North Carolina location**](https://github.com/veroandreo/grass_opengeohub2019/raw/master/data/nc_basic_ogh_2019.zip)
@@ -162,11 +156,6 @@ STDS in each mapset.
 - Unzip the file `nc_basic_ogh_2019.zip` within `grassdata`
 - Download the [GRASS script](https://raw.githubusercontent.com/veroandreo/grass_opengeohub2019/master/code/lst_time_series_code.sh) to follow the session
 @ulend
-@snapend
-
-@snap[east span-40]
-<br><br>
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-92.32910156250001%2C31.297327991404266%2C-73.98193359375001%2C38.89103282648846&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/35.183/-83.156">View Larger Map</a></small>
 @snapend
 
 
@@ -193,7 +182,7 @@ STDS in each mapset.
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink fa-spin]
+## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink]
 
 
 ---?code=code/lst_time_series_code.sh&lang=bash&title=Set computational region and apply MASK
@@ -305,11 +294,6 @@ STDS in each mapset.
 - **[t.list](https://grass.osgeo.org/grass76/manuals/t.list.html)** for listing STDS and maps registered in the temporal database,
 - **[t.rast.list](https://grass.osgeo.org/grass76/manuals/t.rast.list.html)** for maps in raster time series, and
 - **[t.vect.list](https://grass.osgeo.org/grass76/manuals/t.vect.list.html)** for maps in vector time series.
-
-<!--- list of variables to use for query 
-id, name, creator, mapset, temporal_type, creation_time, start_time, end_time, north, south, west, east, nsres, ewres, cols, rows, number_of_cells, min, max
-id, name, layer, creator, mapset, temporal_type, creation_time, start_time, end_time, north, south, west, east, points, lines, boundaries, centroids, faces, kernels, primitives, nodes, areas, islands, holes, volumes
---->
 
 
 +++?code=code/lst_time_series_code.sh&lang=bash&title=Listing examples
@@ -658,6 +642,7 @@ Verónica Andreo
 ---
 @snap[south span-50]
 @size[18px](Presentation powered by)
+<br>
 <a href="https://gitpitch.com/">
 <img src="assets/img/gitpitch_logo.png" width="30%"></a>
 <br>

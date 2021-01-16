@@ -169,7 +169,7 @@ See the [vignette on how to set GRASS database with link2GI](https://github.com/
 
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
-## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink fa-spin]
+## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink]
 
 
 ---?code=code/grass_R_disease_ecology_code.sh&lang=bash&title=Importing species records and creating random background points
@@ -344,6 +344,7 @@ Verónica Andreo
 ---
 @snap[south span-50]
 @size[18px](Presentation powered by)
+<br>
 <a href="https://gitpitch.com/">
 <img src="assets/img/gitpitch_logo.png" width="30%"></a>
 <br>

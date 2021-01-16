@@ -2,7 +2,6 @@
 # GitPitch Slideshow Custom Settings
 #
 
-gitpitch: 3.0
 
 # For details, visit Wiki:
 # https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings
@@ -16,7 +15,7 @@ published : true
 # Doc: https://gitpitch.com/docs/settings/theme
 #
 
-#~ theme : template
+theme : simple
 
 #~ theme-background : [ "#FFF" ]
 #~ theme-headline   : [ "Fira Sans", "#111111", "none" ]
@@ -85,3 +84,9 @@ mathjax : TeX-AMS_HTML-full
 #
 
 eager-loading : true
+
+#
+# version
+#
+
+gitpitch : 3.0

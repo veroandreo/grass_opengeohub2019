@@ -132,10 +132,10 @@ A bit of (geek) GRASS GIS history...
 
 
 ---
-@snap[midpoint span-100]
-Well, except for this... @fa[flushed text-green fa-2x fragment]
-@img[span-55](assets/img/start_screen1.png)
-@snapend
+
+Well, except for this... @fa[flushed text-green fa-2x]
+
+<img src="assets/img/start_screen1.png" width="50%">
 
 
 ---
@@ -695,4 +695,3 @@ for an intro hands-on session with GRASS GIS
 <img src="assets/img/gitpitch_logo.png" width="30%"></a>
 <br>
 @snapend
-

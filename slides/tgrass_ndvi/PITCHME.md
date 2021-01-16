@@ -54,12 +54,6 @@ data**, as well as the temporal relationships among time series.
 - Maps in a STDS can have different spatial and temporal extents
 @ulend
 
-<!---
-TGRASS uses an SQL database to store the temporal and spatial extension
-of STDS, as well as the topological relationships among maps and among
-STDS in each mapset.
---->
-
 
 +++
 @title[STDS]
@@ -153,7 +147,7 @@ STDS in each mapset.
 ### Sample location: North Carolina
 @snapend
 
-@snap[west span-60]
+@snap[west span-100]
 <br>
 @ul[](false)
 - Download the [**North Carolina location**](https://github.com/veroandreo/grass_opengeohub2019/raw/master/data/nc_basic_ogh_2019.zip)
@@ -161,11 +155,6 @@ STDS in each mapset.
 - Unzip the file `nc_basic_ogh_2019.zip` within `grassdata`
 - Download the [GRASS script](https://github.com/veroandreo/grass_opengeohub2019/raw/master/code/ndvi_time_series_code.sh?inline=false) to follow the session
 @ulend
-@snapend
-
-@snap[east span-40]
-<br><br>
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-92.32910156250001%2C31.297327991404266%2C-73.98193359375001%2C38.89103282648846&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=7/35.183/-83.156">View Larger Map</a></small>
 @snapend
 
 
@@ -184,7 +173,7 @@ STDS in each mapset.
 
 ---?image=assets/img/grass_template.png&position=bottom&size=100% 30%
 
-## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink fa-spin]
+## Let's start GRASS GIS! @fa[grin-hearts text-15 text-pink]
 
 
 ---?code=code/ndvi_time_series_code.sh&lang=bash&title=Get familiar with NDVI data
@@ -491,11 +480,10 @@ Verónica Andreo
 
 
 ---
-## The end! @fa[grin-beam-sweat fa-2x text-green fragment]
-<br><br>
 
 @snap[south span-50]
 @size[18px](Presentation powered by)
+<br>
 <a href="https://gitpitch.com/">
 <img src="assets/img/gitpitch_logo.png" width="30%"></a>
 <br>

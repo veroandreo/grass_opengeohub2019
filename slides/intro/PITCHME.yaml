@@ -13,7 +13,7 @@ published : true
 # Doc: https://gitpitch.com/docs/settings/theme
 #
 
-#~ theme : template
+theme : simple
 
 #~ theme-background : [ "#FFF" ]
 #~ theme-headline   : [ "Fira Sans", "#111111", "none" ]
@@ -75,3 +75,9 @@ slide-number : true
 #
 
 eager-loading : true
+
+#
+# version
+#
+
+gitpitch : 3.0
