@@ -8,13 +8,6 @@
 
 ## Presentations
 
-:exclamation: **Attention** :exclamation: 
-
-Given [gitpitch](https://gitpitch.com/) shutdown on *March 1st, 2021*, presentations 
-will no longer be online. Please see or download the pdf files from 
-[here](https://github.com/veroandreo/grass_opengeohub2019/tree/master/pdf) 
-instead.
-
 - [Brief intro to GRASS GIS - Tuesday](https://github.com/veroandreo/grass_opengeohub2019/blob/master/pdf/intro.pdf)
 - [TGRASS for environmental monitoring 1: LST - Wednesday](https://github.com/veroandreo/grass_opengeohub2019/blob/master/pdf/tgrass_lst.pdf)
 - [GRASS and R for disease ecology applications - Thursday](https://github.com/veroandreo/grass_opengeohub2019/blob/master/pdf/tgrass_rstats_disease_ecology.pdf)
